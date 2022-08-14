@@ -1,0 +1,150 @@
+.wrapper {
+    padding: 0px;
+    margin-top: 16px;
+    /* width: 100%; */
+    width: 100%;
+    /* min-width: 700px; */
+    /* min-height: 5vh; */
+    background-color: white;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+@media screen and (max-width: 900px) {
+    .wrapper {
+        width: 95%;
+    }
+
+  }
+
+
+.header{
+    margin:  16px  16px 0 16px;
+
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    /* width: 100%; */
+}
+/* .user__wrapper{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.icon__wrapper{
+    margin: 0;
+    padding: 0;
+    width: 56px;
+    height: 56px;
+   
+}
+.user__info{
+    margin-left: 16px;
+   display: flex;
+   justify-content: center;
+   flex-direction: column;
+}
+.name{
+    font-weight: 600;
+}
+.name, .date{
+    margin: 0;
+    padding: 0;
+    text-align: start;
+}
+.date{
+    opacity: 60%;
+} */
+.dots:hover{
+cursor: pointer;
+}
+.body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin: 16px ;
+}
+
+.message__wrapper {}
+
+.img__wrapper {}
+
+.message {
+    text-align: justify;
+    margin: 0;
+    /* margin-bottom: 12px; */
+    /* margin: 0 0 12px; */
+}
+
+.post__img {
+    position: relative;
+    /* max-height: 90vh; */
+    width: 100%;
+    border-radius: 20px;
+    margin-top: 12px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin:  0 16px 16px 16px;
+}
+.actions__wrapper{
+    display: flex;
+    flex-direction: row;
+}
+.action_button{
+    margin: 0 8px 0 0 ;
+    border: none;
+    border-radius: 12px;
+    width: 56px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #F4F4F4;
+}
+.action {
+    /* margin: 0 0 0 8px; */
+    padding: 0;
+    /* border-color: white; */
+    /* border-radius: 20px; */
+    border: none;
+}
+
+
+
+.action_button:hover {
+    color: aqua;
+    filter: contrast(90%);
+    cursor: pointer;
+
+}
+
+.views {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.quantity, .icon {
+    display: block;
+    margin: 0px 5px;
+    padding: 0;
+    opacity: 50%;
+}
