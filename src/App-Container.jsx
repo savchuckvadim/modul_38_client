@@ -9,6 +9,7 @@ import { LightLoadingPageContainer } from "./modules/components/Elements/Loading
 import StartPage from "./modules/components/Start/Start-Page";
 import { initialize } from "./modules/redux/reducers/app-reducer";
 import { laraGetAuth } from "./modules/redux/reducers/auth/auth-reducer";
+import { registrationRedirect } from "./modules/redux/reducers/auth/registration-reducer";
 // import { useSanctum } from "react-sanctum";
 // import { laravelAPI } from "./modules/services/api-laravel";
 
@@ -26,7 +27,8 @@ const mapStateToProps = (state) => {
     return {
         isAuth: state.auth.auth.isAuth,
         initialized: state.app.initialized,
-        initialInProgress: state.app.inProgress
+        initialInProgress: state.app.inProgress,
+        registrationStatus: state.registration.registrationStatus
 
     }
 }
@@ -44,6 +46,7 @@ const AppContainer = (props) => {
 
 
     if (!props.isAuth && !props.initialInProgress) {
+       
         app = <StartPage />
 
     }
@@ -56,7 +59,7 @@ const AppContainer = (props) => {
     }
 
     return app
-   
+
 }
 
 
@@ -64,7 +67,8 @@ export default compose(
 
     connect(mapStateToProps, {
         laraGetAuth,
-        initialize
+        initialize,
+        registrationRedirect
     }),
 
     withRouter

@@ -47,7 +47,7 @@ const initialState = {
 
         ],
         title: 'Getting started',
-        instruction: 'Create an account to continue and connect with the Sociopaths.',
+        instruction: 'Create an account to continue and connect with the SF Modul_38',
         privacy: `By pressing Sign Up, you agree to the Terms of Service and Privacy Policy.`,
         footerInstruction: `Already have an account? `,
         footerLink: `Sign In`

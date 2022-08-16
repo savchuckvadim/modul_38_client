@@ -42,8 +42,8 @@
     flex-direction: column;
     min-width: 100%;
 }
-.login
-{
+
+.login{
 margin: 0;
     /* height: 288px; */
     min-width: 112px;

@@ -6,7 +6,7 @@ const INITIALIZED_SUCCES = 'INITIALIZED_SUCCES'
 const INITIALIZING = 'INITIALIZING'
 
 let initialState = {
-    initialized: true,
+    initialized: false,
     inProgress: false,
     // laraInitialized: false,
     // laraInProgress: false,
@@ -43,13 +43,13 @@ const appReducer = (state = initialState, action) => {
 
 }
 
-export const initialize = () => (dispatch) => {
+export const initialize = () => async (dispatch) => {
 
     // let dispatchInitializing = () => {
 
     //     return dispatch(initializing())
     // }
-
+    await laravelAPI.initial()
     let promiseAuth = () => {
 //////////////////////////////////////////////////////////////////////////LARAVEL
         // return dispatch(getAuth())

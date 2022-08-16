@@ -8,7 +8,7 @@ const Avatar = (props) => {
     // user={props.user} -> name, surname, photos->small
     // link={`../profile/${props.userId}`}
    
-
+    
     let initials = 'SP'
     let img = null
     if (props.user) {
@@ -44,11 +44,11 @@ let avatar = <div className={style.avatar}
     </h1>}
 
 </div>
-if (props.link && props.link !== undefined) {
-    return <NavLink className={style.link} replace to={`${props.link}`}>{avatar}</NavLink>
-} else {
+// if (props.link && props.link !== undefined) {
+//     return <NavLink className={style.link} replace to={`${props.link}`}>{avatar}</NavLink>
+// } else {
     return avatar
-}
+// }
 
 }
 

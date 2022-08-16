@@ -15,7 +15,7 @@ const Header = (props) => {
         avatar = props.user.photos.small
         name = props.user.name
     }
-debugger
+
     return (
         <header className={style.header}>
             <div className={style.container}>
@@ -25,7 +25,7 @@ debugger
                 <div className={style.brand}>
                     <img className={style.logo} src={logo} alt="" />
                     <h3 className={style.sociopat}>
-                        Sociopath.
+                        Modul_38
                     </h3>
                 </div>
                 <div className={style.currentUser}>

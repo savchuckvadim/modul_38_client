@@ -13,7 +13,7 @@ import getLoginRegistrationIcon from '../../../../../../../assets/imgs/login-for
     }
    
     if (field.meta.error && field.meta.touched && !field.meta.active) {
-        error = <span className='error'>{field.meta.error}</span>
+        error = <span className={style.error}><p>{field.meta.error}</p></span>
     }
 
     let containerClass = containerClasses[index]

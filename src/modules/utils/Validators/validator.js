@@ -1,3 +1,4 @@
+import { type } from "@testing-library/user-event/dist/type"
 
 export const symbol = type => value => {
 
@@ -26,15 +27,25 @@ export const emailValidate = symbol('email')
 export const passwordValidate = symbol('password')
 
 export const requiredFields = (value) => {
+
     let error = undefined
+
     if (!value) {
 
         error = 'Не заполнено'
     }
 
 
-       
+
     return error
 }
 
 
+export const rolesValidate = (value) => {
+
+    let error = undefined
+    if (!value) {
+        error = 'Не выбрана роль'
+    }
+    return error
+}

@@ -77,35 +77,32 @@ const authReducer = (state = initialState, action) => {
 export const laraGetAuth = () => async (dispatch) => {
     // await laravelAPI.me();
     let response = await laravelAPI.getAuthUser()
-   
+
     let authUser = null
-    if (response.data) {
-        authUser = response.data.data
+    if (response.data.resultCode === 1) {
+        authUser = response.data.authUser
     }
 
     if (authUser) {
-        let avatar = await usersAPILaravel.getAvatar(authUser.id) 
-        
+        await usersAPILaravel.getAvatar(authUser.id) //avatar     
         dispatch(setAuthUserData(authUser, authUser.id, authUser.email, authUser.email, true));
-        //set auth users profile 
-        // await laravelGetCurrentProfile(authUser.id, dispatch)
-        // dispatch(setAuthcurrentProfile(authUser.profile, avatar.data))
+
 
 
     } else {
-        dispatch(setAuthUserData(null, null, null, false));
+        dispatch(setAuthUserData(null, null, null, null, false));
     }
 
 
 }
 
 
-const getcurrentProfile = async (userId, dispatch) => {
-    const res = await profileAPI.getProfile(userId)
+// const getcurrentProfile = async (userId, dispatch) => {
+//     const res = await profileAPI.getProfile(userId)
 
-    const userProfile = res.data
-    // dispatch(setAuthcurrentProfile(userProfile))
-}
+//     const userProfile = res.data
+//     // dispatch(setAuthcurrentProfile(userProfile))
+// }
 export const login = (email, password, rememberMe) => (dispatch) => {
 
     laravelAPI.login(email, password, rememberMe)
@@ -132,17 +129,15 @@ export const login = (email, password, rememberMe) => (dispatch) => {
     // .then(res => console.log(res.data.id))
 
 }
-export const logout = () => (dispatch) => {
+export const logout = () => async (dispatch) => {
 
-    laravelAPI.logout()
-        .then(res => {
+    let res = await laravelAPI.logout()
+
+    
+    dispatch(setAuthUserData(null, null, null, null, false))
+    // dispatch(setAuthcurrentProfile({}))
 
 
-
-            dispatch(setAuthUserData(null, null, null, false))
-            // dispatch(setAuthcurrentProfile({}))
-
-        })
 }
 
 export default authReducer

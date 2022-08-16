@@ -6,7 +6,7 @@ const instance = axios.create({
     withCredentials: true,
     baseURL: 'http://127.0.0.1:8000',
     // baseURL: ' http://185.225.35.6/',
-   
+
     headers: {
         'content-type': 'application/json',
         'accept': 'application/json',
@@ -33,7 +33,11 @@ const instance = axios.create({
 export const laravelAPI = {
 
 
-    async register(name, surname, email, password, passwordConfirmation) {
+    async initial() {
+        await instance.get("/sanctum/csrf-cookie")
+
+    },
+    async register(name, surname, email, password, passwordConfirmation, role) {
 
         await instance.get("/sanctum/csrf-cookie");
 
@@ -42,39 +46,38 @@ export const laravelAPI = {
             surname: surname,
             email: email,
             password: password,
-            password_confirmation: passwordConfirmation
-
-        }).then(res => {
-            console.log('register')
-            console.log(res)
+            password_confirmation: passwordConfirmation,
+            role: role
 
         })
 
-        return result
+        return result;
 
     },
 
     async login(email, password) {
         await instance.get("/sanctum/csrf-cookie")
 
-        return instance.post('login', {
+        const result = await instance.post('login', {
             email: email,
             password: password,
             remember: true
         })
 
+        return result
 
 
     },
     async getAuthUser() {
-
         // await instance.get("/sanctum/csrf-cookie")
-        let result = await instance.get("api/user/auth");
 
+        let result = await instance.get("api/user/auth");
+        
         return result
     },
-    logout() {
-        let result = instance.post('logout').then(res => console.log(res))
+    async logout() {
+        // await instance.get("/sanctum/csrf-cookie");
+        let result = instance.post('logout')
 
         return result
     },
@@ -141,7 +144,7 @@ export const usersAPILaravel = {
 
     async getAvatar(userId) {
         const result = await instance.get(`api/garavatar/${userId}`)
-        
+
         return result
         // .then(res => res.data)
     },
@@ -191,5 +194,28 @@ export const postAPI = {
     dislike(postId) {
         return instance.delete(`api/like/${postId}`)
     }
+
+}
+export const offerAPI = {
+
+    sendOffer(userId, name, description, url, price) {
+
+        return instance.post('api/offer', {
+            userId,
+            name,
+            description,
+            url,
+            price
+
+        })
+    },
+
+    getOffers(userId) {
+        return instance.get(`api/offers/${userId}`);
+    },
+    deleteOffer(offerId) {
+        return instance.delete(`api/offers/${offerId}`);
+    },
+
 
 }

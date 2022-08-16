@@ -1,0 +1,69 @@
+
+import React from "react";
+import { LightLoadingPageContainer } from "../../../Elements/Loading/Light-Loading-Page-Container";
+import Title from "../../../Elements/Title/Title";
+// import Paginator from "./Paginator/Paginator";
+
+import style from './Master.module.css'
+import OfferCard from "./Offer-Card/Offer-Card";
+
+
+const Master = (props) => {
+    debugger
+    // let isFetching = false
+    let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize)
+    let pages = [];
+    for (let i = 1; i <= pagesCount; i++) {
+        pages.push(i)
+    }
+
+    let loader = <LightLoadingPageContainer />
+    let users =
+        <>
+            <div className={style.title__container}>
+                <Title title={'Offers'} />
+
+
+            </div>
+            <div className={style.container}>
+                {props.offers.map(offer =>
+                    <OfferCard
+                        key={`user-card-${offer.id}`}
+                        user={offer.advertiser}
+                        name={offer.advertiser.name}
+                        offer={offer}
+                        followThunk={props.followThunk}
+                        unFollowThunk={props.unFollowThunk}
+                        toggleFollowingInProgress={props.toggleFollowingInProgress}
+                        followingInProgress={props.followingInProgress}
+                      
+                        authUser={props.authUser}
+                        
+                    />)}
+            </div>
+
+            <div className={style.pages}>
+
+                {/* <Paginator 
+                totalUsersCount={props.totalUsersCount}
+                pageSize={props.pageSize}
+                currentPage={props.currentPage}
+                onPageChanged={props.onPageChanged}
+
+                /> */}
+            </div>
+
+        </>
+    return (
+        <>
+            {props.isFetching ? loader : users}
+        </>
+    )
+
+
+}
+
+
+
+
+export default Master;

@@ -1,22 +1,35 @@
 
 
 let initialState = [
+    // {
+    //     name: 'Profile',
+    //     link: 'profile',
+
+    // },
+    // {
+    //     name: 'Messages',
+    //     link: 'messages',
+
+    // },
+    // {
+    //     name: 'People',
+    //     link: 'users',
+       
+
+    // },
     {
-        name: 'Profile',
-        link: 'profile',
+        name: 'My Offers',
+        link: 'advertiserOffers',
+       
 
     },
     {
-        name: 'Messages',
-        link: 'messages',
-
-    },
-    {
-        name: 'People',
-        link: 'users',
+        name: 'Offers',
+        link: 'masterOffers',
        
 
     }
+
 
 ]
 

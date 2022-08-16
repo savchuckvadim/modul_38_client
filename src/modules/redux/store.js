@@ -12,11 +12,17 @@ import authReducer from "./reducers/auth/auth-reducer";
 import { reducer as formReducer } from 'redux-form'
 import LoginRegistrationReducer from "./reducers/login-registaration/login-registration-reducer";
 import appReducer from "./reducers/app-reducer";
+import registrationReducer from "./reducers/auth/registration-reducer";
+import { offerReducer } from "./reducers/offers/offer-reducer";
+import masterReducer from "./reducers/master/master-reducer";
 
 let reducers = combineReducers({
     app: appReducer,
     auth: authReducer,
+    registration: registrationReducer,
     loginRegistration: LoginRegistrationReducer,
+    offers: offerReducer,
+    master: masterReducer,
     // currentUser: currentUserReducer,
     users: usersReducer,
     theme: themeReducer,
