@@ -13,7 +13,7 @@ const mapStateToProps = (state) => {
     return {
         user: state.auth.authUser,
         // value: state.currentPost.value,
-        visitedProfileId: state.profileReducer.visitedUser.id
+        // visitedProfileId: state.profileReducer.visitedUser.id
 
     }
 }

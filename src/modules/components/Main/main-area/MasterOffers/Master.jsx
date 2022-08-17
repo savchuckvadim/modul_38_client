@@ -9,7 +9,7 @@ import OfferCard from "./Offer-Card/Offer-Card";
 
 
 const Master = (props) => {
-    debugger
+    
     // let isFetching = false
     let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize)
     let pages = [];
@@ -32,11 +32,10 @@ const Master = (props) => {
                         user={offer.advertiser}
                         name={offer.advertiser.name}
                         offer={offer}
-                        followThunk={props.followThunk}
-                        unFollowThunk={props.unFollowThunk}
-                        toggleFollowingInProgress={props.toggleFollowingInProgress}
+                        follow={props.follow}
+                        unfollow={props.unfollow}
+                        getLink={props.getLink}
                         followingInProgress={props.followingInProgress}
-                      
                         authUser={props.authUser}
                         
                     />)}

@@ -7,7 +7,7 @@ import {
     unFollowThunk
 } from "../../../../redux/reducers/users/users-reducer"
 import { getIsFollowing } from "../../../../redux/selectors/user-selectors"
-import FollowUnfollowButtons from "./Follow-Unfollow-Buttons"
+import FollowUnfollowButtons from "./Delete-Buttons"
 
 
 

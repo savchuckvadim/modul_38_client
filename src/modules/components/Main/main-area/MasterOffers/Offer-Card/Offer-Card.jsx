@@ -5,39 +5,44 @@ import FollowUnfollowButtons from '../../../../Elements/Button/Follow-Unfollow-B
 
 const OfferCard = (props) => {
 
-   let description = props.offer.description
-   if(description.length > 40){
-    description = `${props.offer.description.substr(0, 40)}...` 
-   }
+    let description = props.offer.description
+    if (description.length > 10) {
+        description = `${props.offer.description.substr(0, 10)}...`
+    }
 
     return (
         <div className={style.frame}>
-           
-                <OfferAvatar
+
+            <OfferAvatar
                 size={68}
                 user={props.user}
-               
-                />
 
-            {/* <NavLink className={style.login} to={'../profile/' + props.user.id}> */}
-                <h3 className={style.login}>{props.offer.name}</h3>
-                <p>Description: {description}</p>
-                <p>Price: {`${props.offer.price} р`}</p>
-                
-            {/* </NavLink> */}
+            />
+            <div lassName={style.information__wrapper}>
+                <NavLink className={style.link} to={'../offer/' + props.offer.id}>
 
+                    <h3 className={style.link}>{props.offer.name}</h3>
+
+                    <p>Description: {description}</p>
+                    <p>Profit: {`${props.offer.mastersProfit} р`}</p>
+
+                </NavLink>
+
+
+            </div>
             <div className={style.follow__wrapper}>
 
-        
+
                 <FollowUnfollowButtons
-                user={props.user}  
-                followThunk={props.followThunk}
-                unFollowThunk={props.unFollowThunk}
-                followingInProgress={props.followingInProgress}
-                authUser={props.authUser}
+                    user={props.user}
+                    offer={props.offer}
+                    follow={props.follow}
+                    unfollow={props.unfollow}
+                    followingInProgress={props.followingInProgress}
+                    getLink={props.getLink}
                 />
             </div>
-        </div>
+        </div >
     )
 };
 

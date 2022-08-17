@@ -49,13 +49,14 @@ export const initialize = () => async (dispatch) => {
 
     //     return dispatch(initializing())
     // }
+    dispatch(initializing())
     await laravelAPI.initial()
     let promiseAuth = () => {
 //////////////////////////////////////////////////////////////////////////LARAVEL
         // return dispatch(getAuth())
         return dispatch(laraGetAuth())
     }
-    dispatch(initializing()) //inProgress-status
+     //inProgress-status
      
     promiseAuth().then(responses => {
        

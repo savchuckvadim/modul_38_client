@@ -6,6 +6,8 @@ import UsersContainer from "./main-area/Users/Users-Container";
 import MessagesContainer from "./main-area/Messages/Messages-Container";
 import AdvertiserContainer from "./main-area/AdvertiserOffers/Advertiser-Container";
 import MasterContainer from "./main-area/MasterOffers/Master-Container";
+import OfferContainer from "./main-area/Offer/Offer-Container";
+import { HomePageContainer } from "./main-area/Home-Page/Home-Page-Container";
 
 
 const Main = () => {
@@ -25,8 +27,8 @@ const Main = () => {
                         <Route path="*" index element={<Navigate replace to={'profile'} />} />
                         {/* <Route path="login" element={<LoginContainer  />} /> */}
 
-                        <Route path="profile" element={<ProfileContainer />}>
-                            <Route path=":userId" element={<ProfileContainer />} />
+                        <Route path="profile" element={<HomePageContainer />}>
+                            <Route path=":userId" element={<HomePageContainer />} />
                         </Route>
                         
                         <Route path="messages//*" element={<MessagesContainer />} />
@@ -38,6 +40,9 @@ const Main = () => {
                         </Route>
                         <Route path="masterOffers" element={<MasterContainer />}>
                             <Route path=":userId" element={<MasterContainer />} />
+                        </Route>
+                        <Route path="offer" element={<OfferContainer />}>
+                            <Route path=":offerId" element={<OfferContainer />} />
                         </Route>
 
 

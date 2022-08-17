@@ -12,8 +12,8 @@ const Header = (props) => {
 
     if (props.user) {
 
-        avatar = props.user.photos.small
-        name = props.user.name
+        avatar = props.user.photo
+        name =`${props.user.name} ${props.user.surname}`
     }
 
     return (

@@ -28,10 +28,8 @@ export default connect(mapStateToProps, {
     setUsers,
     setTotalUsersCount,
     fetching,
-    toggleFollowingInProgress,
     requestUsers,
-    followThunk,
-    unFollowThunk,
+   
   
 
 })(UsersContainer)

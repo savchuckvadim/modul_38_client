@@ -14,22 +14,7 @@ const instance = axios.create({
     },
 
 })
-// instance.interceptors.response.use(
-//     (response) => {
-//       return response;
-//     },
-//     function (error) {
-//       if (
-//         error.response &&
-//         [401, 419].includes(error.response.status) &&
-//         store.getters["auth/authUser"] &&
-//         !store.getters["auth/guest"]
-//       ) {
-//         store.dispatch("auth/logout");
-//       }
-//       return Promise.reject(error);
-//     }
-//   );
+
 export const laravelAPI = {
 
 
@@ -72,7 +57,7 @@ export const laravelAPI = {
         // await instance.get("/sanctum/csrf-cookie")
 
         let result = await instance.get("api/user/auth");
-        
+
         return result
     },
     async logout() {
@@ -112,19 +97,16 @@ export const usersAPILaravel = {
 
     async getUsers(currentPage = 1, pageSize = 10) {
         await instance.get("/sanctum/csrf-cookie");
-        // let testUsers = await instance.get(`api/users?page=${currentPage}&count=${pageSize}`);
-        // 
-        return instance.get(`api/users?page=${currentPage}&count=${pageSize}`).then(res => res);
+
+        let res = await instance.get(`api/users?page=${currentPage}&count=${pageSize}`);
+
+        return res
     },
 
     async getUser(id) {
 
         return instance.get(`api/users/${id}`).then(res => res.data)
     },
-    // getUser(name) {
-
-    //     return instance.get(`users?term=${name}`).then(res => res.data)
-    // },
 
     async follow(userId) {
 
@@ -136,20 +118,18 @@ export const usersAPILaravel = {
     async unfollow(userId) {
 
         return instance.delete(`api/follow/${userId}`)
-        // .then(res => res.data)
+
     },
-    // unfollow(userId) {
-    //     return instance.delete(`follow/${userId}`).then(res => res.data.resultCode)
-    // }
+
 
     async getAvatar(userId) {
         const result = await instance.get(`api/garavatar/${userId}`)
 
         return result
-        // .then(res => res.data)
+
     },
 }
-// laravelAPI.logout()
+
 
 export const profileLaravelAPI = {
 
@@ -216,6 +196,20 @@ export const offerAPI = {
     deleteOffer(offerId) {
         return instance.delete(`api/offers/${offerId}`);
     },
+
+    follow(offerId) {
+        return instance.post(`api/follow/`, {
+            offerId
+        })
+    },
+    unfollow(offerId) {
+        return instance.delete(`api/follow/${offerId}`)
+    },
+
+    async getLink(offerId) {
+        let res = await instance.get(`api/link/${offerId}`);
+        return res
+    }
 
 
 }

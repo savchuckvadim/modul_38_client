@@ -5,7 +5,7 @@ import { compose } from "redux";
 import { dislike, getDataForLoadProfilePage, getStatus, like, loadPhoto, updateStatus } from "../../../../redux/reducers/profile/profile-reducer"
 import { LightLoadingPageContainer } from "../../../Elements/Loading/Light-Loading-Page-Container";
 import Master from "./Master";
-import { getOffers } from "../../../../redux/reducers/offers/offer-reducer";
+import { follow, getLink, getOffers, unfollow } from "../../../../redux/reducers/offers/offer-reducer";
 
 
 
@@ -15,10 +15,7 @@ const mapStateToProps = (state) => {
     return {
         isAuth: state.auth.auth.isAuth,
         auth: state.auth.auth,
-        followingInProgress: state.master.followingInProgress,
-        isFetching: state.master.isFetching,
-      
-    
+        followingInProgress: state.offers.followingInProgress,
         offers: state.offers.offers
 
     }
@@ -68,20 +65,7 @@ class MasterContainer extends React.Component {
     }
 
     getProfileData = () => {
-
-        // this.props.getProfileAndSetVisitedUser(this.userId)
-        // this.props.getStatus(this.userId)
-
-        // this.props.getDataForLoadProfilePage(this.userId)
-        // if(this.props.visitedUser){
-        //     this.photo = this.props.visitedUser.photos.small
-        // }
-
         this.props.getOffers(this.userId);
-
-
-
-
 
     }
     componentDidMount() {
@@ -103,10 +87,10 @@ class MasterContainer extends React.Component {
         if (this.props.params.userId && `${this.props.params.userId}` === `${this.props.auth.id}`) return <Navigate replace to={'../masterOffers'} />
         // if(!this.props.visitedUser) return <LightLoadingPageContainer/>
         return (
-
+            
             <Master {...this.props}
                 // profilePhoto={this.props.profile.photos.small}
-                isCurrentUser={this.isAuthUser}
+                // isCurrentUser={this.isAuthUser}
 
 
             />
@@ -124,8 +108,10 @@ export default compose(
         // getProfileAndSetVisitedUser,
     
         //////
-        getOffers: getOffers
-
+        getOffers: getOffers,
+        follow,
+        unfollow,
+        getLink
 
 
         //    deleteOffer

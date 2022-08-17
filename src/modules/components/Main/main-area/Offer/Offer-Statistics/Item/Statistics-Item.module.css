@@ -1,4 +1,6 @@
-
+.item{
+    width: 70px;
+}
 
 .quantity, .name {
     margin: 0;

@@ -1,13 +1,14 @@
 # React, Redux learning
-Educational project - social network. Made using the React library.
+Educational project - on skillfactory course.
 
-libraries that are used in the projectЖ
-
+libraries that are used in the project:
+[Create React App](https://github.com/facebook/create-react-app).
 
 [Reselect](https://github.com/reduxjs/reselect) - A library for creating memoized "selector" functions. Commonly used with Redux, but usable with any plain JS immutable data as well.
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+axios
+redux-form
+redux-thunk
 
 ## Available Scripts
 
@@ -15,23 +16,13 @@ In the project directory, you can run:
 
 ### `npm start`
 
+ATTENTION !
 Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Open [http://http://127.0.0.1:3000/](http://http://127.0.0.1:3000/) to view it in your browser. ONLY
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+
 
 ### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
 ### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.

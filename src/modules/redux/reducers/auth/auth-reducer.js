@@ -4,8 +4,7 @@ import { laravelAPI, usersAPILaravel } from "../../../services/api-laravel";
 
 
 const SET_USER_DATA = 'SET_USER_DATA'
-const SET_AUTH_CURRENT_USER = 'SET_AUTH_CURRENT_USER';
-const SET_PHOTO = 'SET_PHOTO'
+
 let initialState = {
     auth: {
         "id": null,
@@ -32,6 +31,7 @@ const authReducer = (state = initialState, action) => {
 
     switch (action.type) {
         case SET_USER_DATA:
+            
             result = {
                 ...state,
             }
@@ -42,18 +42,9 @@ const authReducer = (state = initialState, action) => {
             result.authUser = action.authUser  //запоминаем аутентифицированного пользователя в state чтобы потом его вставлять в список подписчиков
 
             return result;
-        case SET_AUTH_CURRENT_USER:
+    
 
-            let user = { ...action.userProfile, photos: { small: action.avatar, large: null } }
-
-            return { ...state, currentProfile: user };
-
-        case SET_PHOTO:
-
-            result = { ...state }
-            result.currentProfile = { ...state.currentProfile }
-            result.currentProfile.photos = { ...action.photos }
-            return result
+        
 
         default:
             return result;
@@ -62,20 +53,10 @@ const authReducer = (state = initialState, action) => {
 }
 
 
-// export const getAuth = () => async (dispatch) => {
 
-//     const res = await authAPI.me();
-//     const resultCode = res.resultCode;
-//     const data = res.data;
-//     if (resultCode === 0) {
-
-//         dispatch(setAuthUserData(data.id, data.login, data.email, true));
-//         getcurrentProfile(data.id, dispatch)
-//     }
-// }
 
 export const laraGetAuth = () => async (dispatch) => {
-    // await laravelAPI.me();
+  
     let response = await laravelAPI.getAuthUser()
 
     let authUser = null
@@ -84,7 +65,7 @@ export const laraGetAuth = () => async (dispatch) => {
     }
 
     if (authUser) {
-        await usersAPILaravel.getAvatar(authUser.id) //avatar     
+
         dispatch(setAuthUserData(authUser, authUser.id, authUser.email, authUser.email, true));
 
 
@@ -97,12 +78,7 @@ export const laraGetAuth = () => async (dispatch) => {
 }
 
 
-// const getcurrentProfile = async (userId, dispatch) => {
-//     const res = await profileAPI.getProfile(userId)
 
-//     const userProfile = res.data
-//     // dispatch(setAuthcurrentProfile(userProfile))
-// }
 export const login = (email, password, rememberMe) => (dispatch) => {
 
     laravelAPI.login(email, password, rememberMe)

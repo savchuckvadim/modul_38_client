@@ -34,12 +34,13 @@ height: 68px;
 
 }
 
-.login {
+.link {
     color: rgb(0, 0, 0);
     text-decoration: none ;
+    max-width: 90%;
    
 }
-.login p {
+.link p {
    
     font-weight: 600;
 }

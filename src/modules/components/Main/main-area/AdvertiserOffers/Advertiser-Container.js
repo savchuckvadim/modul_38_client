@@ -14,11 +14,12 @@ const mapStateToProps = (state) => {
  
     return {
         isAuth: state.auth.auth.isAuth,
-        auth: state.auth.auth,
+        // auth: state.auth.auth,
+        authUser: state.auth.authUser,
         // profile: state.profileReducer.visitedUser.profile,
-        visitedUser: state.profileReducer.visitedUser,
-        posts: state.profileReducer.posts,
-        status: state.profileReducer.status,
+        // visitedUser: state.profileReducer.visitedUser,
+        // posts: state.profileReducer.posts,
+        // status: state.profileReducer.status,
         likeInProgress: state.profileReducer.likeInProgress,
         ////////////////////////////
 
@@ -48,7 +49,7 @@ const withRouter = WrappedComponent => props => {
 class AdvertiserContainer extends React.Component {
 
     userId = null
-    isAuthUser = true
+    // isAuthUser = true
     currentUser
     photo = null
 
@@ -64,7 +65,7 @@ class AdvertiserContainer extends React.Component {
         }
         else {
             
-            this.userId = this.props.auth.id
+            this.userId = this.props.authUser.id
             this.isAuthUser = true
 
         }
@@ -76,10 +77,10 @@ class AdvertiserContainer extends React.Component {
         // this.props.getProfileAndSetVisitedUser(this.userId)
         // this.props.getStatus(this.userId)
 
-        this.props.getDataForLoadProfilePage(this.userId)
-        if(this.props.visitedUser){
-            this.photo = this.props.visitedUser.photos.small
-        }
+        // this.props.getDataForLoadProfilePage(this.userId)
+        // if(this.props.visitedUser){
+        //     this.photo = this.props.visitedUser.photos.small
+        // }
 
         this.props.getOffers(this.userId);
       
@@ -104,8 +105,8 @@ class AdvertiserContainer extends React.Component {
     }
     render() {
         
-        if (this.props.params.userId && `${this.props.params.userId}` === `${this.props.auth.id}`) return <Navigate replace to={'../profile'} />
-        if(!this.props.visitedUser) return <LightLoadingPageContainer/>
+        if (this.props.params.userId && `${this.props.params.userId}` === `${this.props.authUser.id}`) return <Navigate replace to={'../profile'} />
+        if(!this.props.authUser) return <LightLoadingPageContainer/>
         return (
 
             <Advertiser {...this.props}
@@ -126,8 +127,7 @@ export default compose(
     connect(mapStateToProps, {
 
         // getProfileAndSetVisitedUser,
-        getStatus,
-        updateStatus,
+        
         getDataForLoadProfilePage,
         loadPhoto,
         like,

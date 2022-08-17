@@ -2,6 +2,7 @@ import { NavLink } from 'react-router-dom';
 import style from './User-Card.module.css';
 import FollowUnfollowButtons from '../../../Elements/Button/Follow-Unfollow-Buttons/Follow-Unfollow-Buttons';
 import Avatar from '../../../Elements/Avatar/Avatar';
+import Delete from '../../../Elements/Button/Delete-Buttons/Delete-Buttons';
 
 const UserCard = (props) => {
 
@@ -14,19 +15,19 @@ const UserCard = (props) => {
                 name={props.name}
                 link={`../profile/${props.user.id}`}
                 user={props.user}
-                img={props.user.photos.small}
+                img={props.user.photo}
                 />
 
-            <NavLink className={style.login} to={'../profile/' + props.user.id}>
-                <p onClick={() => {
+            {/* <NavLink className={style.login} to={'../profile/' + props.user.id}> */}
+                <p className={style.login} onClick={() => {
                     // props.setVisitedUser(props.user)
-                    }} >{`${props.user.profile.name} ${props.user.profile.surname}`}</p>
-            </NavLink>
+                    }} >{`${props.user.name} ${props.user.surname}`}</p>
+            {/* </NavLink> */}
 
             <div className={style.follow__wrapper}>
 
         
-                <FollowUnfollowButtons 
+                <Delete 
                 user={props.user}  
                 followThunk={props.followThunk}
                 unFollowThunk={props.unFollowThunk}

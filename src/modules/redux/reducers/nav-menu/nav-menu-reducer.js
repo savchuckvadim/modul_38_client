@@ -11,21 +11,24 @@ let initialState = [
     //     link: 'messages',
 
     // },
-    // {
-    //     name: 'People',
-    //     link: 'users',
+    {
+        name: 'Users',
+        link: 'users',
+        forRole: ['Admin']
        
 
-    // },
+    },
     {
         name: 'My Offers',
         link: 'advertiserOffers',
+        forRole: ['Admin', 'Advertiser']
        
 
     },
     {
         name: 'Offers',
         link: 'masterOffers',
+        forRole: ['Admin', 'Master']
        
 
     }

@@ -9,7 +9,7 @@ const StatisticsItem = (props) => {
                 <p className={style.name}>{props.name}</p>
             </div>
 
-           {props.name !== 'following' && <div className={style.line}></div>}
+           {props.name !== 'profit' && <div className={style.line}></div>}
 
         </>
     )

@@ -6,7 +6,7 @@ import Offer from "./Offers/Offer";
 const OffersArea = (props) => {
 
     let offersArea =  null
-    // <img className={style.nopost} src={nopost} alt='no posts'></img>
+    
     if (props.offers.length > 0) {
         offersArea = props.offers.map((offer, index) => {
 
@@ -17,6 +17,8 @@ const OffersArea = (props) => {
                 delete={props.delete}
             />
         })
+    }else{
+        offersArea = <img className={style.nopost} src={nopost} alt='no posts'></img>
     }
     return offersArea
 
