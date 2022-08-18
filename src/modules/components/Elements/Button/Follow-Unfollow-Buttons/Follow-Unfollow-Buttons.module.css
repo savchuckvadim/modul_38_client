@@ -11,8 +11,8 @@
     margin: 0 5px;
 }
 .url{
-    margin: 15px 0;
-   
+    margin: 10px 0;
+    width: 100%;
     border: none;
 }
 .withUrl__wrapper{

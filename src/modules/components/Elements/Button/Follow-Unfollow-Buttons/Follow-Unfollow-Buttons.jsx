@@ -14,7 +14,7 @@ let linkDisplay = 'none'
     if (props.offer.isFollowing) {
 
         if(props.offer.link){
-            linkDisplay = 'inline-block'
+            linkDisplay = 'inline'
         }
 
 
