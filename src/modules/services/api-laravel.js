@@ -193,7 +193,7 @@ export const offerAPI = {
     async getOffers(userId) {
         const res = await instance.get(`api/offers/${userId}`);
         if(res.data){
-            return res.data
+            return res.data.data
         }
         return {'resultCode' : 0}
     },

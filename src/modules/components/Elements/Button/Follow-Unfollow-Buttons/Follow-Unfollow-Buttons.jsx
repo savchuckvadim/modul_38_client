@@ -8,14 +8,21 @@ const FollowUnfollowButtons = (props) => {
 
     let disable = props.followingInProgress.some(id => id === props.offer.id)
     let name = 'Follow'
+let linkDisplay = 'none'
 
 
     if (props.offer.isFollowing) {
+
+        if(props.offer.link){
+            linkDisplay = 'inline-block'
+        }
+
+
         colorOfButton = 'grey'
         onButtonClick = props.unfollow
         name = 'Unfollow'
         return (<div className={style.withUrl__wrapper}>
-            <input readOnly={true} className={style.url} style={{ 'display': 'none' }} type='url' value={0} />
+            <input readOnly={true} className={style.url} style={{ 'display': linkDisplay }} type='url' value={props.offer.link} />
             <div className={style.twoButtons}>
 
                 <div className={style.button__wrapper}>

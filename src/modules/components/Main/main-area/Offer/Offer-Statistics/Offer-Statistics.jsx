@@ -3,7 +3,6 @@ import style from './Offer-Statistics.module.css'
 import StatisticsItem from './Item/Statistics-Item'
 
 const OfferStatistics = (props) => {
-    debugger
 const followers = props.offer.followers
  
 const mastersProfit = props.offer.mastersProfit || 0
