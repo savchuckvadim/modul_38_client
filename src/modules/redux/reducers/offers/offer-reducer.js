@@ -31,10 +31,10 @@ export const sendOffer = (userId, name, description, url, price) => async (dispa
 export const getOffers = (userId) => async (dispatch) => {
     const res = await offerAPI.getOffers(userId);
 
-    if (res.data.resultCode === 1) {
+    if (res.resultCode === 1) {
         dispatch(setOffers(res.data.data));
     } else {
-        alert(res.data.message)
+        alert(res.message)
     }
 
 }
@@ -83,6 +83,10 @@ export const unfollow = (offerId) => async (dispatch) => {
 export const getLink = (offerId) => async (dispatch) => {
    
     let res =  await offerAPI.getLink(offerId);
+    if(res.data.resultCode){
+
+    }
+
     debugger
 }
 

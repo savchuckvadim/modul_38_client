@@ -18,7 +18,7 @@ const OfferCard = (props) => {
                 user={props.user}
 
             />
-            <div lassName={style.information__wrapper}>
+            <div className={style.information__wrapper}>
                 <NavLink className={style.link} to={'../offer/' + props.offer.id}>
 
                     <h3 className={style.link}>{props.offer.name}</h3>

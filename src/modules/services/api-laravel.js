@@ -190,8 +190,12 @@ export const offerAPI = {
         })
     },
 
-    getOffers(userId) {
-        return instance.get(`api/offers/${userId}`);
+    async getOffers(userId) {
+        const res = await instance.get(`api/offers/${userId}`);
+        if(res.data){
+            return res.data
+        }
+        return {'resultCode' : 0}
     },
     deleteOffer(offerId) {
         return instance.delete(`api/offers/${offerId}`);
@@ -208,7 +212,7 @@ export const offerAPI = {
 
     async getLink(offerId) {
         let res = await instance.get(`api/link/${offerId}`);
-        return res
+        return res.data
     }
 
 
