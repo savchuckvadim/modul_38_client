@@ -81,10 +81,8 @@ export const unfollow = (offerId) => async (dispatch) => {
 
 export const getLink = (offerId) => async (dispatch) => {
     
-
     let res =  await offerAPI.getLink(offerId);
-    
-    return res.data
+    return res
 
 }
 
