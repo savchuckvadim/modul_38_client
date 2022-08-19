@@ -30,6 +30,7 @@ export const sendOffer = (userId, name, description, url, price) => async (dispa
 
 export const getOffers = (userId) => async (dispatch) => {
     const res = await offerAPI.getOffers(userId);
+    
     if (res.resultCode === 1) {
         dispatch(setOffers(res.offers));
     } else {

@@ -6,11 +6,12 @@ const OfferStatistics = (props) => {
 const followers = props.offer.followers
  
 const mastersProfit = props.offer.mastersProfit || 0
+const transitions = props.offer.transitions.transitions || 0
 const statistics =
     [
         {
             name: 'transitions',
-            quantity: 0
+            quantity: transitions
         },
         {
             name: 'followers',
