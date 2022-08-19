@@ -2,7 +2,7 @@ import React from 'react';
 import {LightLoadingPageContainer} from '../../../Elements/Loading/Light-Loading-Page-Container'
 import Title from '../../../Elements/Title/Title';
 import OffersArea from './Offers-Area/Offers-Area';
-import style from './Profile.module.css';
+import style from './Advertiser.module.css';
 import { SendOfferContainer } from './Send-Offer/Send-Offer-Container';
 
 

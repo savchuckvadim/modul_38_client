@@ -3,7 +3,6 @@ import { connect } from "react-redux"
 import { Navigate, useParams } from "react-router-dom";
 import { compose } from "redux";
 import { deleteOffer, getOffers } from "../../../../redux/reducers/offers/offer-reducer";
-import { dislike, getDataForLoadProfilePage, getStatus, like, loadPhoto, updateStatus } from "../../../../redux/reducers/profile/profile-reducer"
 import { LightLoadingPageContainer } from "../../../Elements/Loading/Light-Loading-Page-Container";
 import Advertiser from "./Advertiser";
 
@@ -14,16 +13,7 @@ const mapStateToProps = (state) => {
  
     return {
         isAuth: state.auth.auth.isAuth,
-        // auth: state.auth.auth,
         authUser: state.auth.authUser,
-        // profile: state.profileReducer.visitedUser.profile,
-        // visitedUser: state.profileReducer.visitedUser,
-        // posts: state.profileReducer.posts,
-        // status: state.profileReducer.status,
-        likeInProgress: state.profileReducer.likeInProgress,
-        ////////////////////////////
-
-
         offers:state.offers.offers
 
     }
@@ -33,13 +23,13 @@ const mapStateToProps = (state) => {
 
 const withRouter = WrappedComponent => props => {
     const params = useParams();
-    // etc... other react-router-dom v6 hooks
+   
 
     return (
         <WrappedComponent
             {...props}
             params={params}
-        // etc...
+      
         />
     );
 };
@@ -73,21 +63,8 @@ class AdvertiserContainer extends React.Component {
     }
 
     getProfileData = () => {
-
-        // this.props.getProfileAndSetVisitedUser(this.userId)
-        // this.props.getStatus(this.userId)
-
-        // this.props.getDataForLoadProfilePage(this.userId)
-        // if(this.props.visitedUser){
-        //     this.photo = this.props.visitedUser.photos.small
-        // }
-
         this.props.getOffers(this.userId);
       
-
-        
-
-
     }
     componentDidMount() {
        
@@ -110,9 +87,7 @@ class AdvertiserContainer extends React.Component {
         return (
 
             <Advertiser {...this.props}
-                // profilePhoto={this.props.profile.photos.small}
                 isCurrentUser={this.isAuthUser}
-
 
             />
         )
@@ -125,16 +100,6 @@ class AdvertiserContainer extends React.Component {
 export default compose(
 
     connect(mapStateToProps, {
-
-        // getProfileAndSetVisitedUser,
-        
-        getDataForLoadProfilePage,
-        loadPhoto,
-        like,
-        dislike,
-        //////
-
-
        getOffers,
        deleteOffer
 
@@ -143,8 +108,3 @@ export default compose(
     // withAuthRedirect
 )(AdvertiserContainer)
 
-// export default connect(mapStateToProps, {
-
-//     getProfile
-
-// })(WithUrlDataContainerComponent)

@@ -61,12 +61,10 @@ export const laravelAPI = {
         return result
     },
     async logout() {
-        // await instance.get("/sanctum/csrf-cookie");
         let result = instance.post('logout')
-
         return result
     },
-
+//TODO:
     updatePassword(payload) {
         return instance.put("/user/password", payload);
     },
@@ -76,16 +74,7 @@ export const laravelAPI = {
     updateUser(payload) {
         return instance.put("/user/profile-information", payload);
     },
-    // getUsers() {
-    //     let result = instance.get(`user`).then(res => res.data).then(res => console.log(res))
-
-    //     return result
-    // },
-    // createToken() {
-
-    //     let result = instance.post(`token/create`).then(res => res.data).then(res => console.log(res))
-    //     return result
-    // },
+   
 
 
 
@@ -108,19 +97,6 @@ export const usersAPILaravel = {
         return instance.get(`api/users/${id}`).then(res => res.data)
     },
 
-    async follow(userId) {
-
-        return instance.post(`api/follow`, {
-            userId: userId
-        })
-    },
-
-    async unfollow(userId) {
-
-        return instance.delete(`api/follow/${userId}`)
-
-    },
-
 
     async getAvatar(userId) {
         const result = await instance.get(`api/garavatar/${userId}`)
@@ -130,52 +106,6 @@ export const usersAPILaravel = {
     },
 }
 
-
-export const profileLaravelAPI = {
-
-    getProfile(userId) {
-        return instance.get(`api/profile/${userId}`).then(res => res.data)
-    },
-
-    getAboutMe(userId) {
-
-        return instance.get(`api/profile/aboutme/${userId}`)
-    },
-
-    updateAboutMe(aboutMe) {
-
-        return instance.put(`api/profile/aboutme`, {
-            aboutMe
-        })
-    },
-}
-
-export const postAPI = {
-
-    sendPost(userId, profileId, body, image) {
-
-        return instance.post('api/post', {
-            body,
-            image,
-            profileId,
-            userId
-        })
-    },
-
-    getPosts(profileId) {
-        return instance.get(`api/post/${profileId}`);
-    },
-
-    like(postId) {
-        return instance.post('api/like', {
-            postId
-        })
-    },
-    dislike(postId) {
-        return instance.delete(`api/like/${postId}`)
-    }
-
-}
 export const offerAPI = {
 
     sendOffer(userId, name, description, url, price) {

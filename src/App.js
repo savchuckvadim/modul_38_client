@@ -6,8 +6,6 @@ import Sociopath from './modules/components/Sociopath-App/Sociopath';
 import LoginRedirect from './modules/components/Login-Page/Login-Redirect';
 import React from "react";
 
-import { Sanctum } from "react-sanctum";
-import { sanctumConfig } from './modules/services/sanctum/sunctumConfig';
 
 
 function App(props) {
@@ -20,7 +18,6 @@ function App(props) {
      
         <Routes>
           <Route path="*" index element={<Sociopath />} />
-
           <Route path="login" element={<LoginRedirect />} />
         </Routes>
 

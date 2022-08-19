@@ -1,5 +1,6 @@
 
 import React from "react";
+import Filter from "../../../Elements/Filter/Filter";
 import { LightLoadingPageContainer } from "../../../Elements/Loading/Light-Loading-Page-Container";
 import Title from "../../../Elements/Title/Title";
 import Paginator from "./Paginator/Paginator";
@@ -21,8 +22,10 @@ const Users = (props) => {
         <>
             <div className={style.title__container}>
                 <Title title={'People'} />
+                
 
             </div>
+            <Filter {...props}/>
             <div className={style.container}>
                 {props.users.map(user =>
                     <UserCard

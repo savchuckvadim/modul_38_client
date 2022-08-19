@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux"
 import { Navigate, useParams } from "react-router-dom";
 import { compose } from "redux";
-import { dislike, getDataForLoadProfilePage, getStatus, like, loadPhoto, updateStatus } from "../../../../redux/reducers/profile/profile-reducer"
+
 import { LightLoadingPageContainer } from "../../../Elements/Loading/Light-Loading-Page-Container";
 import Master from "./Master";
 import { follow, getLink, getOffers, unfollow } from "../../../../redux/reducers/offers/offer-reducer";

@@ -1,7 +1,6 @@
 import { connect } from "react-redux"
 import { sendOffer } from "../../../../../redux/reducers/offers/offer-reducer"
 
-import { addPostActionCreator, sendPost } from "../../../../../redux/reducers/profile/profile-reducer"
 
 import SendOffer from "./Send-Offer"
 

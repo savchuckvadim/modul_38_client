@@ -2,9 +2,6 @@ import { applyMiddleware, combineReducers, createStore } from "redux";
 import ThunkMiddleware from 'redux-thunk';
 
 import dialogsReducer from "./reducers/dialogs/dialogs-reduser";
-import newMessageReducer from "./reducers/dialogs/new-message-reducer";
-import currentPostReducer from "./reducers/posts/send-post-reducer";
-import profileReducer from "./reducers/profile/profile-reducer";
 import { themeReducer } from "./reducers/theme/style-reducer";
 import navMenuReducer from "./reducers/nav-menu/nav-menu-reducer";
 import usersReducer from "./reducers/users/users-reducer";
@@ -28,9 +25,8 @@ let reducers = combineReducers({
     theme: themeReducer,
     navMenu: navMenuReducer,
     dialogsReducer,
-    profileReducer,
-    currentPost: currentPostReducer,
-    newMessageReducer,
+    // profileReducer,
+    // newMessageReducer,
     form: formReducer
 
 
