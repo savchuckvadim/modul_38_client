@@ -19,7 +19,9 @@ export const laravelAPI = {
 
 
     async initial() {
-        await instance.get("/sanctum/csrf-cookie")
+      const res =  await instance.get("/sanctum/csrf-cookie");
+      debugger
+      return res
 
     },
     async register(name, surname, email, password, passwordConfirmation, role) {
@@ -35,20 +37,19 @@ export const laravelAPI = {
             role: role
 
         })
-
         return result;
 
     },
 
     async login(email, password) {
-        await instance.get("/sanctum/csrf-cookie")
+        // await instance.get("/sanctum/csrf-cookie")
 
         const result = await instance.post('login', {
             email: email,
             password: password,
             remember: true
         })
-
+        
         return result
 
 
@@ -146,4 +147,13 @@ export const offerAPI = {
     }
 
 
+}
+
+export const financeAPI = {
+
+    async getFinance() {
+        let res = await instance.get(`api/finance}`);
+        debugger
+        return res.data
+    }
 }

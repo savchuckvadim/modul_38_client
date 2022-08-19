@@ -1,6 +1,13 @@
-import { stopSubmit } from "redux-form";
-import { profileAPI } from "../../../services/api";
-import { laravelAPI, usersAPILaravel } from "../../../services/api-laravel";
+import {
+    stopSubmit
+} from "redux-form";
+import {
+    profileAPI
+} from "../../../services/api";
+import {
+    laravelAPI,
+    usersAPILaravel
+} from "../../../services/api-laravel";
 
 
 const SET_USER_DATA = 'SET_USER_DATA'
@@ -12,17 +19,21 @@ let initialState = {
         "email": null,
         isAuth: false
     },
-    // currentProfile: {},
+   
     authUser: null
 }
 
 export const setAuthUserData = (authUser, id = null, login = null, email = null, isAuth = false) =>
-({
-    type: SET_USER_DATA,
-    authUser,
-    data: { id, login, email },
-    isAuth
-})
+    ({
+        type: SET_USER_DATA,
+        authUser,
+        data: {
+            id,
+            login,
+            email
+        },
+        isAuth
+    })
 
 // export const setAuthcurrentProfile = (userProfile, avatar) => ({ type: SET_AUTH_CURRENT_USER, userProfile, avatar })
 
@@ -31,20 +42,12 @@ const authReducer = (state = initialState, action) => {
 
     switch (action.type) {
         case SET_USER_DATA:
-            
-            result = {
-                ...state,
-            }
-            result.auth = {
-                ...action.data,
-                isAuth: action.isAuth
-            }
-            result.authUser = action.authUser  //запоминаем аутентифицированного пользователя в state чтобы потом его вставлять в список подписчиков
+
+            result = {...state,}
+            result.auth = {...action.data,isAuth: action.isAuth}
+            result.authUser = action.authUser //запоминаем аутентифицированного пользователя в state чтобы потом его вставлять в список подписчиков
 
             return result;
-    
-
-        
 
         default:
             return result;
@@ -56,8 +59,8 @@ const authReducer = (state = initialState, action) => {
 
 
 export const laraGetAuth = () => async (dispatch) => {
-  
-    let response = await laravelAPI.getAuthUser()
+    await laravelAPI.initial(0);
+    let response = await laravelAPI.getAuthUser();
 
     let authUser = null
     if (response.data.resultCode === 1) {
@@ -79,40 +82,26 @@ export const laraGetAuth = () => async (dispatch) => {
 
 
 
-export const login = (email, password, rememberMe) => (dispatch) => {
+export const login = (email, password, rememberMe) => async (dispatch) => {
 
-    laravelAPI.login(email, password, rememberMe)
-        .then(res => {
+    const res = await laravelAPI.login(email, password, rememberMe)
+    const resultCode = res.status;
 
-            const resultCode = res.status;
-
-            if (resultCode === 200) {
-
-
-                dispatch(laraGetAuth())
-
-            } else {
-                let message = 'Email or Password was wrong !'
-
-                let action = stopSubmit('login', {
-                    _error: message
-                })
-                dispatch(action)
-            }
-
+    if (resultCode === 200) {
+        dispatch(laraGetAuth())
+    } else {
+        let message = 'Email or Password was wrong !'
+        let action = stopSubmit('login', {
+            _error: message
         })
-
-    // .then(res => console.log(res.data.id))
+        dispatch(action)
+    }
 
 }
 export const logout = () => async (dispatch) => {
 
-    let res = await laravelAPI.logout()
-
-    
-    dispatch(setAuthUserData(null, null, null, null, false))
-    // dispatch(setAuthcurrentProfile({}))
-
+    await laravelAPI.logout();
+    dispatch(setAuthUserData(null, null, null, null, false));
 
 }
 

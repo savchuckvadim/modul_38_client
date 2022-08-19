@@ -1,15 +1,23 @@
+import { financeAPI } from "../../../services/api-laravel";
+
 let initialState = {
-    admin: null,
-    master: null,
-    advertiser: null
+    finance : null
 };
-const GET_FINANCE = 'GET_FINANCE';
+const SET_FINANCE = 'SET_FINANCE';
+const setFinance = (finance) => ({type: SET_FINANCE, finance})
+
+
+export const getFinance = () => async (dispatch)  => {
+    let res = financeAPI.getFinance(0);
+    debugger
+    setFinance(res)
+}
 
 const financeReducer = (state = initialState, action) => {
     switch (action.type) {
-        case GET_FINANCE:
-            let result = { ...state };
-
+        case SET_FINANCE:
+            let result = {...state };
+            result.finance = action.finance
             return result;
 
         default:
