@@ -12,6 +12,7 @@ import appReducer from "./reducers/app-reducer";
 import registrationReducer from "./reducers/auth/registration-reducer";
 import { offerReducer } from "./reducers/offers/offer-reducer";
 import masterReducer from "./reducers/master/master-reducer";
+import financeReducer from "./reducers/finance/finance-reducer";
 
 let reducers = combineReducers({
     app: appReducer,
@@ -25,6 +26,7 @@ let reducers = combineReducers({
     theme: themeReducer,
     navMenu: navMenuReducer,
     dialogsReducer,
+    finance:financeReducer,
     // profileReducer,
     // newMessageReducer,
     form: formReducer
