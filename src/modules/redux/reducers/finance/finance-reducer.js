@@ -8,7 +8,7 @@ const setFinance = (finance) => ({type: SET_FINANCE, finance})
 
 
 export const getFinance = () => async (dispatch)  => {
-    let res = financeAPI.getFinance(0);
+    let res = await  financeAPI.getFinance();
     debugger
     setFinance(res)
 }

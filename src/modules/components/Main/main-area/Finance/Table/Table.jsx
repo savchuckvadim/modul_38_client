@@ -47,6 +47,7 @@ const rows = [ //Advertiser
 
 
 const BasicTable = (props) =>  {
+  let data = props.finance
   debugger
   return (
     <TableContainer className={style.table} component={Paper}>
@@ -54,7 +55,7 @@ const BasicTable = (props) =>  {
         <TableHead>
           <TableRow>
             <TableCell>Dessert (100g serving)</TableCell>
-            <TableCell align="right">Offers</TableCell>
+            <TableCell align="right">{data && data[0]}</TableCell>
             <TableCell align="right">Masters</TableCell>
             <TableCell align="right">Transitions</TableCell>
             <TableCell align="right">Expenses</TableCell>

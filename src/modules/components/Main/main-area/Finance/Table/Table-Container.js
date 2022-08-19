@@ -15,7 +15,7 @@ const mapStateToProps = (state) => {
         finance: state.finance.finance
     }
 }
-const TableContainer = (props) => {
+let TableContainer = (props) => {
 
     useEffect(() => {
         props.getFinance()

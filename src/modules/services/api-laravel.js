@@ -20,7 +20,7 @@ export const laravelAPI = {
 
     async initial() {
       const res =  await instance.get("/sanctum/csrf-cookie");
-      debugger
+      
       return res
 
     },
@@ -152,7 +152,7 @@ export const offerAPI = {
 export const financeAPI = {
 
     async getFinance() {
-        let res = await instance.get(`api/finance}`);
+        let res = await instance.get(`api/finance`);
         debugger
         return res.data
     }
