@@ -31,6 +31,13 @@ let initialState = [
         forRole: ['Admin', 'Master']
        
 
+    },
+    {
+        name: 'Finance',
+        link: 'finance',
+        forRole: ['Admin', 'Master', 'Advertiser']
+       
+
     }
 
 

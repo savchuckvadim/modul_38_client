@@ -3,7 +3,6 @@ import { connect } from "react-redux"
 import { useParams } from "react-router-dom";
 import { compose } from "redux";
 import { follow, getLink, getOffers, unfollow } from "../../../../redux/reducers/offers/offer-reducer";
-import { LightLoadingPageContainer } from "../../../Elements/Loading/Light-Loading-Page-Container";
 import Offer from "./Offer";
 
 const withRouter = WrappedComponent => props => {

@@ -6,6 +6,7 @@ import AdvertiserContainer from "./main-area/AdvertiserOffers/Advertiser-Contain
 import MasterContainer from "./main-area/MasterOffers/Master-Container";
 import OfferContainer from "./main-area/Offer/Offer-Container";
 import { HomePageContainer } from "./main-area/Home-Page/Home-Page-Container";
+import Finance from "./main-area/Finance/Finance";
 
 
 const Main = () => {
@@ -39,9 +40,10 @@ const Main = () => {
                             <Route path=":userId" element={<MasterContainer />} />
                         </Route>
                         <Route path="offer" element={<OfferContainer />}>
+                            
                             <Route path=":offerId" element={<OfferContainer />} />
                         </Route>
-
+                        <Route path="finance" element={<Finance />} />
 
                     </Routes>
                     {/* <RouteCurrentDialogContainer/> */}
