@@ -80,9 +80,15 @@ export const unfollow = (offerId) => async (dispatch) => {
 }
 
 export const getLink = (offerId) => async (dispatch) => {
+
+    let res = await offerAPI.getLink(offerId);
     
-    let res =  await offerAPI.getLink(offerId);
-    return res
+    if (res.resultCode === 1) {
+        dispatch(setLink(res.link))
+    } else {
+        alert(res.message)
+    }
+
 
 }
 
@@ -123,7 +129,7 @@ export const offerReducer = (state = initialState, action) => {
                 ...state
             }
             result.offers = followUnfollow(result.offers, action.offerId, 1)
-            
+
             return result;
 
         case UNFOLLOW:
@@ -131,7 +137,7 @@ export const offerReducer = (state = initialState, action) => {
                 ...state
             }
             result.offers = followUnfollow(result.offers, action.offerId, 0)
-            
+
             return result
 
         case FOLLOWING_IN_PROGRESS:
@@ -145,24 +151,25 @@ export const offerReducer = (state = initialState, action) => {
                 : result.followingInProgress = state.followingInProgress.filter(id => id !== action.offerId)
 
             return result
-            case SET_LINK:
-                result = {
-                    ...state
-                }
-                if (offers.length > 0) {
-                    result.offers = offers.map(offer => { 
-                        if (offer.id === action.offerId) {      
-                            offer.link = action.link           
+        case SET_LINK:
+            result = {
+                ...state
+            }
             
-                            return offer
-                        } else {
-                            return offer
-                        }
-                    })
-                }
-                
-                return result;
-            
+            if (offers.length > 0) {
+                result.offers = offers.map(offer => {
+                    if (offer.id === action.offerId) {
+                        offer.link = action.link
+
+                        return { ...offer }
+                    } else {
+                        return offer
+                    }
+                })
+            }
+
+            return result;
+
         default: return state;
 
     }
