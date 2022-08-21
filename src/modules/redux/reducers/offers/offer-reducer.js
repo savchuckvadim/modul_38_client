@@ -30,7 +30,7 @@ export const sendOffer = (userId, name, description, url, price) => async (dispa
 
 export const getOffers = (userId) => async (dispatch) => {
     const res = await offerAPI.getOffers(userId);
-    
+
     if (res.resultCode === 1) {
         dispatch(setOffers(res.offers));
     } else {
@@ -85,7 +85,7 @@ export const getLink = (offerId) => async (dispatch) => {
     let res = await offerAPI.getLink(offerId);
     
     if (res.resultCode === 1) {
-        dispatch(setLink(res.link))
+        dispatch(setLink(offerId, res.link))
     } else {
         alert(res.message)
     }
@@ -157,8 +157,8 @@ export const offerReducer = (state = initialState, action) => {
                 ...state
             }
             
-            if (offers.length > 0) {
-                result.offers = offers.map(offer => {
+            if (result.offers.length > 0) {
+                result.offers = result.offers.map(offer => {
                     if (offer.id === action.offerId) {
                         offer.link = action.link
 

@@ -17,7 +17,7 @@ function App(props) {
 
      
         <Routes>
-          <Route path="*" index element={<Sociopath />} />
+          <Route path="*" index element={<Sociopath authUser={props.authUser} />} />
           <Route path="login" element={<LoginRedirect />} />
         </Routes>
 

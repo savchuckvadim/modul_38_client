@@ -2,9 +2,12 @@ import { connect } from "react-redux"
 import NavMenu from "./Nav-Menu"
 
 const mapStateToProps = (state) => {
-    let navMenu = state.navMenu
+
+   
+
     return {
-        items: navMenu,
+        items: state.navMenu,
+        authUser:state.auth.authUser
 
     }
 }

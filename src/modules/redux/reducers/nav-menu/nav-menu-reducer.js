@@ -21,14 +21,14 @@ let initialState = [
     {
         name: 'My Offers',
         link: 'advertiserOffers',
-        forRole: ['Admin', 'Advertiser']
+        forRole: ['Advertiser']
        
 
     },
     {
         name: 'Offers',
         link: 'masterOffers',
-        forRole: ['Admin', 'Master']
+        forRole: ['Master']
        
 
     },

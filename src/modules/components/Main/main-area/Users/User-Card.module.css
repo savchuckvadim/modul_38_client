@@ -1,6 +1,6 @@
 .frame {
-    margin: 8px;
-   
+    margin-top: 16px;
+
     padding: 16px;
     background-color: rgb(255, 255, 255);
     min-height: 185px;
@@ -11,34 +11,41 @@
     justify-content: center;
     border-radius: 20px;
 }
+
+.frame:nth-child(3n+2) {
+    margin: 16px 8px 0 8px;
+}
+
 @media screen and (max-width: 900px) {
     .frame {
         width: 75%;
     }
 
-  }
-  @media screen and (max-width: 600px) {
+}
+
+@media screen and (max-width: 600px) {
     .frame {
         width: 95%;
     }
 
-  }
+}
 
 .icon__wrapper {
     margin: 0;
     padding: 0;
-width: 68px;
-height: 68px;
+    width: 68px;
+    height: 68px;
 
 }
 
 .login {
     color: rgb(0, 0, 0);
-    text-decoration: none ;
-   
+    text-decoration: none;
+
 }
+
 .login p {
-   
+
     font-weight: 600;
 }
 
@@ -48,4 +55,3 @@ height: 68px;
     align-items: center;
     justify-content: center;
 }
-

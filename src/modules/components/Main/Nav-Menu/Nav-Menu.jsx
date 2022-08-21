@@ -27,15 +27,15 @@ const NavMenu = (props) => {
             <path d="M13.5 14H6.5" stroke="#F44848" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
             <path d="M13.2239 8H6.77614C6.62363 8 6.5 8.12363 6.5 8.27614V10.7239C6.5 10.8764 6.62363 11 6.77614 11H13.2239C13.3764 11 13.5 10.8764 13.5 10.7239V8.27614C13.5 8.12363 13.3764 8 13.2239 8Z" stroke="#F44848" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
-        let finance = <svg className={props.usersIconClass} width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M21.538 20.854H8.16198C5.62414 20.854 4.35522 20.854 3.51363 20.1352C3.39413 20.0331 3.28282 19.9218 3.18076 19.8023C2.46198 18.9608 2.46198 17.6918 2.46198 15.154V3.146" stroke="#212121" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M7 17V12" stroke="#212121" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-        <path d="M11 17V6" stroke="#212121" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-        <path d="M15 17V10.9" stroke="#212121" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-        <path d="M19 17V7" stroke="#212121" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-        </svg>
-        
-        
+    let finance = <svg className={props.usersIconClass} width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M21.538 20.854H8.16198C5.62414 20.854 4.35522 20.854 3.51363 20.1352C3.39413 20.0331 3.28282 19.9218 3.18076 19.8023C2.46198 18.9608 2.46198 17.6918 2.46198 15.154V3.146" stroke="#212121" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M7 17V12" stroke="#212121" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M11 17V6" stroke="#212121" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M15 17V10.9" stroke="#212121" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M19 17V7" stroke="#212121" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+
+
 
 
     let icons = [
@@ -45,27 +45,33 @@ const NavMenu = (props) => {
         finance
 
     ]
-    
-    let items = props.items.map((item, index) => {
-        
-        return <div
-            className={containerStyle.item}
-            key={`container-${item.name}`}>
-            <NavLink
-                key={item.name}
-                className={({ isActive }) => (isActive ? style.activeItem : style.item)}
-                to={item.link}>
-                {icons[index]}
-                <p className={style.name}> {item.name} </p>
-            </NavLink>
-        </div>
 
+    let items = [];
+    if (props.authUser) {
+        props.items.forEach((item, index) => {
 
-    })
+            if (item.forRole.some(role => role === props.authUser.role)) {
+                
+                items.push(<div
+                    className={containerStyle.item}
+                    key={`container-${item.name}`}>
+                    <NavLink
+                        key={item.name}
+                        className={({ isActive }) => (isActive ? style.activeItem : style.item)}
+                        to={item.link}>
+                        {icons[index]}
+                        <p className={style.name}> {item.name} </p>
+                    </NavLink>
+                </div>
+                )
+            }
+
+        })
+    }
 
     return (
         <div className={style.menu} key='nav-menu'>
-            {items}
+            {props.authUser && items}
         </div>
     )
 }

@@ -123,6 +123,8 @@ export const offerAPI = {
 
     async getOffers(userId) {
         const res = await instance.get(`api/offers/${userId}`);
+        
+
         if(res.data){
             return res.data.data
         }
@@ -143,8 +145,11 @@ export const offerAPI = {
 
     async getLink(offerId) {
         let res = await instance.get(`api/link/${offerId}`);
+        
         return res.data
     }
+  
+
 
 
 }

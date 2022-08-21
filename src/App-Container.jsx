@@ -26,6 +26,7 @@ const mapStateToProps = (state) => {
 
     return {
         isAuth: state.auth.auth.isAuth,
+        authUser: state.auth.authUser,
         initialized: state.app.initialized,
         initialInProgress: state.app.inProgress,
         registrationStatus: state.registration.registrationStatus

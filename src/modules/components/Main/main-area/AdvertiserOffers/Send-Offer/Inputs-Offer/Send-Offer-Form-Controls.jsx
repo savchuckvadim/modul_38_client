@@ -5,7 +5,7 @@ import arrowup from '../../../../../../../assets/imgs/posts/arrow-up.svg'
 import FooterSendOffer from '../Footer-Send-Offer/Footer-Send-Offer';
 
 const InputSendOffer = ({ input, meta, ...props }) => {
-    debugger
+    
     let height = 40
     let displaySending = 'none'
     let displayDefault = 'block'

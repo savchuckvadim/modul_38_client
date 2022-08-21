@@ -14,8 +14,6 @@ export const SendOffer = (props) => {
 
     const submit = (values, dispatch) => {
 
-        // props.send(values.sendPost)
-        // props.sendPost(props.user.id, props.visitedProfileId, values.sendPost, null)
         props.sendOffer(props.user.id, values.name, values.description, values.url, values.price) 
         dispatch(reset('sendOffer'))
 

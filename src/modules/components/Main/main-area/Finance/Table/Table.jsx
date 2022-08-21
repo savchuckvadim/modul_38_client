@@ -48,7 +48,7 @@ const rows = [ //Advertiser
 
 const BasicTable = (props) =>  {
   let data = props.finance
-  debugger
+  
   return (
     <TableContainer className={style.table} component={Paper}>
       <Table  sx={{ minWidth: 650 }} aria-label="simple table">

@@ -20,7 +20,7 @@ let TableContainer = (props) => {
     useEffect(() => {
         props.getFinance()
     }, [])
-debugger
+
     return <BasicTable finance={props.finance}/>
 }
 export default TableContainer = connect(mapStateToProps, {
