@@ -37,12 +37,11 @@ const AppContainer = (props) => {
 
     useEffect(() => {
         props.initialize();
-        // laravelAPI.me()
+      
 
     }, [])
 
-    //     const { authenticated, user, signIn } = useSanctum();
-    // console.log(authenticated)
+
     let app = <LightLoadingPageContainer />
 
 

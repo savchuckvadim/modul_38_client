@@ -45,8 +45,8 @@ const Main = (props) => {
                 </div>
                 <div id={style.main__area}>
                     <Routes>
+                        <Route path="*" element={<Navigate replace to={'notfound'} />} />
                         <Route path="/" index element={<Navigate replace to={'profile'} />} />
-                        <Route path="*" index element={<Navigate replace to={'notfound'} />} />
                         {/* <Route path="login" element={<LoginContainer  />} /> */}
                         <Route path="notfound" element={<NotFound />} />
                         <Route path="profile" element={<HomePageContainer />}>

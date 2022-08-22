@@ -12,16 +12,13 @@ const mapStateToProps = (state) => {
 
     return {
         authUser: state.auth.authUser,
-        finance: state.finance.finance
+        finance: state.finance
     }
 }
 let TableContainer = (props) => {
 
-    useEffect(() => {
-        props.getFinance()
-    }, [])
-
-    return <BasicTable finance={props.finance}/>
+   
+    return <BasicTable {...props}/>
 }
 export default TableContainer = connect(mapStateToProps, {
     getFinance

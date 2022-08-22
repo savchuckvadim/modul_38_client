@@ -1,25 +1,17 @@
 import style from './Start-Page.module.css'
 import redLogo from '../../../assets/imgs/logo.svg'
-import greyLogo from '../../../assets/imgs/grey-logo.svg'
-import inscriptionLogog from '../../../assets/imgs/logo/Sociopath.svg'
 import RedButton from '../Elements/Button/Red-Button'
 import WhiteButton from '../Elements/Button/White-Button'
 import { Navigate, NavLink } from 'react-router-dom'
 import { Route, Routes } from "react-router-dom"
 import LoginPage from '../Login-Page/Login-Page'
-import Background from '../Elements/Backgounds/Background'
-import { laravelAPI } from '../../services/api-laravel'
+
 import RegistrationPage from '../Login-Page/Registration-Page'
 
 
 const Start = () => {
 
-    // const requestToken = () => {
-    //     laravelAPI.createToken()
-    // }
-    // const getUsers = () => {
-    //     laravelAPI.getUsers()
-    // }
+  
     return (
 
         <div className={style.start__page}

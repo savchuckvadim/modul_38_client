@@ -12,9 +12,9 @@
     border-radius: 20px;
 }
 
-.frame:nth-child(3n+2) {
+/* .frame:nth-child(3n+2) {
     margin: 16px 8px 0 8px;
-}
+} */
 
 @media screen and (max-width: 900px) {
     .frame {
