@@ -15,7 +15,7 @@ const instance = axios.create({
 
 })
 
-export const laravelAPI = {
+export const authAPI = {
 
 
     async initial() {
@@ -64,7 +64,9 @@ export const laravelAPI = {
         let result = instance.post('logout')
         return result
     },
-//TODO:
+
+
+////TODO:
     updatePassword(payload) {
         return instance.put("/user/password", payload);
     },
@@ -80,7 +82,7 @@ export const laravelAPI = {
 
 }
 
-export const usersAPILaravel = {
+export const usersAPI = {
 
 
 

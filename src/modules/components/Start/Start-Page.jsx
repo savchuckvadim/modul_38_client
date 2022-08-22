@@ -42,15 +42,7 @@ const Start = () => {
                         <NavLink className={style.button__link} to='../registration'>
                                 <WhiteButton border={16} name={'Registaration'} />
                             </NavLink>
-                            {/* <WhiteButton
-                                onClick={() => {
-                                    requestToken()
-                                    getUsers()
-                                    return <Navigate redirect to='/' />
-                                }}
-                                name={'Sign up'}
-                                border={16}
-                            /> */}
+        
                         </div>
                     </div>
 

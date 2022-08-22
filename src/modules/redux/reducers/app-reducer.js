@@ -1,4 +1,4 @@
-import { laravelAPI } from '../../services/api-laravel'
+import { authAPI } from '../../services/api-laravel'
 import {
     getAuth, laraGetAuth
 } from './auth/auth-reducer'
@@ -50,7 +50,7 @@ export const initialize = () => async (dispatch) => {
     //     return dispatch(initializing())
     // }
     dispatch(initializing())
-    await laravelAPI.initial()
+    await authAPI.initial()
     let promiseAuth = () => {
 //////////////////////////////////////////////////////////////////////////LARAVEL
         // return dispatch(getAuth())
@@ -66,7 +66,7 @@ export const initialize = () => async (dispatch) => {
     })
 
 
-    // laravelAPI.me()
+    // authAPI.me()
     
 }
 

@@ -11,7 +11,7 @@ import { initialize } from "./modules/redux/reducers/app-reducer";
 import { laraGetAuth } from "./modules/redux/reducers/auth/auth-reducer";
 import { registrationRedirect } from "./modules/redux/reducers/auth/registration-reducer";
 // import { useSanctum } from "react-sanctum";
-// import { laravelAPI } from "./modules/services/api-laravel";
+// import { authAPI } from "./modules/services/api-laravel";
 
 const withRouter = WrappedComponent => props => {
     const params = useParams();

@@ -3,7 +3,7 @@ import {
 } from "redux-form";
 
 import {
-    laravelAPI
+    authAPI
 } from "../../../services/api-laravel";
 
 
@@ -56,8 +56,8 @@ const authReducer = (state = initialState, action) => {
 
 
 export const laraGetAuth = () => async (dispatch) => {
-    await laravelAPI.initial(0);
-    let response = await laravelAPI.getAuthUser();
+    await authAPI.initial(0);
+    let response = await authAPI.getAuthUser();
 
     let authUser = null
     if (response.data.resultCode === 1) {
@@ -81,7 +81,7 @@ export const laraGetAuth = () => async (dispatch) => {
 
 export const login = (email, password, rememberMe) => async (dispatch) => {
 
-    const res = await laravelAPI.login(email, password, rememberMe)
+    const res = await authAPI.login(email, password, rememberMe)
     const resultCode = res.status;
 
     if (resultCode === 200) {
@@ -97,7 +97,7 @@ export const login = (email, password, rememberMe) => async (dispatch) => {
 }
 export const logout = () => async (dispatch) => {
 
-    await laravelAPI.logout();
+    await authAPI.logout();
     dispatch(setAuthUserData(null, null, null, null, false));
 
 }

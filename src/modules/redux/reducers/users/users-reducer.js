@@ -1,4 +1,4 @@
-import { usersAPILaravel } from "../../../services/api-laravel";
+import { usersAPI } from "../../../services/api-laravel";
 
 
 const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
@@ -74,7 +74,7 @@ export const requestUsers = (currentPage, pageSize) => async (dispatch) => {
     dispatch(fetching(true))
 
 
-    let res = await usersAPILaravel.getUsers(currentPage, pageSize)
+    let res = await usersAPI.getUsers(currentPage, pageSize)
     const users = res.data.data;
     dispatch(setTotalUsersCount(res.totalCount))
     dispatch(setUsers(users))

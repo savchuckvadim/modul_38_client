@@ -3,6 +3,7 @@ import React from "react";
 import Filter from "../../../Elements/Filter/Filter";
 import { LightLoadingPageContainer } from "../../../Elements/Loading/Light-Loading-Page-Container";
 import Title from "../../../Elements/Title/Title";
+import AddUserButton from "./Add-User/Add-User-Button";
 import Paginator from "./Paginator/Paginator";
 import UserCard from "./User-Card";
 import style from './Users.module.css'
@@ -22,7 +23,7 @@ const Users = (props) => {
         <>
             
             <Title title={'People'} />
-            <Filter {...props}/>
+            <Filter ><AddUserButton/></Filter>
             <div className={style.container}>
                 {props.users.map(user =>
                     <UserCard

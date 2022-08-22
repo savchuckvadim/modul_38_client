@@ -8,6 +8,7 @@ import OfferContainer from "./main-area/Offer/Offer-Container";
 import { HomePageContainer } from "./main-area/Home-Page/Home-Page-Container";
 import Finance from "./main-area/Finance/Finance";
 import NotFound from "./main-area/404-Page/404-Page";
+import AddUserContainer from "./main-area/Users/Add-User/Add-User-Container";
 
 
 const Main = (props) => {
@@ -15,6 +16,7 @@ const Main = (props) => {
     if (props.authUser.role === 'Admin') {
         rolesRoutes = <>
             <Route path="users" element={<UsersContainer />} />
+            <Route path="addUser" element={<AddUserContainer/>} />
         </>
     } else if (props.authUser.role === 'Advertiser') {
         rolesRoutes = <>
