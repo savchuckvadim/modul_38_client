@@ -10,6 +10,7 @@ import style from './Table.module.css';
 import { useEffect } from 'react';
 
 import { LightLoadingPageContainer } from '../../../../Elements/Loading/Light-Loading-Page-Container';
+import Total from './Total/Total';
 
 
 /////////////TODO:
@@ -39,6 +40,7 @@ const BasicTable = (props) => {
     props.getFinance()
 
   }, [])
+
   let totalMaster = {
     'name': 'Total',
     'transitions': 0,
@@ -47,13 +49,14 @@ const BasicTable = (props) => {
     'created_at': null
 
   };
+  debugger
   let data = props.finance;
   let headers = [];
   let rows = [];
-  let total = [];
+  let total = <></>;
 
   if (data.role) {
-    rows = data.finance.map((obj, index) => {
+    rows = data.finance.items.map((obj, index) => {
       let cells = [];
 
 
@@ -63,19 +66,13 @@ const BasicTable = (props) => {
         }
         if (prop === 'created_at') {
           let date = new Date(obj[prop]).toLocaleDateString()
-          debugger
+
           cells.push(<TableCell key={`cl-${prop}-${index}`} align="left">{date}</TableCell>)
 
         } else {
           cells.push(<TableCell key={`cl-${prop}-${index}`} align="left">{obj[prop]}</TableCell>)
         }
 
-
-        if (Number.isFinite(obj[prop])) {
-
-          totalMaster[prop] = totalMaster[prop] + obj[prop];
-
-        }
 
       }
 
@@ -90,16 +87,7 @@ const BasicTable = (props) => {
     })
 
 
-    for (let prop in totalMaster) {
-      if (Number.isFinite(totalMaster[prop])) {
-
-        total.push(<TableCell key={`ttl-${prop}`} align="left">{totalMaster[prop].toFixed(2)}</TableCell>)
-      } else {
-        total.push(<TableCell key={`ttl-${prop}`} align="left">{totalMaster[prop]}</TableCell>)
-      }
-
-
-    }
+    total = <Total total={data.finance.total} />
 
   } else {
     return <LightLoadingPageContainer />
@@ -116,13 +104,7 @@ const BasicTable = (props) => {
         </TableHead>
         <TableBody>
           {rows}
-          <TableRow
-            key={`total-row `}
-            sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-          >
-            {total}
-          </TableRow>
-
+          {total}
         </TableBody>
       </Table>
     </TableContainer>

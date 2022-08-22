@@ -20,10 +20,9 @@ export const laravelAPI = {
 
     async initial() {
       const res =  await instance.get("/sanctum/csrf-cookie");
-      
       return res
-
     },
+
     async register(name, surname, email, password, passwordConfirmation, role) {
 
         await instance.get("/sanctum/csrf-cookie");
