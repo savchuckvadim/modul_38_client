@@ -47,7 +47,7 @@ const Offer = (props) => {
                     {/* <img className={style.icon} src={eye} alt="eye" /> */}
 
 
-                    <p className={style.quantity}>420</p>
+                    <p className={style.quantity}>{props.transitions.transitions}</p>
                 </div>
             </div>
         </div>

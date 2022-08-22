@@ -21,9 +21,8 @@ const Master = (props) => {
     let loader = <LightLoadingPageContainer />
     let users =
         <>
-            <div className={style.title__container}>
-                <Title title={'Offers'} />
-            </div>
+           
+            <Title title={'Offers'} /> 
             <Filter {...props} />
             <div className={style.container}>
                 {props.offers.map(offer =>

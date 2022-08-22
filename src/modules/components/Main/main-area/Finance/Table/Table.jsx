@@ -41,14 +41,7 @@ const BasicTable = (props) => {
 
   }, [])
 
-  let totalMaster = {
-    'name': 'Total',
-    'transitions': 0,
-    'profit': 0,
-    'totalProfit': 0,
-    'created_at': null
 
-  };
   debugger
   let data = props.finance;
   let headers = [];
@@ -98,7 +91,6 @@ const BasicTable = (props) => {
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>
-
             {headers}
           </TableRow>
         </TableHead>

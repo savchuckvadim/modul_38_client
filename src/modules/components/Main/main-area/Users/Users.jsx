@@ -20,11 +20,8 @@ const Users = (props) => {
     let loader = <LightLoadingPageContainer />
     let users =
         <>
-            <div className={style.title__container}>
-                <Title title={'People'} />
-                
-
-            </div>
+            
+            <Title title={'People'} />
             <Filter {...props}/>
             <div className={style.container}>
                 {props.users.map(user =>
