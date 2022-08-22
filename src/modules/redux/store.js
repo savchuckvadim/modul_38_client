@@ -1,7 +1,6 @@
 import { applyMiddleware, combineReducers, createStore } from "redux";
 import ThunkMiddleware from 'redux-thunk';
 
-import dialogsReducer from "./reducers/dialogs/dialogs-reduser";
 import { themeReducer } from "./reducers/theme/style-reducer";
 import navMenuReducer from "./reducers/nav-menu/nav-menu-reducer";
 import usersReducer from "./reducers/users/users-reducer";
@@ -11,7 +10,6 @@ import LoginRegistrationReducer from "./reducers/login-registaration/login-regis
 import appReducer from "./reducers/app-reducer";
 import registrationReducer from "./reducers/auth/registration-reducer";
 import { offerReducer } from "./reducers/offers/offer-reducer";
-import masterReducer from "./reducers/master/master-reducer";
 import financeReducer from "./reducers/finance/finance-reducer";
 
 let reducers = combineReducers({
@@ -20,15 +18,10 @@ let reducers = combineReducers({
     registration: registrationReducer,
     loginRegistration: LoginRegistrationReducer,
     offers: offerReducer,
-    master: masterReducer,
-    // currentUser: currentUserReducer,
     users: usersReducer,
     theme: themeReducer,
     navMenu: navMenuReducer,
-    dialogsReducer,
     finance:financeReducer,
-    // profileReducer,
-    // newMessageReducer,
     form: formReducer
 
 

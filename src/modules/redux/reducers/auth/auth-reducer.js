@@ -1,12 +1,9 @@
 import {
     stopSubmit
 } from "redux-form";
+
 import {
-    profileAPI
-} from "../../../services/api";
-import {
-    laravelAPI,
-    usersAPILaravel
+    laravelAPI
 } from "../../../services/api-laravel";
 
 
