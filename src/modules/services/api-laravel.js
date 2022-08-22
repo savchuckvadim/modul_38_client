@@ -158,7 +158,6 @@ export const financeAPI = {
 
     async getFinance() {
         let res = await instance.get(`api/finance`);
-        debugger
         return res.data
     }
 }
