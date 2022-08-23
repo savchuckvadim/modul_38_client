@@ -8,6 +8,10 @@
     align-items: flex-start;
     justify-content: space-between;
 }
+.add__user{
+    color: rgba(244, 72, 72, 1);
+    text-decoration: underline;
+}
 @media screen and (max-width: 900px) {
     .container {
         align-items: center;

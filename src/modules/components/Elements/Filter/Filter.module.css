@@ -1,7 +1,7 @@
 .frame{
     margin-top: 18px;
     width: 100%;
-    height: 32px;
+    height: 40px;
     background-color: white;
     display: flex;
     flex-direction: column;   
@@ -9,5 +9,9 @@
     border-radius: 16px;
 }
 .functions{
+    width: 50%;
     margin-right: 24px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
 }

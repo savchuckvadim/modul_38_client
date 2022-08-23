@@ -1,5 +1,4 @@
 import { connect } from "react-redux"
-import LoadingPage from "./Loading-Page"
 import LoadingMini from "./Loading-Page-Mini"
 
 

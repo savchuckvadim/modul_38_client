@@ -1,4 +1,3 @@
-import style from './Light-Loading-Page.module.css'
 import dark from './Dark-Loading-Page.module.css'
 
 const LoadingMini = (props) => {

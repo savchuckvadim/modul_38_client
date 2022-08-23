@@ -1,8 +1,6 @@
 import style from './User-Card.module.css';
 import Avatar from '../../../Elements/Avatar/Avatar';
 import Delete from '../../../Elements/Button/Delete-Buttons/Delete-Buttons';
-import { LightLoadingPageContainer } from '../../../Elements/Loading/Light-Loading-Page-Container';
-import LoadingPage from '../../../Elements/Loading/Loading-Page';
 import { LightLoadingMini } from '../../../Elements/Loading/Light-Loading-Mini-Container ';
 
 const UserCard = (props) => {
@@ -31,7 +29,7 @@ const UserCard = (props) => {
             }} >{`${props.user.name} ${props.user.surname}`}</p>
             {/* </NavLink> */}
 
-            <div className={style.follow__wrapper}>
+            <div className={style.delete}>
 
 
                 <Delete
