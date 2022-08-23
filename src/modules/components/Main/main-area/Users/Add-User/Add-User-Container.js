@@ -7,6 +7,7 @@ const mapStateToProps = (state) => {
     return {
         type: 'addUser',
         fields: registration.fields,
+        inProgress: state.users.creatingUser
 
     }
 }

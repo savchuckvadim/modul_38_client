@@ -1,7 +1,7 @@
 import { authAPI } from "../../../services/api-laravel";
+import { creatingNewUser } from "../users/users-reducer";
 import { laraGetAuth } from "./auth-reducer";
 
-const REGISTRATING_IN_PROGRESS = 'REGISTRATING_IN_PROGRESS';
 const REGISTRATION_SUCSESS = 'REGISTRATION_SUCSESS';
 const REGISTRATION_REDIRECT = 'REGISTRATION_REDIRECT';
 
@@ -13,12 +13,11 @@ const initialState = {
     registrationStatus: false
 }
 
-const registratingInProgress = () => ({ type: REGISTRATING_IN_PROGRESS });
 const registrationSuccess = () => ({ type: REGISTRATION_SUCSESS });
 export const registrationRedirect  = () => ({type: REGISTRATION_REDIRECT})
 
 export const setNewUser = (name, surname, email, password, password_confirmation, role) => async (dispatch) => {
-    registratingInProgress();
+    dispatch(creatingNewUser(true)); //toggle is creating user from users reducer
     let res = await authAPI.register(name, surname, email, password, password_confirmation, role)
     
     if(res.statusText === 'Created'){
@@ -36,10 +35,11 @@ export const setNewUser = (name, surname, email, password, password_confirmation
         }
         
     }
+    dispatch(creatingNewUser(false)); //toggle is creating user from users reducer
+
 }
 const registrationReducer = (state = initialState, action) => {
     switch (action.type) {
-        case REGISTRATING_IN_PROGRESS:  return { ...state, registrationStatus: 'inProgress' };  
         case REGISTRATION_SUCSESS: return { ...state, registrationStatus: true };  
         case REGISTRATION_REDIRECT: return { ...state, registrationStatus: false };      
         default: return state;

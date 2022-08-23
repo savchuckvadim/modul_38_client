@@ -18,7 +18,8 @@ const mapStateToProps = (state) => {
         forgotLink: login.forgotLink,
         footerInstruction: login.footerInstruction,
         footerLink: login.footerLink,
-        error: state.loginRegistration.error
+        error: state.loginRegistration.error,
+        inProgress: state.users.creatingUser
 
     }
 }

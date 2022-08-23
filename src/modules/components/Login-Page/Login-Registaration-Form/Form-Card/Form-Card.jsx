@@ -1,25 +1,29 @@
 import { Navigate, NavLink } from 'react-router-dom'
 import style from './Form-Card.module.css'
 import Form from './Form/Form'
-
+import { reset } from 'redux-form'
+import { LightLoadingPageContainer } from '../../../Elements/Loading/Light-Loading-Page-Container'
 const FormCard = (props) => {
     let type = props.type
-    const onSubmit = (values) => {
+    const onSubmit = (values, dispatch) => {
 
         switch (props.type) {
             case 'login':
 
                 props.login(values.email, values.password, true)
-                return <Navigate replace to='/hbvhk' />
+                dispatch(reset('login'))
+                return <Navigate replace to='/homePage' />
 
             case 'registration':
 
                 props.setNewUser(values.name, values.surname, values.email, values.password, values.repeatPassword, values.role)
+                dispatch(reset('login'))
                 return null;
 
             case 'addUser':
 
                 props.createNewUser(values.name, values.surname, values.email, values.password, values.repeatPassword, values.role)
+                dispatch(reset('login'))
                 return null;
             default:
                 return null;
@@ -28,6 +32,7 @@ const FormCard = (props) => {
     }
 
     if (props.isAuth) { return <Navigate replace to='../profile' /> }
+    if (props.inProgress) { return <LightLoadingPageContainer/> }
     if (props.type === 'addUser') {
         return (
             <>

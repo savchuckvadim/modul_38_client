@@ -88,4 +88,5 @@ p, textarea{
 
 body{
   background-color: '#F4F4F4';
+  min-height: 100%;
 }

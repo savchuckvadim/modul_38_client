@@ -5,6 +5,7 @@ import {
 import {
     authAPI
 } from "../../../services/api-laravel";
+import { creatingNewUser } from "../users/users-reducer";
 
 
 const SET_USER_DATA = 'SET_USER_DATA'
@@ -24,11 +25,7 @@ export const setAuthUserData = (authUser, id = null, login = null, email = null,
     ({
         type: SET_USER_DATA,
         authUser,
-        data: {
-            id,
-            login,
-            email
-        },
+        data: {id, login,email},
         isAuth
     })
 
@@ -56,9 +53,8 @@ const authReducer = (state = initialState, action) => {
 
 
 export const laraGetAuth = () => async (dispatch) => {
-    await authAPI.initial(0);
+    await authAPI.initial();
     let response = await authAPI.getAuthUser();
-
     let authUser = null
     if (response.data.resultCode === 1) {
         authUser = response.data.authUser
@@ -80,12 +76,15 @@ export const laraGetAuth = () => async (dispatch) => {
 
 
 export const login = (email, password, rememberMe) => async (dispatch) => {
-
-    const res = await authAPI.login(email, password, rememberMe)
-    const resultCode = res.status;
-
+    dispatch(creatingNewUser(true)); //toggle is creating user from users reducer
+    try {
+        let res = await authAPI.login(email, password, rememberMe);
+        dispatch(creatingNewUser(false))
+        const resultCode = res.status;
+        
     if (resultCode === 200) {
         dispatch(laraGetAuth())
+       
     } else {
         let message = 'Email or Password was wrong !'
         let action = stopSubmit('login', {
@@ -93,6 +92,11 @@ export const login = (email, password, rememberMe) => async (dispatch) => {
         })
         dispatch(action)
     }
+      } catch(err) {
+        dispatch(creatingNewUser(false))
+        alert(err.message); // TypeError: failed to fetch
+      }
+
 
 }
 export const logout = () => async (dispatch) => {

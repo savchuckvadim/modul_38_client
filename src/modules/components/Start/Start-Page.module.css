@@ -18,7 +18,7 @@
 .slogan__title,
 .slogan__text {
     color: white;
-    z-index: 3000;
+    /* z-index: 3000; */
 }
 
 .start__page {
