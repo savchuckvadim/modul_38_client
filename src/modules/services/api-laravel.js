@@ -41,7 +41,7 @@ export const authAPI = {
     },
 
     async login(email, password) {
-        // await instance.get("/sanctum/csrf-cookie")
+        await instance.get("/sanctum/csrf-cookie")
 
         const result = await instance.post('login', {
             email: email,
@@ -101,9 +101,9 @@ export const usersAPI = {
     },
     async addUser(name, surname, email, password, passwordConfirmation, role) {
 
-        await instance.get("/sanctum/csrf-cookie");
+        // await instance.get("/sanctum/csrf-cookie");
 
-        let result = await instance.post('users/add', {
+        let result = await instance.post('api/users/add', {
             name: name,
             surname: surname,
             email: email,
