@@ -27,7 +27,7 @@ export const authAPI = {
 
         await instance.get("/sanctum/csrf-cookie");
 
-        let result = await instance.post('register', {
+        const result = await instance.post('register', {
             name: name,
             surname: surname,
             email: email,
@@ -55,11 +55,11 @@ export const authAPI = {
     },
     async getAuthUser() {
         // await instance.get("/sanctum/csrf-cookie")
-        let result = await instance.get("api/user/auth");
+        const result = await instance.get("api/user/auth");
         return result
     },
     async logout() {
-        let result = instance.post('logout')
+        const result = instance.post('logout')
         return result
     },
 
@@ -84,14 +84,13 @@ export const usersAPI = {
 
     async getUsers(currentPage = 1, pageSize = 10) {
         await instance.get("/sanctum/csrf-cookie");
-        let res = await instance.get(`api/users?page=${currentPage}&count=${pageSize}`);
-        
+        const res = await instance.get(`api/users?page=${currentPage}&count=${pageSize}`);
         return res
     },
 
-    // async getUser(id) {
-    //     return instance.get(`api/users/${id}`).then(res => res.data)
-    // },
+    async deleteUser(userId) {
+        return instance.delete(`api/users/${userId}`)
+    },
 
 
     async getAvatar(userId) {
@@ -103,7 +102,7 @@ export const usersAPI = {
 
         // await instance.get("/sanctum/csrf-cookie");
 
-        let result = await instance.post('api/users/add', {
+        const result = await instance.post('api/users/add', {
             name: name,
             surname: surname,
             email: email,

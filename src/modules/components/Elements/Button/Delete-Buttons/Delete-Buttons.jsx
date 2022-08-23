@@ -4,9 +4,7 @@ import Button from "../Button"
 const Delete = (props) => {
 
     let colorOfButton = 'red'
-    let onButtonClick = props.follow //change to delet User thunk
-
-    let disable = props.followingInProgress.some(id => id === props.user.id)
+    let disable = props.deletingUser
     let name = 'Delete User'
 
   
@@ -15,11 +13,8 @@ const Delete = (props) => {
             border={12}
             disable={disable}
             color={colorOfButton}
-            onClick={() => {
-
-                onButtonClick(props.offer.id)
-
-            }} />
+            onClick={() => {props.deleteUser(props.userId)}} 
+            />
     
 
 

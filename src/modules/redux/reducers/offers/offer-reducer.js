@@ -104,7 +104,6 @@ export const offerReducer = (state = initialState, action) => {
             return { ...state };
 
         case SET_OFFERS:
-
             if (state.offers.length !== action.offers.length) {
                 state.offers = [...action.offers.reverse(offer => ({ ...offer }))];
                 return { ...state };
@@ -115,36 +114,25 @@ export const offerReducer = (state = initialState, action) => {
         case DELETE_OFFER:
             result = { ...state }
             result.offers = []
-
             state.offers.forEach(o => {
                 if (o.id !== action.offerId) {
                     result.offers.push(o);
                 }
-
             })
-
             return result;
 
         case FOLLOW:
-            result = {
-                ...state
-            }
+            result = {...state}
             result.offers = followUnfollow(result.offers, action.offerId, 1)
-
             return result;
 
         case UNFOLLOW:
-            result = {
-                ...state
-            }
+            result = {...state}
             result.offers = followUnfollow(result.offers, action.offerId, 0)
-
             return result
 
         case FOLLOWING_IN_PROGRESS:
-            result = {
-                ...state
-            }
+            result = {...state}
             result.followingInProgress = [...state.followingInProgress]
 
             action.isFetching
@@ -152,10 +140,9 @@ export const offerReducer = (state = initialState, action) => {
                 : result.followingInProgress = state.followingInProgress.filter(id => id !== action.offerId)
 
             return result
+
         case SET_LINK:
-            result = {
-                ...state
-            }
+            result = {...state}
             
             if (result.offers.length > 0) {
                 result.offers = result.offers.map(offer => {

@@ -1,38 +1,43 @@
-import { NavLink } from 'react-router-dom';
 import style from './User-Card.module.css';
-import FollowUnfollowButtons from '../../../Elements/Button/Follow-Unfollow-Buttons/Follow-Unfollow-Buttons';
 import Avatar from '../../../Elements/Avatar/Avatar';
 import Delete from '../../../Elements/Button/Delete-Buttons/Delete-Buttons';
+import { LightLoadingPageContainer } from '../../../Elements/Loading/Light-Loading-Page-Container';
+import LoadingPage from '../../../Elements/Loading/Loading-Page';
+import { LightLoadingMini } from '../../../Elements/Loading/Light-Loading-Mini-Container ';
 
 const UserCard = (props) => {
 
-
+    if (props.deletingUser === props.user.id) {
+        return (
+            <div className={style.frame}>
+                <LightLoadingMini />
+            </div>
+        )
+    }
     return (
         <div className={style.frame}>
-           
-                <Avatar
+
+            <Avatar
                 size={68}
                 name={props.name}
                 link={`../profile/${props.user.id}`}
                 user={props.user}
                 img={props.user.photo}
-                />
+            />
 
             {/* <NavLink className={style.login} to={'../profile/' + props.user.id}> */}
-                <p className={style.login} onClick={() => {
-                    // props.setVisitedUser(props.user)
-                    }} >{`${props.user.name} ${props.user.surname}`}</p>
+            <p className={style.login} onClick={() => {
+                // props.setVisitedUser(props.user)
+            }} >{`${props.user.name} ${props.user.surname}`}</p>
             {/* </NavLink> */}
 
             <div className={style.follow__wrapper}>
 
-        
-                <Delete 
-                user={props.user}  
-                followThunk={props.followThunk}
-                unFollowThunk={props.unFollowThunk}
-                followingInProgress={props.followingInProgress}
-                authUser={props.authUser}
+
+                <Delete
+                    userId={props.user.id}
+                    deleteUser={props.deleteUser}
+                    deletingUser={props.deletingUser}
                 />
             </div>
         </div>
