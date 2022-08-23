@@ -1,0 +1,17 @@
+.wrapper, .list{
+    /* width: 100%; */
+}
+.list {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+li{
+    list-style-type: none;
+    width: 70px;
+    cursor: pointer;
+    color: rgba(244, 72, 72, 1);
+    text-decoration: underline;
+    
+}

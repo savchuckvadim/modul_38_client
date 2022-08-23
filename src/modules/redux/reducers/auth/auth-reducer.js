@@ -76,10 +76,11 @@ export const laraGetAuth = () => async (dispatch) => {
 
 
 export const login = (email, password, rememberMe) => async (dispatch) => {
+    dispatch(creatingNewUser(false))
     dispatch(creatingNewUser(true)); //toggle is creating user from users reducer
     try {
         let res = await authAPI.login(email, password, rememberMe);
-        dispatch(creatingNewUser(false))
+       
         const resultCode = res.status;
         
     if (resultCode === 200) {
@@ -91,13 +92,14 @@ export const login = (email, password, rememberMe) => async (dispatch) => {
             _error: message
         })
         dispatch(action)
+        dispatch(creatingNewUser(false))
     }
       } catch(err) {
-        dispatch(creatingNewUser(false))
+        
         alert(err.message); // TypeError: failed to fetch
       }
 
-
+      
 }
 export const logout = () => async (dispatch) => {
 

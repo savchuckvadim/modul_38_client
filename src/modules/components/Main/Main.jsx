@@ -26,9 +26,9 @@ const Main = (props) => {
         </>
     } else if (props.authUser.role === 'Master') {
         rolesRoutes = <>
-            <Route path="masterOffers" element={<MasterContainer />}>
-                <Route path=":userId" element={<MasterContainer />} />
-            </Route>
+            <Route path="masterOffers" element={<MasterContainer />}/>
+                {/* <Route path=":userId" element={<NotFound />} />
+            </Route> */}
             <Route path="offer" element={<OfferContainer />}>
 
                 <Route path=":offerId" element={<OfferContainer />} />

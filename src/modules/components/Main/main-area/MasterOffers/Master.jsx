@@ -3,6 +3,7 @@ import React from "react";
 import Filter from "../../../Elements/Filter/Filter";
 import { LightLoadingPageContainer } from "../../../Elements/Loading/Light-Loading-Page-Container";
 import Title from "../../../Elements/Title/Title";
+import My from "./Filter/My";
 // import Paginator from "./Paginator/Paginator";
 
 import style from './Master.module.css'
@@ -10,7 +11,7 @@ import OfferCard from "./Offer-Card/Offer-Card";
 
 
 const Master = (props) => {
-    
+
     // let isFetching = false
     let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize)
     let pages = [];
@@ -21,9 +22,11 @@ const Master = (props) => {
     let loader = <LightLoadingPageContainer />
     let users =
         <>
-           
-            <Title title={'Offers'} /> 
-            <Filter {...props} />
+
+            <Title title={'Offers'} />
+            <Filter>
+                <My />
+            </Filter>
             <div className={style.container}>
                 {props.offers.map(offer =>
                     <OfferCard
@@ -36,7 +39,7 @@ const Master = (props) => {
                         getLink={props.getLink}
                         followingInProgress={props.followingInProgress}
                         authUser={props.authUser}
-                        
+
                     />)}
             </div>
 

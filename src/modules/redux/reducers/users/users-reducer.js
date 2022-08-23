@@ -98,6 +98,7 @@ export const createNewUser = (name, surname, email, password, password_confirmat
     try {
 
         const res = await usersAPI.addUser(name, surname, email, password, password_confirmation, role)
+        debugger
         if (res.data.createdUser) {
             alert(`${res.data.createdUser.name} ${res.data.createdUser.surname} was created!`)
         } else {
