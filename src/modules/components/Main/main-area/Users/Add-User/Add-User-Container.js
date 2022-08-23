@@ -1,6 +1,7 @@
 import { connect } from "react-redux"
 import { setNewUser } from "../../../../../redux/reducers/auth/registration-reducer"
-import FormCard from "./Form-Card/Add-User-Form-Card"
+import { createNewUser } from "../../../../../redux/reducers/users/users-reducer"
+import FormCard from "../../../../Login-Page/Login-Registaration-Form/Form-Card/Form-Card"
 
 const mapStateToProps = (state) => {
     const registration = state.loginRegistration.registration
@@ -12,7 +13,7 @@ const mapStateToProps = (state) => {
 }
 
 const AddUserContainer = connect(mapStateToProps, {
-    setNewUser
+    createNewUser:setNewUser
 })(FormCard)
 
 export default AddUserContainer

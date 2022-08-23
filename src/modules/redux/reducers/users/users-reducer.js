@@ -26,35 +26,23 @@ const usersReducer = (state = initialState, action) => {
 
     switch (action.type) {
         case SET_CURRENT_PAGE:
-            result = {
-                ...state
-            }
+            result = { ...state }
             result.currentPage = action.page
-
             return result
 
         case SET_USERS:
-            result = {
-                ...state
-            }
+            result = { ...state }
             result.users = action.users
-
             return result
 
         case SET_TOTAL_USERS_COUNT:
-            result = {
-                ...state
-            }
+            result = { ...state }
             result.count = action.count
-
             return result
 
         case FETCHING:
-            result = {
-                ...state
-            }
+            result = { ...state }
             result.isFetching = action.bool
-
             return result
 
         default:
@@ -72,8 +60,6 @@ export const fetching = (bool) => ({ type: FETCHING, bool })
 export const requestUsers = (currentPage, pageSize) => async (dispatch) => {
 
     dispatch(fetching(true))
-
-
     let res = await usersAPI.getUsers(currentPage, pageSize)
     const users = res.data.data;
     dispatch(setTotalUsersCount(res.totalCount))
@@ -82,5 +68,10 @@ export const requestUsers = (currentPage, pageSize) => async (dispatch) => {
 
 }
 
+export const createNewUser = (name, surname, email, password, password_confirmation, role) => async (dispatch) => {
+    let res = await usersAPI.addUser(name, surname, email, password, password_confirmation, role)
+    debugger
+    console.log(res)
+}
 
 export default usersReducer

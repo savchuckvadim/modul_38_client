@@ -5,7 +5,7 @@ import Form from './Form/Form'
 const FormCard = (props) => {
     let type = props.type
     const onSubmit = (values) => {
-        
+
         switch (props.type) {
             case 'login':
 
@@ -13,16 +13,45 @@ const FormCard = (props) => {
                 return <Navigate replace to='/hbvhk' />
 
             case 'registration':
-                
+
                 props.setNewUser(values.name, values.surname, values.email, values.password, values.repeatPassword, values.role)
-                break;
+                return null;
+
+            case 'addUser':
+
+                props.createNewUser(values.name, values.surname, values.email, values.password, values.repeatPassword, values.role)
+                return null;
             default:
-                break;
+                return null;
         }
 
     }
 
     if (props.isAuth) { return <Navigate replace to='../profile' /> }
+    if (props.type === 'addUser') {
+        return (
+            <>
+                {/* <Title title={'Add User'} /> */}
+
+                <div className={style.wrapper}>
+
+                    <div className={style.form__title}>
+                        <p>{props.error
+                            ? <span className={style.error}>{props.error}</span>
+                            : props.instruction}</p>
+                    </div>
+
+                    <div className={style.form__container}>
+
+
+                        <Form {...props} onSubmit={onSubmit} />
+
+
+                    </div>
+                </div>
+            </>
+        )
+    }
     return (
         <div className={style.wrapper}>
 

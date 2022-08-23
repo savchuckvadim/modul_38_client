@@ -10,7 +10,7 @@ const instance = axios.create({
     headers: {
         'content-type': 'application/json',
         'accept': 'application/json',
-        // 'Access-Control-Allow-Origin' : '*',
+      
     },
 
 })
@@ -55,9 +55,7 @@ export const authAPI = {
     },
     async getAuthUser() {
         // await instance.get("/sanctum/csrf-cookie")
-
         let result = await instance.get("api/user/auth");
-
         return result
     },
     async logout() {
@@ -84,26 +82,37 @@ export const authAPI = {
 
 export const usersAPI = {
 
-
-
     async getUsers(currentPage = 1, pageSize = 10) {
         await instance.get("/sanctum/csrf-cookie");
-
         let res = await instance.get(`api/users?page=${currentPage}&count=${pageSize}`);
-
+        
         return res
     },
 
-    async getUser(id) {
-
-        return instance.get(`api/users/${id}`).then(res => res.data)
-    },
+    // async getUser(id) {
+    //     return instance.get(`api/users/${id}`).then(res => res.data)
+    // },
 
 
     async getAvatar(userId) {
         const result = await instance.get(`api/garavatar/${userId}`)
-
         return result
+
+    },
+    async addUser(name, surname, email, password, passwordConfirmation, role) {
+
+        await instance.get("/sanctum/csrf-cookie");
+
+        let result = await instance.post('users/add', {
+            name: name,
+            surname: surname,
+            email: email,
+            password: password,
+            password_confirmation: passwordConfirmation,
+            role: role
+
+        })
+        return result;
 
     },
 }
