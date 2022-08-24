@@ -25,7 +25,7 @@ const Master = (props) => {
 
             <Title title={'Offers'} />
             <Filter>
-                <My />
+                <My getOffers={props.getOffers} />
             </Filter>
             <div className={style.container}>
                 {props.offers.map(offer =>

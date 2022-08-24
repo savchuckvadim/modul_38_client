@@ -170,3 +170,11 @@ export const financeAPI = {
         return res.data
     }
 }
+
+export const  fishAPI = {
+    async get() {
+        let fish = await axios.get('https://fish-text.ru/get?type=sentence&number=10&format=json')
+        return fish.data.text
+
+    }
+}

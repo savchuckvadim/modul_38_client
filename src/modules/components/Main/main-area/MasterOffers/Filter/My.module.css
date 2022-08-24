@@ -1,6 +1,4 @@
-.wrapper, .list{
-    /* width: 100%; */
-}
+
 .list {
     display: flex;
     flex-direction: row;
@@ -9,9 +7,11 @@
 
 li{
     list-style-type: none;
-    width: 70px;
+    margin-left: 10px;
+    width: 29px;
+    height: 25px;
     cursor: pointer;
     color: rgba(244, 72, 72, 1);
-    text-decoration: underline;
+    text-decoration: none !important;
     
 }

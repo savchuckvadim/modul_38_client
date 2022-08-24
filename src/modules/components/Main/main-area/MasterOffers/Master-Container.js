@@ -108,7 +108,7 @@ export default compose(
         // getProfileAndSetVisitedUser,
     
         //////
-        getOffers: getOffers,
+        getOffers,
         follow,
         unfollow,
         getLink

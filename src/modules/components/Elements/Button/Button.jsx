@@ -5,7 +5,8 @@ const Button = (props) => {
     let background = 'white'
     let color = 'black'
     if (props.color === 'grey') {
-        background = '#F4F4F4'
+        background =  '#F4F4F4'
+        props.textColor ? color = props.textColor : color = 'black'
     } else if (props.color === 'red') {
         background = 'rgba(244, 72, 72, 1)'
         color = 'white'
