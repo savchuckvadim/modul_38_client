@@ -100,8 +100,6 @@ export const usersAPI = {
     },
     async addUser(name, surname, email, password, passwordConfirmation, role) {
 
-        // await instance.get("/sanctum/csrf-cookie");
-
         const result = await instance.post('api/users/add', {
             name: name,
             surname: surname,

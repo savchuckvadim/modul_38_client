@@ -1,6 +1,6 @@
-import {connect} from "react-redux"
-import {deleteUser, fetching, followThunk, requestUsers, setCurrentPage, setTotalUsersCount, setUsers, toggleFollowingInProgress, unFollowThunk} from "../../../../redux/reducers/users/users-reducer"
-import { getAuthUser, getCount, getIsFetching, getIsFollowing, getPage, getPageSize, getTotalUsersCount, getUsers, getUsersSelector } from "../../../../redux/selectors/user-selectors"
+import { connect } from "react-redux"
+import { deleteUser, fetching, requestUsers, setCurrentPage, setTotalUsersCount, setUsers } from "../../../../redux/reducers/users/users-reducer"
+import { getAuthUser, getCount, getIsFetching, getIsFollowing, getPage, getPageSize, getTotalUsersCount, getUsersSelector } from "../../../../redux/selectors/user-selectors"
 
 import UsersContainer from "./Users-API-Container"
 
@@ -9,16 +9,16 @@ import UsersContainer from "./Users-API-Container"
 const mapStateToProps = (state) => {
 
     return {
-        authUser:getAuthUser(state),
-        users: getUsersSelector(state) ,
+        authUser: getAuthUser(state),
+        users: getUsersSelector(state),
         pageSize: getPageSize(state),
         totalUsersCount: getTotalUsersCount(state),
-        currentPage: getPage(state) ,
-        count: getCount(state) ,
-        isFetching: getIsFetching(state) ,
+        currentPage: getPage(state),
+        count: getCount(state),
+        isFetching: getIsFetching(state),
         followingInProgress: getIsFollowing(state),
-        deletingUser:state.users.deletingUser
-        
+        deletingUser: state.users.deletingUser
+
 
     }
 }
@@ -31,7 +31,7 @@ export default connect(mapStateToProps, {
     fetching,
     requestUsers,
     deleteUser
-   
-  
+
+
 
 })(UsersContainer)

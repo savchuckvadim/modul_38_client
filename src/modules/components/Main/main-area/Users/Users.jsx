@@ -30,11 +30,6 @@ const Users = (props) => {
                         key={`user-card-${user.id}`}
                         user={user}
                         name={user.name}
-                        // followThunk={props.followThunk}
-                        // unFollowThunk={props.unFollowThunk}
-                        // toggleFollowingInProgress={props.toggleFollowingInProgress}
-                        followingInProgress={props.followingInProgress}
-                        // setVisitedUser={props.setVisitedUser}
                         authUser={props.authUser}
                         deleteUser={props.deleteUser}
                         deletingUser={props.deletingUser}

@@ -40,7 +40,7 @@ const usersReducer = (state = initialState, action) => {
 
         case SET_TOTAL_USERS_COUNT:
             result = { ...state }
-            result.count = action.count
+            result.totalUsersCount = action.count
             return result
 
         case FETCHING:
@@ -86,8 +86,9 @@ export const requestUsers = (currentPage, pageSize) => async (dispatch) => {
 
     dispatch(fetching(true))
     let res = await usersAPI.getUsers(currentPage, pageSize)
+    debugger
     const users = res.data.data;
-    dispatch(setTotalUsersCount(res.totalCount))
+    dispatch(setTotalUsersCount(res.data.meta.total))
     dispatch(setUsers(users))
     dispatch(fetching(false))
 
@@ -98,7 +99,7 @@ export const createNewUser = (name, surname, email, password, password_confirmat
     try {
 
         const res = await usersAPI.addUser(name, surname, email, password, password_confirmation, role)
-        debugger
+        
         if (res.data.createdUser) {
             alert(`${res.data.createdUser.name} ${res.data.createdUser.surname} was created!`)
         } else {

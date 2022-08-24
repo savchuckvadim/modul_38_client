@@ -9,8 +9,6 @@ const setFish = (fish) => ({ type: SET_FISH, fish })
 
 export const getFish = () => async (dispatch) => {
     const fish = await fishAPI.get();
-    debugger
-
     dispatch(setFish(fish))
 }
 

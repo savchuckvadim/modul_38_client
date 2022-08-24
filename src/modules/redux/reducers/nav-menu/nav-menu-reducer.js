@@ -12,6 +12,13 @@ let initialState = [
 
     // },
     {
+        name: 'Home',
+        link: 'profile',
+        forRole: ['Admin', 'Master', 'Advertiser']
+       
+
+    },
+    {
         name: 'Users',
         link: 'users',
         forRole: ['Admin']
