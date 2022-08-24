@@ -57,7 +57,7 @@ const BasicTable = (props) => {
         if (index === 0) {
           headers.push(<TableCell key={`hd-${prop}-${index}`} align="left">{prop}</TableCell>)
         }
-        if (prop === 'activity') {
+        if (prop === 'activity' || prop === 'created') {
           const date = new Date(obj[prop]).toLocaleDateString()
           const time = new Date(obj[prop]).toLocaleTimeString()
          
@@ -67,7 +67,10 @@ const BasicTable = (props) => {
            <p className={style.date}>{date}</p>
             </TableCell>)
 
-        } else {
+        }else if(prop === 'link') {
+          const link = obj[prop].slice(22)
+          cells.push(<TableCell key={`cl-${prop}-${index}`} align="left">{link}</TableCell>)
+        }else {
           cells.push(<TableCell key={`cl-${prop}-${index}`} align="left">{obj[prop]}</TableCell>)
         }
 

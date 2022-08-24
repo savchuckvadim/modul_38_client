@@ -97,6 +97,7 @@ export const login = (email, password, rememberMe) => async (dispatch) => {
       } catch(err) {
         
         alert(err.message); // TypeError: failed to fetch
+        dispatch(creatingNewUser(false))
       }
 
       

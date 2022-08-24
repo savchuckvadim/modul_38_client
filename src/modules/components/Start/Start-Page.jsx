@@ -22,7 +22,7 @@ const Start = () => {
                 <div className={style.logo__wrapper}>
                     <img className={style.redLogo} src={redLogo} alt='img-logo' />
                     {/* <img className={style.inscriptionLogog} src={inscriptionLogog} alt='inscription-logo' /> */}
-                    <h1>Skillfactory</h1>
+                    <h1>SF-AdTech</h1>
                 </div>
 
                 <div>
