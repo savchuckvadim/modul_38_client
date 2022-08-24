@@ -8,8 +8,8 @@ const SET_FINANCE = 'SET_FINANCE';
 const setFinance = (finance, role) => ({type: SET_FINANCE, finance, role})
 
 
-export const getFinance = () => async (dispatch)  => {
-    let res = await  financeAPI.getFinance();
+export const getFinance = (date = null) => async (dispatch)  => {
+    let res = await  financeAPI.getFinance(date);
     debugger
     if(res.resultCode === 1){
         dispatch(setFinance(res.finance, res.role))

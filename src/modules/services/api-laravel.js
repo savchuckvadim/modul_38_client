@@ -165,8 +165,8 @@ export const offerAPI = {
 
 export const financeAPI = {
 
-    async getFinance() {
-        let res = await instance.get(`api/finance`);
+    async getFinance(date = null) {
+        let res = await instance.get(`api/finance/${date}`);
         return res.data
     }
 }

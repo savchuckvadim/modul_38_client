@@ -9,6 +9,7 @@ import { HomePageContainer } from "./main-area/Home-Page/Home-Page-Container";
 import Finance from "./main-area/Finance/Finance";
 import NotFound from "./main-area/404-Page/404-Page";
 import AddUserContainer from "./main-area/Users/Add-User/Add-User-Container";
+import { FinanceContainer } from "./main-area/Finance/Finance-Container";
 
 
 const Main = (props) => {
@@ -58,7 +59,7 @@ const Main = (props) => {
 
                         {rolesRoutes}
 
-                        <Route path="finance" element={<Finance />} />
+                        <Route path="finance" element={<FinanceContainer />} />
 
 
                     </Routes>

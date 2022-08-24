@@ -5,6 +5,7 @@ import './Finance.module.css'
 import style from "./Finance.module.css"
 import TableContainer from "./Table/Table-Container"
 import Period from "./Period/Period"
+import BasicTable from "./Table/Table"
 
 
 
@@ -19,10 +20,10 @@ const Finance = (props) => {
         <>
             <Title title={'Finance'} />
             <Filter>
-                <Period />
+                <Period getFinance={props.getFinance} />
             </Filter>
             <div className={style.table__wrapper}>
-                <TableContainer />
+                <BasicTable {...props} />
             </div>
 
 

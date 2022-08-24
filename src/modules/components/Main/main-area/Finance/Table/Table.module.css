@@ -1,3 +1,7 @@
 .table{
     border-radius: 20px !important;
 }
+.date{
+    margin: 0;
+    padding: 0;
+}

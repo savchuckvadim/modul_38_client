@@ -11,7 +11,7 @@ li{
     list-style-type: none;
     width: 70px;
     cursor: pointer;
-    color: rgba(244, 72, 72, 1);
+    /* color: rgba(244, 72, 72, 1); */
     text-decoration: underline;
     
 }

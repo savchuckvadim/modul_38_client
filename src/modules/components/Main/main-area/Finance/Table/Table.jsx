@@ -42,7 +42,7 @@ const BasicTable = (props) => {
   }, [])
 
 
-  debugger
+  
   let data = props.finance;
   let headers = [];
   let rows = [];
@@ -57,10 +57,15 @@ const BasicTable = (props) => {
         if (index === 0) {
           headers.push(<TableCell key={`hd-${prop}-${index}`} align="left">{prop}</TableCell>)
         }
-        if (prop === 'created_at') {
-          let date = new Date(obj[prop]).toLocaleDateString()
+        if (prop === 'activity') {
+          const date = new Date(obj[prop]).toLocaleDateString()
+          const time = new Date(obj[prop]).toLocaleTimeString()
+         
 
-          cells.push(<TableCell key={`cl-${prop}-${index}`} align="left">{date}</TableCell>)
+          cells.push(<TableCell key={`cl-${prop}-${index}`} align="left">
+           <p className={style.date}>{time}</p>
+           <p className={style.date}>{date}</p>
+            </TableCell>)
 
         } else {
           cells.push(<TableCell key={`cl-${prop}-${index}`} align="left">{obj[prop]}</TableCell>)
