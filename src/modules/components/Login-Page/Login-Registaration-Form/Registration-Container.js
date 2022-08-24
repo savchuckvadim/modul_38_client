@@ -14,7 +14,8 @@ const mapStateToProps = (state) => {
         privacy: registration.privacy,
         footerInstruction: registration.footerInstruction,
         footerLink: registration.footerLink,
-        inProgress: state.users.creatingUser
+        inProgress: state.auth.logining,
+        
     }
 }
 

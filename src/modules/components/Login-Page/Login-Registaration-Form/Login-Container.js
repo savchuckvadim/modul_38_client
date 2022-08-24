@@ -1,6 +1,4 @@
-import {
-    connect
-} from "react-redux"
+import { connect } from "react-redux"
 
 import { login } from "../../../redux/reducers/auth/auth-reducer"
 import { setError } from "../../../redux/reducers/login-registaration/login-registration-reducer"
@@ -19,7 +17,7 @@ const mapStateToProps = (state) => {
         footerInstruction: login.footerInstruction,
         footerLink: login.footerLink,
         error: state.loginRegistration.error,
-        inProgress: state.users.creatingUser
+        inProgress: state.auth.logining
 
     }
 }
