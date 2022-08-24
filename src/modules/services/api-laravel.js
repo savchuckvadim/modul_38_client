@@ -130,10 +130,9 @@ export const offerAPI = {
         })
     },
 
-    async getOffers(userId) {
-        const res = await instance.get(`api/offers/${userId}`);
+    async getOffers() {
+        const res = await instance.get(`api/offers/`);
         
-
         if(res.data){
             return res.data.data
         }

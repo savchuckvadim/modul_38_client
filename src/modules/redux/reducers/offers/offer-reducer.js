@@ -3,6 +3,7 @@ import { followUnfollow } from "../../../utils/for-reducers/follow-unfollow";
 
 const ADD_OFFER = 'ADD_OFFER';
 const SET_OFFERS = 'SET_OFFERS';
+const FILTER_OFFERS = 'FILTER_OFFERS';
 const DELETE_OFFER = 'DELETE_OFFER';
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
@@ -13,23 +14,28 @@ let initialState = {
     offers: [],
     isFetching: false,
     followingInProgress: [],
+    isFiltered: false,
+    forFilter: []
 };
-
+//Action Creators:
 const addOffer = (offer) => ({ type: ADD_OFFER, offer });
-const setOffers = (offers) => ({ type: SET_OFFERS, offers });
+const setOffers = (offers, filter) => ({ type: SET_OFFERS, offers });
+export const filterOffers = (filter) => ({ type: FILTER_OFFERS, filter });
 const deleteOfferAC = (offerId) => ({ type: DELETE_OFFER, offerId });
 const followAC = (offerId) => ({ type: FOLLOW, offerId })
 const unfollowAC = (offerId) => ({ type: UNFOLLOW, offerId })
 const toggleFollowingInProgress = (offerId, isFetching) => ({ type: FOLLOWING_IN_PROGRESS, offerId, isFetching })
 const setLink = (offerId, link) => ({ type: SET_LINK, offerId, link })
 
+
+//Thunks:
 export const sendOffer = (userId, name, description, url, price) => async (dispatch) => {
     const res = await offerAPI.sendOffer(userId, name, description, url, price);
     dispatch(addOffer(res.data.data));
 };
 
-export const getOffers = (userId) => async (dispatch) => {
-    const res = await offerAPI.getOffers(userId);
+export const getOffers = () => async (dispatch) => {
+    const res = await offerAPI.getOffers();
 
     if (res.resultCode === 1) {
         dispatch(setOffers(res.offers));
@@ -83,7 +89,7 @@ export const unfollow = (offerId) => async (dispatch) => {
 export const getLink = (offerId) => async (dispatch) => {
 
     let res = await offerAPI.getLink(offerId);
-    
+
     if (res.resultCode === 1) {
         dispatch(setLink(offerId, res.link))
     } else {
@@ -93,6 +99,7 @@ export const getLink = (offerId) => async (dispatch) => {
 
 }
 
+// Reducer:
 export const offerReducer = (state = initialState, action) => {
     let result = state
     switch (action.type) {
@@ -107,10 +114,38 @@ export const offerReducer = (state = initialState, action) => {
             if (state.offers.length !== action.offers.length) {
                 state.offers = [...action.offers.reverse(offer => ({ ...offer }))];
                 return { ...state };
-            } else {
-                return state
             }
+            return state
 
+        case FILTER_OFFERS:
+
+            result = { ...state }
+            if (!result.isFiltered) { // если фильтер еще не применялся
+                result.forFilter = state.offers
+                result.isFiltered = true
+            }
+            if (action.filter === 1) {
+
+                result.offers = []
+                result.forFilter.forEach(offer => {
+                    if (offer.isFollowing) {
+                        result.offers.push(offer)
+                    }
+                })
+                return result
+            } else if (action.filter === 2) {
+                result.offers = []
+                result.forFilter.forEach(offer => {
+                    if (!offer.isFollowing) {
+                        result.offers.push(offer)
+                    }
+                })
+                return result
+            } else {
+                result.offers = result.forFilter
+                return result
+
+            }
         case DELETE_OFFER:
             result = { ...state }
             result.offers = []
@@ -122,17 +157,17 @@ export const offerReducer = (state = initialState, action) => {
             return result;
 
         case FOLLOW:
-            result = {...state}
+            result = { ...state }
             result.offers = followUnfollow(result.offers, action.offerId, 1)
             return result;
 
         case UNFOLLOW:
-            result = {...state}
+            result = { ...state }
             result.offers = followUnfollow(result.offers, action.offerId, 0)
             return result
 
         case FOLLOWING_IN_PROGRESS:
-            result = {...state}
+            result = { ...state }
             result.followingInProgress = [...state.followingInProgress]
 
             action.isFetching
@@ -142,8 +177,8 @@ export const offerReducer = (state = initialState, action) => {
             return result
 
         case SET_LINK:
-            result = {...state}
-            
+            result = { ...state }
+
             if (result.offers.length > 0) {
                 result.offers = result.offers.map(offer => {
                     if (offer.id === action.offerId) {

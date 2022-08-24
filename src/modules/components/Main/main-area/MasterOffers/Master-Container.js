@@ -2,10 +2,8 @@ import React from "react";
 import { connect } from "react-redux"
 import { Navigate, useParams } from "react-router-dom";
 import { compose } from "redux";
-
-import { LightLoadingPageContainer } from "../../../Elements/Loading/Light-Loading-Page-Container";
 import Master from "./Master";
-import { follow, getLink, getOffers, unfollow } from "../../../../redux/reducers/offers/offer-reducer";
+import { filterOffers, follow, getLink, getOffers, unfollow } from "../../../../redux/reducers/offers/offer-reducer";
 
 
 
@@ -73,13 +71,13 @@ class MasterContainer extends React.Component {
         window.scrollTo(0, 0);
 
         this.getUserId()
-        this.getProfileData()
+        // this.getProfileData()
 
     }
     componentDidUpdate() {
 
         this.getUserId()
-        this.getProfileData()
+        // this.getProfileData()
 
     }
     render() {
@@ -105,17 +103,11 @@ export default compose(
 
     connect(mapStateToProps, {
 
-        // getProfileAndSetVisitedUser,
-    
-        //////
         getOffers,
+        filterOffers,
         follow,
         unfollow,
         getLink
-
-
-        //    deleteOffer
-
     }),
     withRouter,
     // withAuthRedirect

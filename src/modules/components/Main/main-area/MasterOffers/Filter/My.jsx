@@ -23,7 +23,8 @@ const My = (props) => {
             name: 'all',
             color: all
         },
-        ]
+    ]
+    
     const onButtonClick = (index) => {
         if (index === 1) {
             setDayStyle(active)
@@ -38,7 +39,7 @@ const My = (props) => {
             setMonthStyle(color)
             setYearStyle(active)
         }
-        props.getOffers()
+        props.filterOffers(index)
     }
 
     return (
@@ -50,7 +51,7 @@ const My = (props) => {
                         color={action.color}
                         textColor={textColor}
                         border={12}
-                        onClick={() => { onButtonClick(index+1) }}
+                        onClick={() => { onButtonClick(index + 1) }}
                         disabled={false}
                     />}</li>
                 ))}

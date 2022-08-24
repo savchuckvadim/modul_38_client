@@ -1,5 +1,5 @@
 
-import React from "react";
+import React, { useEffect } from "react";
 import Filter from "../../../Elements/Filter/Filter";
 import { LightLoadingPageContainer } from "../../../Elements/Loading/Light-Loading-Page-Container";
 import Title from "../../../Elements/Title/Title";
@@ -12,6 +12,10 @@ import OfferCard from "./Offer-Card/Offer-Card";
 
 const Master = (props) => {
 
+window.scrollTo(0, 0);
+useEffect(()=> {
+    props.getOffers()
+}, [])
     // let isFetching = false
     let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize)
     let pages = [];
@@ -25,7 +29,7 @@ const Master = (props) => {
 
             <Title title={'Offers'} />
             <Filter>
-                <My getOffers={props.getOffers} />
+                <My filterOffers={props.filterOffers} />
             </Filter>
             <div className={style.container}>
                 {props.offers.map(offer =>
