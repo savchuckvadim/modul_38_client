@@ -49,7 +49,7 @@ export const setNewUser = (name, surname, email, password, password_confirmation
         
         
     
-    dispatch(logining(false)); //toggle is creating user from users reducer
+  
 
 }
 const registrationReducer = (state = initialState, action) => {
