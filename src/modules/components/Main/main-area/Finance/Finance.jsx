@@ -3,9 +3,9 @@ import Filter from "../../../Elements/Filter/Filter"
 import Title from "../../../Elements/Title/Title"
 import './Finance.module.css'
 import style from "./Finance.module.css"
-import TableContainer from "./Table/Table-Container"
-import Period from "./Period/Period"
+
 import BasicTable from "./Table/Table"
+import FilterButtons from "../../../Elements/Filter/Filter-Buttons/Filter-Buttons"
 
 
 
@@ -14,13 +14,13 @@ import BasicTable from "./Table/Table"
 
 const Finance = (props) => {
 
-
+const filterActions = ['day', 'month', 'year'];
 
     return (
         <>
             <Title title={'Finance'} />
             <Filter>
-                <Period getFinance={props.getFinance} />
+                <FilterButtons actions={filterActions} filter={props.getFinance} />
             </Filter>
             <div className={style.table__wrapper}>
                 <BasicTable {...props} />
@@ -29,8 +29,8 @@ const Finance = (props) => {
 
         </>
 
-    )
+    );
 
-}
+};
 
-export default Finance
+export default Finance;

@@ -2,7 +2,8 @@ import { financeAPI } from "../../../services/api-laravel";
 
 let initialState = {
     finance : null,
-    role: null
+    role: null,
+    
 };
 const SET_FINANCE = 'SET_FINANCE';
 const setFinance = (finance, role) => ({type: SET_FINANCE, finance, role})

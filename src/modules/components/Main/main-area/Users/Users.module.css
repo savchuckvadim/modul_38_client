@@ -55,3 +55,7 @@ span{
 .span{
     font-weight: 100;
 }
+
+.link{
+    text-decoration: none;
+}

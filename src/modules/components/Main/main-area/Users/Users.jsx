@@ -1,29 +1,32 @@
 
 import React from "react";
 import Filter from "../../../Elements/Filter/Filter";
+import FilterButtons from "../../../Elements/Filter/Filter-Buttons/Filter-Buttons";
 import { LightLoadingPageContainer } from "../../../Elements/Loading/Light-Loading-Page-Container";
 import Title from "../../../Elements/Title/Title";
-import AddUserButton from "./Add-User/Add-User-Button";
+
 import Paginator from "./Paginator/Paginator";
 import UserCard from "./User-Card";
 import style from './Users.module.css'
-
+import { NavLink } from "react-router-dom"
 
 const Users = (props) => {
 
-    // let isFetching = false
-    let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize)
-    let pages = [];
-    for (let i = 1; i <= pagesCount; i++) {
-        pages.push(i)
-    }
+    const filterActions = ['+Add User'];
+  
 
     let loader = <LightLoadingPageContainer />
     let users =
+        
         <>
-
             <Title title={'People'} />
-            <Filter ><AddUserButton /></Filter>
+
+            <Filter >
+                {/* <AddUserButton /> */}
+                <NavLink className={style.link} to='../addUser'>  <FilterButtons actions={filterActions} filter={null} /></NavLink>
+
+            </Filter>
+
             <div className={style.container}>
                 {props.users.map(user =>
                     <UserCard
@@ -45,7 +48,7 @@ const Users = (props) => {
                     currentPage={props.currentPage}
                     onPageChanged={props.onPageChanged}
                     portionSize={props.portionSize}
-                   
+
 
                 />
             </div>

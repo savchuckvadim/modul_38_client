@@ -1,17 +1,16 @@
-
-.list {
+.wrapper{
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
+    width: 100%;
 }
 
-li{
+
+.action{
     list-style-type: none;
     margin-left: 10px;
-    width: 29px;
+    width: 100px;
     height: 25px;
     cursor: pointer;
     color: rgba(244, 72, 72, 1);
-    text-decoration: none !important;
-    
 }

@@ -1,12 +1,10 @@
 
 import React, { useEffect } from "react";
 import Filter from "../../../Elements/Filter/Filter";
+import FilterButtons from "../../../Elements/Filter/Filter-Buttons/Filter-Buttons";
 import { LightLoadingPageContainer } from "../../../Elements/Loading/Light-Loading-Page-Container";
 import Title from "../../../Elements/Title/Title";
 import Paginator from "../Users/Paginator/Paginator";
-import My from "./Filter/My";
-// import Paginator from "./Paginator/Paginator";
-
 import style from './Master.module.css'
 import OfferCard from "./Offer-Card/Offer-Card";
 
@@ -14,14 +12,14 @@ import OfferCard from "./Offer-Card/Offer-Card";
 const Master = (props) => {
     const offers = () => {
         props.getOffers(props.currentPage, props.pageSize)
-    }
-    
+    };
+    const filterActions = ['may', 'not my', 'all'];
     
     useEffect((props) => {
         window.scrollTo(0, 0);
         
-        offers()
-    }, [])
+        offers();
+    }, []);
 
 
   
@@ -32,7 +30,8 @@ const Master = (props) => {
 
             <Title title={'Offers'} />
             <Filter>
-                <My filterOffers={props.filterOffers} />
+                
+                <FilterButtons actions={filterActions} filter={props.filterOffers} />
             </Filter>
             <div className={style.container}>
                 {props.offers.length <= 0
