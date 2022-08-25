@@ -9,10 +9,10 @@ const FormCard = (props) => {
 
         switch (props.type) {
             case 'login':
-
+                
                 props.login(values.email, values.password, true)
-                dispatch(reset('login'))
-                return <Navigate replace to='/homePage' />
+                props.error && dispatch(reset('login'))
+                return props.error && <Navigate replace to='/homePage' />
 
             case 'registration':
 
@@ -32,7 +32,7 @@ const FormCard = (props) => {
     }
 
     if (props.isAuth) { return <Navigate replace to='../profile' /> }
-    if (props.inProgress) { return <LightLoadingPageContainer/> }
+    if (props.inProgress) { return <LightLoadingPageContainer /> }
     if (props.type === 'addUser') {
         return (
             <>
