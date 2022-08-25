@@ -12,6 +12,7 @@ import InputRoles from './Inputs/Radio-Registartion-Roles'
 
 
 let Form = (props) => {
+    debugger
     if (props.error) {
         props.setError(props.error)
     }

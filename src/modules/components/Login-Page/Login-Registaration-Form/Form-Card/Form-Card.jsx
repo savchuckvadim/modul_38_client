@@ -6,7 +6,7 @@ import { LightLoadingPageContainer } from '../../../Elements/Loading/Light-Loadi
 const FormCard = (props) => {
     let type = props.type
     const onSubmit = (values, dispatch) => {
-
+        
         switch (props.type) {
             case 'login':
                 
