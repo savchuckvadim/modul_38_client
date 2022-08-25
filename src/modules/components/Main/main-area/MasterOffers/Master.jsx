@@ -11,17 +11,16 @@ import OfferCard from "./Offer-Card/Offer-Card";
 
 
 const Master = (props) => {
+    
+    
+    useEffect(() => {
+        window.scrollTo(0, 0);
+        props.laraGetAuth()
+        props.getOffers()
+    }, [])
 
-window.scrollTo(0, 0);
-useEffect(()=> {
-    props.getOffers()
-}, [])
-    // let isFetching = false
-    let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize)
-    let pages = [];
-    for (let i = 1; i <= pagesCount; i++) {
-        pages.push(i)
-    }
+
+  
 
     let loader = <LightLoadingPageContainer />
     let users =
@@ -32,19 +31,23 @@ useEffect(()=> {
                 <My filterOffers={props.filterOffers} />
             </Filter>
             <div className={style.container}>
-                {props.offers.map(offer =>
-                    <OfferCard
-                        key={`user-card-${offer.id}`}
-                        user={offer.advertiser}
-                        name={offer.advertiser.name}
-                        offer={offer}
-                        follow={props.follow}
-                        unfollow={props.unfollow}
-                        getLink={props.getLink}
-                        followingInProgress={props.followingInProgress}
-                        authUser={props.authUser}
+                {props.offers.length <= 0
+                    ? null
+                    : props.offers.map(offer =>
+                        !offer.advertiser
+                            ? null
+                            : <OfferCard
+                                key={`user-card-${offer.id}`}
+                                user={offer.advertiser}
+                                name={offer.advertiser.name}
+                                offer={offer}
+                                follow={props.follow}
+                                unfollow={props.unfollow}
+                                getLink={props.getLink}
+                                followingInProgress={props.followingInProgress}
+                                authUser={props.authUser}
 
-                    />)}
+                            />)}
             </div>
 
             <div className={style.pages}>

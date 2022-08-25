@@ -4,7 +4,7 @@ import OfferAvatar from '../../AdvertiserOffers/Offers-Area/Offers/Offer-Title/O
 import FollowUnfollowButtons from '../../../../Elements/Button/Follow-Unfollow-Buttons/Follow-Unfollow-Buttons';
 
 const OfferCard = (props) => {
-
+    
     let description = props.offer.description
     if (description.length > 10) {
         description = `${props.offer.description.substr(0, 10)}...`

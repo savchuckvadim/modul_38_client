@@ -3,7 +3,7 @@ import style from './Main.module.css';
 import NavMenuContainer from "./Nav-Menu/Nav-Menu-Container";
 import UsersContainer from "./main-area/Users/Users-Container";
 import AdvertiserContainer from "./main-area/AdvertiserOffers/Advertiser-Container";
-import MasterContainer from "./main-area/MasterOffers/Master-Container";
+import {MasterContainer} from "./main-area/MasterOffers/Master-Container";
 import OfferContainer from "./main-area/Offer/Offer-Container";
 import { HomePageContainer } from "./main-area/Home-Page/Home-Page-Container";
 import Finance from "./main-area/Finance/Finance";
