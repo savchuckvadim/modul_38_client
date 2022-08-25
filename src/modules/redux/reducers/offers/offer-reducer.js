@@ -41,7 +41,7 @@ export const sendOffer = (userId, name, description, url, price) => async (dispa
 };
 export const getOffers = (currentPage = 1, pageSize = 10) => async (dispatch) => {
     const res = await offerAPI.getOffers(currentPage, pageSize);
-debugger
+
     if (res.resultCode === 1) {
         dispatch(setOffers(res.offers));
     } else {

@@ -66,20 +66,20 @@
     display: flex;
     flex-direction: column;
     width: 80%;
+
+   
 }
 .input, .inputActive{
     margin: 0 20px;
     min-height: 0px;
     max-height: 100vh;
-   
-
     /* border: 0.5px; */
     outline: none;
     transition-duration: 0.8s;
     transition-delay: 0.2s;
     transition-property: height, width;
 }
-.offersName{
+.offerInput, .offerInput__error{
     min-height: 24px;
     /* border: none; */
     border-radius: 8px;
@@ -87,6 +87,17 @@
     outline: none;
     margin: 0 20px;
     width:100%;
+    transition-duration: 0.2s;
+ 
+    transition-property: height, width;
+
+   
+}
+.offerInput__error{
+    border: none;
+    background-color: white;
+    outline: 1px solid red;
+    outline-offset: -1px;
 }
 .input{
     width:100%;

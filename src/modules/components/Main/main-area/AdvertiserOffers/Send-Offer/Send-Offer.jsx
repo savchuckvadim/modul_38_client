@@ -2,13 +2,14 @@ import style from './Send-Offer.module.css'
 
 import React from 'react'
 import { reduxForm, Field, reset } from 'redux-form'
-import InputSendOffer from './Inputs-Offer/Send-Offer-Form-Controls'
-import InputOffer from './Inputs-Offer/Input-Offer-Name'
+// import InputSendOffer from './Inputs-Offer/Send-Offer-Form-Controls'
+// import InputOffer from './Inputs-Offer/Input-Offer-Name'
 import InputOfferName from './Inputs-Offer/Input-Offer-Name'
 import InputOfferDescription from './Inputs-Offer/Input-Offer-Description'
 import FooterSendOffer from './Footer-Send-Offer/Footer-Send-Offer'
 import InputOfferUrl from './Inputs-Offer/Input-Offer-Url'
 import InputOfferPrice from './Inputs-Offer/Input-Offer-Price'
+import { requiredFields } from '../../../../../utils/Validators/validator'
 
 export const SendOffer = (props) => {
 
@@ -24,6 +25,7 @@ export const SendOffer = (props) => {
     )
 }
 let SendOfferForm = (props) => {
+    let error = props.error
 
     
     return (
@@ -34,22 +36,26 @@ let SendOfferForm = (props) => {
                 component={InputOfferName}
                 name='name'
                 user={props.user}
+                validate={requiredFields}
             />
 
             <Field
                 component={InputOfferUrl}
                 name='url'
                 user={props.user}
+                validate={requiredFields}
             />
             <Field
                 component={InputOfferPrice}
                 name='price'
                 user={props.user}
+                validate={requiredFields}
             />
             <Field
                 component={InputOfferDescription}
                 name='description'
                 user={props.user}
+                validate={requiredFields}
             />
             <FooterSendOffer
                 {...props} display={'flex'} />

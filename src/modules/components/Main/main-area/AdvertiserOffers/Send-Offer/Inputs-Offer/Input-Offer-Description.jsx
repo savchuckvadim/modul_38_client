@@ -4,46 +4,32 @@ import style from '../Send-Offer.module.css'
 const InputOfferDescription = ({ input, meta, ...props }) => {
     let textHeight = '24px'
     let textResize = 'none'
- 
-    if (meta.active || input.value) {
-       
-        textHeight = '50px' 
-        textResize = 'vertical'
-        
+    let placeholder = 'Offer Description...'
+    let inputClassName = style.offerInput
 
+    if (meta.active || input.value) {
+        textHeight = '50px'
+        textResize = 'vertical'
+
+    }
+    if(meta.touched && !input.value && !meta.active){
+        inputClassName = style.offerInput__error
+        placeholder = meta.error
     }
 
     return (
         <>
 
-            <div className={style.wrapper} style={
-                {
-                    // minHeight: height
-                }}
-            >
-
-                <div className={style.left__areaActive}
-
-                >
-                    <div style={
-                        {
-                            
-                        }} className={style.icon__wrapper}>
-
-                    </div>
-
+            <div className={style.wrapper}>
+                <div className={style.left__areaActive}>
+                    <div className={style.icon__wrapper}></div>
                     <div className={style.inputsFrame}>
                         <textarea
-                            className={style.offersName}
+                            className={inputClassName}
                             {...input}
                             {...props}
-                            style={{
-                                height: textHeight,
-                                resize: textResize
-                            }}
-
-                            placeholder='Offer Description...'
-                            // cols={textCols}
+                            style={{ height: textHeight, resize: textResize }}
+                            placeholder={placeholder}
                             rows={'1'}
                         />
 

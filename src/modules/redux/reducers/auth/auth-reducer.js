@@ -56,7 +56,7 @@ const authReducer = (state = initialState, action) => {
 export const laraGetAuth = () => async (dispatch) => {
     await authAPI.initial();
     let response = await authAPI.getAuthUser();
-    debugger
+    
     let authUser = null
     if (response.data.resultCode === 1) {
         authUser = response.data.authUser

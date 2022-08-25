@@ -6,45 +6,31 @@ import FooterSendOffer from '../Footer-Send-Offer/Footer-Send-Offer';
 
 const InputOfferUrl = ({ input, meta, ...props }) => {
    
+    let placeholder = "https://example.com"
+    let inputClassName = style.offerInput
 
+    if(meta.touched && !input.value && !meta.active){
+        inputClassName = style.offerInput__error
+        placeholder = meta.error
+    }
+   
 
     return (
         <>
 
-            <div className={style.wrapper} style={
-                {
-                    // minHeight: height
-                }}
-            >
-
-                <div className={style.left__areaActive}
-
-                >
-                    <div style={
-                        {
-                            // display: displayDefault
-                        }} className={style.icon__wrapper}>
-                       
-                      
-                    </div>
-
+            <div className={style.wrapper}>
+                <div className={style.left__areaActive}>
+                    <div  className={style.icon__wrapper}> </div>
                     <div className={style.inputsFrame}>
-                        <input className={style.offersName}
+                        <input className={inputClassName}
                             type='url'
-                            // placeholder='URL'
-                            placeholder="https://example.com"
+                            placeholder={placeholder}
                             pattern="https://.*"
                             {...input}
                             {...props} />
-    
-                       
                     </div>
-
                 </div>
-
             </div>
-
-          
         </>
 
     )

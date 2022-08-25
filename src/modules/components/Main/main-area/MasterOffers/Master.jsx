@@ -16,10 +16,10 @@ const Master = (props) => {
         props.getOffers(props.currentPage, props.pageSize)
     }
     
-    debugger
+    
     useEffect((props) => {
         window.scrollTo(0, 0);
-        // props.laraGetAuth()
+        
         offers()
     }, [])
 
