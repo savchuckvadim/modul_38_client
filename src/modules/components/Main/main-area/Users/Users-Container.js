@@ -17,7 +17,9 @@ const mapStateToProps = (state) => {
         count: getCount(state),
         isFetching: getIsFetching(state),
         followingInProgress: getIsFollowing(state),
-        deletingUser: state.users.deletingUser
+        deletingUser: state.users.deletingUser,
+        portionSize: state.users.portionSize,
+     
 
 
     }

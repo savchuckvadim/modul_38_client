@@ -30,14 +30,13 @@ class UsersContainer extends React.Component {
                     currentPage={this.props.currentPage}
                     onPageChanged={this.onPageChanged}
                     isFetching={this.props.isFetching}
-                    // followThunk={this.props.followThunk}
-                    // unFollowThunk={this.props.unFollowThunk}
-                    // toggleFollowingInProgress={this.props.toggleFollowingInProgress}
-                    followingInProgress={this.props.followingInProgress}
+                    portionSize={this.props.portionSize}
+     
+                // followingInProgress={this.props.followingInProgress}
                     // setVisitedUser={this.props.setVisitedUser}
-                    authUser={this.props.authUser}
-                    deleteUser={this.props.deleteUser}
-                    deletingUser={this.props.deletingUser}
+                    // authUser={this.props.authUser}
+                deleteUser={this.props.deleteUser}
+                deletingUser={this.props.deletingUser}
                 />
 
             </>

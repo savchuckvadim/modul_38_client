@@ -10,7 +10,7 @@ import style from './Users.module.css'
 
 
 const Users = (props) => {
-    
+
     // let isFetching = false
     let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize)
     let pages = [];
@@ -21,9 +21,9 @@ const Users = (props) => {
     let loader = <LightLoadingPageContainer />
     let users =
         <>
-            
+
             <Title title={'People'} />
-            <Filter ><AddUserButton/></Filter>
+            <Filter ><AddUserButton /></Filter>
             <div className={style.container}>
                 {props.users.map(user =>
                     <UserCard
@@ -33,17 +33,19 @@ const Users = (props) => {
                         authUser={props.authUser}
                         deleteUser={props.deleteUser}
                         deletingUser={props.deletingUser}
-                        
+
                     />)}
             </div>
 
             <div className={style.pages}>
 
-                <Paginator 
-                totalUsersCount={props.totalUsersCount}
-                pageSize={props.pageSize}
-                currentPage={props.currentPage}
-                onPageChanged={props.onPageChanged}
+                <Paginator
+                    totalItemsCount={props.totalUsersCount}
+                    pageSize={props.pageSize}
+                    currentPage={props.currentPage}
+                    onPageChanged={props.onPageChanged}
+                    portionSize={props.portionSize}
+                   
 
                 />
             </div>

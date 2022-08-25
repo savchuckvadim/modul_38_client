@@ -13,7 +13,7 @@ const initialState = {
     pageSize: 21,
     totalUsersCount: 1,
     currentPage: 1,
-    count: 0,
+    portionSize: 10,
     isFetching: false,
     followingInProgress: [],
     creatingUser: false,
@@ -66,7 +66,7 @@ const usersReducer = (state = initialState, action) => {
             result = { ...state }
             result.deletingUser = action.userId
             return result
-          
+
         default:
             return result
 
@@ -86,7 +86,6 @@ export const requestUsers = (currentPage, pageSize) => async (dispatch) => {
 
     dispatch(fetching(true))
     let res = await usersAPI.getUsers(currentPage, pageSize)
-    debugger
     const users = res.data.data;
     dispatch(setTotalUsersCount(res.data.meta.total))
     dispatch(setUsers(users))
@@ -99,7 +98,7 @@ export const createNewUser = (name, surname, email, password, password_confirmat
     try {
 
         const res = await usersAPI.addUser(name, surname, email, password, password_confirmation, role)
-        
+
         if (res.data.createdUser) {
             alert(`${res.data.createdUser.name} ${res.data.createdUser.surname} was created!`)
         } else {
