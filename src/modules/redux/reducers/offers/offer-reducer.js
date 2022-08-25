@@ -15,25 +15,30 @@ let initialState = {
     isFetching: false,
     followingInProgress: [],
     isFiltered: false,
-    forFilter: []
+    forFilter: [],
+    pageSize: 21,
+    totalUsersCount: 1,
+    currentPage: 1,
+    portionSize: 10,
 };
-//Action Creators:
+
+
+//ACTION CREATORS
 const addOffer = (offer) => ({ type: ADD_OFFER, offer });
 const setOffers = (offers, filter) => ({ type: SET_OFFERS, offers });
 export const filterOffers = (filter) => ({ type: FILTER_OFFERS, filter });
 const deleteOfferAC = (offerId) => ({ type: DELETE_OFFER, offerId });
-const followAC = (offerId) => ({ type: FOLLOW, offerId })
-const unfollowAC = (offerId) => ({ type: UNFOLLOW, offerId })
-const toggleFollowingInProgress = (offerId, isFetching) => ({ type: FOLLOWING_IN_PROGRESS, offerId, isFetching })
-const setLink = (offerId, link) => ({ type: SET_LINK, offerId, link })
+const followAC = (offerId) => ({ type: FOLLOW, offerId });
+const unfollowAC = (offerId) => ({ type: UNFOLLOW, offerId });
+const toggleFollowingInProgress = (offerId, isFetching) => ({ type: FOLLOWING_IN_PROGRESS, offerId, isFetching });
+const setLink = (offerId, link) => ({ type: SET_LINK, offerId, link });
 
 
-//Thunks:
+//THUNKS
 export const sendOffer = (userId, name, description, url, price) => async (dispatch) => {
     const res = await offerAPI.sendOffer(userId, name, description, url, price);
     dispatch(addOffer(res.data.data));
 };
-
 export const getOffers = () => async (dispatch) => {
     const res = await offerAPI.getOffers();
 
@@ -43,13 +48,12 @@ export const getOffers = () => async (dispatch) => {
         alert(res.message)
     }
 
-}
+};
 export const deleteOffer = (offerId) => async (dispatch) => {
     await offerAPI.deleteOffer(offerId);
 
     dispatch(deleteOfferAC(offerId));
-}
-
+};
 export const follow = (offerId) => async (dispatch) => {
 
     dispatch(toggleFollowingInProgress(offerId, true))
@@ -66,8 +70,7 @@ export const follow = (offerId) => async (dispatch) => {
         }
     }
     dispatch(toggleFollowingInProgress(offerId, false))
-}
-
+};
 export const unfollow = (offerId) => async (dispatch) => {
 
     dispatch(toggleFollowingInProgress(offerId, true))
@@ -84,8 +87,7 @@ export const unfollow = (offerId) => async (dispatch) => {
         }
     }
     dispatch(toggleFollowingInProgress(offerId, false))
-}
-
+};
 export const getLink = (offerId) => async (dispatch) => {
 
     let res = await offerAPI.getLink(offerId);
@@ -97,9 +99,9 @@ export const getLink = (offerId) => async (dispatch) => {
     }
 
 
-}
+};
 
-// Reducer:
+// REDUCER:
 export const offerReducer = (state = initialState, action) => {
     let result = state
     switch (action.type) {

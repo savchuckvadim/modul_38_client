@@ -14,9 +14,13 @@ const mapStateToProps = (state) => {
     return {
         isAuth: state.auth.auth.isAuth,
         authUser:state.auth.authUser,
-        // auth: state.auth.auth,
         followingInProgress: state.offers.followingInProgress,
-        offers: state.offers.offers
+        offers: state.offers.offers,
+        //paginator:
+        pageSize:  state.offers.pageSize ,
+        totalUsersCount: state.offers.totalUsersCount,
+        currentPage: state.offers.currentPage,
+        portionSize:  state.offers.portionSize,
 
     }
 }

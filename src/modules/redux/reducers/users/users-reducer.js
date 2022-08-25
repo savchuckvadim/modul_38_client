@@ -8,6 +8,7 @@ const FETCHING = 'FETCHING';
 const CREATING_USER_IN_PROGRESS = 'CREATING_USER_IN_PROGRESS';
 const DELETE_USER = 'DELETE_USER';
 const DELETING_USER = 'DELETING_USER';
+
 const initialState = {
     users: [],
     pageSize: 21,
@@ -24,6 +25,56 @@ const initialState = {
 }
 
 
+//ACTION CREATORS
+export const setCurrentPage = (page) => ({ type: SET_CURRENT_PAGE, page });
+export const setUsers = (users) => ({ type: SET_USERS, users });
+export const setTotalUsersCount = (count) => ({ type: SET_TOTAL_USERS_COUNT, count });
+export const fetching = (bool) => ({ type: FETCHING, bool });
+export const creatingNewUser = (bool) => ({ type: CREATING_USER_IN_PROGRESS, bool });
+const deleteUserAC = (userId) => ({ type: DELETE_USER, userId });
+const deletingNewUser = (userId) => ({ type: DELETING_USER, userId });
+
+
+//THUNKS
+export const requestUsers = (currentPage, pageSize) => async (dispatch) => {
+
+    dispatch(fetching(true))
+    let res = await usersAPI.getUsers(currentPage, pageSize)
+    const users = res.data.data;
+    dispatch(setTotalUsersCount(res.data.meta.total))
+    dispatch(setUsers(users))
+    dispatch(fetching(false))
+
+};
+export const createNewUser = (name, surname, email, password, password_confirmation, role) => async (dispatch) => {
+    dispatch(creatingNewUser(true));
+    try {
+
+        const res = await usersAPI.addUser(name, surname, email, password, password_confirmation, role)
+
+        if (res.data.createdUser) {
+            alert(`${res.data.createdUser.name} ${res.data.createdUser.surname} was created!`)
+        } else {
+            alert('error')
+        }
+        dispatch(creatingNewUser(false));
+    } catch (err) {
+        dispatch(creatingNewUser(false))
+        alert(err.message);
+    }
+
+
+    dispatch(creatingNewUser(false));
+};
+export const deleteUser = (userId) => async (dispatch) => {
+    dispatch(deletingNewUser(userId))
+    await usersAPI.deleteUser(userId);
+    dispatch(deleteUserAC(userId));
+    dispatch(deletingNewUser(false))
+};
+
+
+//REDUCER
 const usersReducer = (state = initialState, action) => {
     let result = state
 
@@ -72,51 +123,5 @@ const usersReducer = (state = initialState, action) => {
 
     }
 
-}
-export const setCurrentPage = (page) => ({ type: SET_CURRENT_PAGE, page })
-export const setUsers = (users) => ({ type: SET_USERS, users })
-export const setTotalUsersCount = (count) => ({ type: SET_TOTAL_USERS_COUNT, count })
-export const fetching = (bool) => ({ type: FETCHING, bool })
-export const creatingNewUser = (bool) => ({ type: CREATING_USER_IN_PROGRESS, bool })
-const deleteUserAC = (userId) => ({ type: DELETE_USER, userId });
-const deletingNewUser = (userId) => ({ type: DELETING_USER, userId })
-
-
-export const requestUsers = (currentPage, pageSize) => async (dispatch) => {
-
-    dispatch(fetching(true))
-    let res = await usersAPI.getUsers(currentPage, pageSize)
-    const users = res.data.data;
-    dispatch(setTotalUsersCount(res.data.meta.total))
-    dispatch(setUsers(users))
-    dispatch(fetching(false))
-
-}
-
-export const createNewUser = (name, surname, email, password, password_confirmation, role) => async (dispatch) => {
-    dispatch(creatingNewUser(true));
-    try {
-
-        const res = await usersAPI.addUser(name, surname, email, password, password_confirmation, role)
-
-        if (res.data.createdUser) {
-            alert(`${res.data.createdUser.name} ${res.data.createdUser.surname} was created!`)
-        } else {
-            alert('error')
-        }
-        dispatch(creatingNewUser(false));
-    } catch (err) {
-        dispatch(creatingNewUser(false))
-        alert(err.message);
-    }
-
-
-    dispatch(creatingNewUser(false));
-}
-export const deleteUser = (userId) => async (dispatch) => {
-    dispatch(deletingNewUser(userId))
-    await usersAPI.deleteUser(userId);
-    dispatch(deleteUserAC(userId));
-    dispatch(deletingNewUser(false))
-}
-export default usersReducer
+};
+export default usersReducer;

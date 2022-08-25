@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 import Filter from "../../../Elements/Filter/Filter";
 import { LightLoadingPageContainer } from "../../../Elements/Loading/Light-Loading-Page-Container";
 import Title from "../../../Elements/Title/Title";
+import Paginator from "../Users/Paginator/Paginator";
 import My from "./Filter/My";
 // import Paginator from "./Paginator/Paginator";
 
@@ -15,7 +16,7 @@ const Master = (props) => {
     
     useEffect(() => {
         window.scrollTo(0, 0);
-        props.laraGetAuth()
+        // props.laraGetAuth()
         props.getOffers()
     }, [])
 
@@ -52,13 +53,15 @@ const Master = (props) => {
 
             <div className={style.pages}>
 
-                {/* <Paginator 
-                totalUsersCount={props.totalUsersCount}
-                pageSize={props.pageSize}
-                currentPage={props.currentPage}
-                onPageChanged={props.onPageChanged}
+            <Paginator
+                    totalItemsCount={props.totalUsersCount}
+                    pageSize={props.pageSize}
+                    currentPage={props.currentPage}
+                    onPageChanged={props.onPageChanged}
+                    portionSize={props.portionSize}
+                   
 
-                /> */}
+                />
             </div>
 
         </>
