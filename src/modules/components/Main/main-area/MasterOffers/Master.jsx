@@ -12,12 +12,15 @@ import OfferCard from "./Offer-Card/Offer-Card";
 
 
 const Master = (props) => {
+    const offers = () => {
+        props.getOffers(props.currentPage, props.pageSize)
+    }
     
-    
-    useEffect(() => {
+    debugger
+    useEffect((props) => {
         window.scrollTo(0, 0);
         // props.laraGetAuth()
-        props.getOffers()
+        offers()
     }, [])
 
 

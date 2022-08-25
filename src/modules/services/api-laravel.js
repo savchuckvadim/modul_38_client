@@ -76,7 +76,7 @@ export const authAPI = {
     },
    
 
-
+/////
 
 }
 
@@ -128,14 +128,15 @@ export const offerAPI = {
         })
     },
 
-    async getOffers() {
-        const res = await instance.get(`api/offers/`);
-        
+    async getOffers(currentPage = 1, pageSize = 10) {
+        const res = await instance.get(`api/offers?page=${currentPage}&count=${pageSize}`);
+        debugger
         if(res.data){
             return res.data.data
         }
         return {'resultCode' : 0}
     },
+
     deleteOffer(offerId) {
         return instance.delete(`api/offers/${offerId}`);
     },
