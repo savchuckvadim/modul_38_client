@@ -40,7 +40,20 @@ export const requiredFields = (value) => {
     return error
 }
 
-
+export const symbols30 = (value) => {
+    let error = undefined
+    if (value.length > 30) {
+        error = 'Название оффера: Превышено количество символов'
+    }
+    return error
+}
+export const symbols300 = (value) => {
+    let error = undefined
+    if (value.length > 300) {
+        error = 'Описание: Превышено количество символов'
+    }
+    return error
+}
 export const rolesValidate = (value) => {
 
     let error = undefined

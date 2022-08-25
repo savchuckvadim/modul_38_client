@@ -9,6 +9,8 @@ const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
 const FOLLOWING_IN_PROGRESS = 'FOLLOWING_IN_PROGRESS';
 const SET_LINK = 'SET_LINK';
+const SET_ERRORS = 'SET_ERRORS';
+
 
 let initialState = {
     offers: [],
@@ -20,6 +22,7 @@ let initialState = {
     totalUsersCount: 1,
     currentPage: 1,
     portionSize: 10,
+    error: null
 };
 
 
@@ -32,6 +35,7 @@ const followAC = (offerId) => ({ type: FOLLOW, offerId });
 const unfollowAC = (offerId) => ({ type: UNFOLLOW, offerId });
 const toggleFollowingInProgress = (offerId, isFetching) => ({ type: FOLLOWING_IN_PROGRESS, offerId, isFetching });
 const setLink = (offerId, link) => ({ type: SET_LINK, offerId, link });
+export const setErrors = (error) => ({ type: SET_ERRORS, error });
 
 
 //THUNKS
@@ -194,6 +198,19 @@ export const offerReducer = (state = initialState, action) => {
             }
 
             return result;
+
+        case SET_ERRORS:
+            if (action.error) {
+                
+                if (state.error !== action.error) {
+                    result = { ...state };
+                    result.error = action.error;
+                
+                    return result;
+                }
+            }
+
+            return state;
 
         default: return state;
 

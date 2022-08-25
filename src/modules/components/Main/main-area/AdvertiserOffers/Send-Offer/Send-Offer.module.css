@@ -1,9 +1,7 @@
 .frame{
     margin-top: 18px;
     padding-top: 20px;
-    /* padding: 0 16px; */
     width: 100%;
-    /* height: 72px; */
     background-color: white;
     display: flex;
     flex-direction: column;
@@ -16,11 +14,8 @@
     .frame {
         width: 95%;
     }
-
-
   }
 
- 
 
 .wrapper{
     
@@ -96,7 +91,7 @@
 .offerInput__error{
     border: none;
     background-color: white;
-    outline: 1px solid red;
+    outline: 2px solid red;
     outline-offset: -1px;
 }
 .input{

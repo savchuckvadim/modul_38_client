@@ -3,22 +3,30 @@ import Avatar from '../../../../../Elements/Avatar/Avatar'
 import style from '../Send-Offer.module.css'
 
 
-const InputOfferName = ({input, meta, ...props }) => {
-   
+const InputOfferName = ({ input, meta, ...props }) => {
 
-   let inputClassName = style.offerInput
+
+    let inputClassName = style.offerInput
     // let leftAreaClass = style.left__area
     let placeholder = 'Send Offer...'
-    
-    if (meta.active || input.value) {     
+    let error = null
+    if (meta.active || input.value) {
         placeholder = 'Offer Name...'
-       
+
     }
 
-    if(meta.touched && !input.value && !meta.active){
+    if (meta.touched && !input.value && !meta.active) {
         inputClassName = style.offerInput__error
         placeholder = meta.error
+
     }
+    if (meta.visited && meta.error && input.value) {
+
+        inputClassName = style.offerInput__error
+
+
+    }
+
 
 
     return (
@@ -32,18 +40,19 @@ const InputOfferName = ({input, meta, ...props }) => {
                             user={props.user}
                         />
                     </div>
-
-                    <div className={style.inputsFrame}>
                    
+                    <div className={style.inputsFrame}>
+
                         <input className={inputClassName}
                             type='text'
                             placeholder={meta.error && placeholder}
                             {...input}
                             {...props} />
-    
+
                     </div>
+                   
                 </div>
-            </div>     
+            </div>
         </>
 
     )

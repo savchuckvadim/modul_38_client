@@ -1,5 +1,5 @@
 import { connect } from "react-redux"
-import { sendOffer } from "../../../../../redux/reducers/offers/offer-reducer"
+import { sendOffer, setErrors } from "../../../../../redux/reducers/offers/offer-reducer"
 
 
 import SendOffer from "./Send-Offer"
@@ -11,6 +11,7 @@ const mapStateToProps = (state) => {
 
     return {
         user: state.auth.authUser,
+        error: state.offers.error
         // value: state.currentPost.value,
         // visitedProfileId: state.profileReducer.visitedUser.id
 
@@ -20,7 +21,8 @@ const mapStateToProps = (state) => {
 export const SendOfferContainer = connect(mapStateToProps,
     {
         // sendPost,
-        sendOffer
+        sendOffer,
+        setErrors
 
     }
 )(SendOffer)

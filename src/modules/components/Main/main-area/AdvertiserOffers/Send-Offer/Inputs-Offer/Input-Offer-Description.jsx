@@ -16,6 +16,9 @@ const InputOfferDescription = ({ input, meta, ...props }) => {
         inputClassName = style.offerInput__error
         placeholder = meta.error
     }
+    if (meta.visited && meta.error && input.value) {
+        inputClassName = style.offerInput__error
+    }
 
     return (
         <>
