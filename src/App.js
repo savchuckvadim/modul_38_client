@@ -7,6 +7,7 @@ import Modul38 from './modules/components/MODUL_38-App/MODUL_38';
 
 
 
+
 function App(props) {
 
 
@@ -17,6 +18,7 @@ function App(props) {
      
         <Routes>
           <Route path="*" index element={<Modul38 authUser={props.authUser} />} />
+          
           <Route path="login" element={<LoginRedirect />} />
           <Route path="registration" element={<LoginRedirect />} />
         </Routes>

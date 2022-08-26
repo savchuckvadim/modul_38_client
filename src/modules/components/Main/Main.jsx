@@ -10,6 +10,7 @@ import Finance from "./main-area/Finance/Finance";
 import NotFound from "./main-area/404-Page/404-Page";
 import AddUserContainer from "./main-area/Users/Add-User/Add-User-Container";
 import { FinanceContainer } from "./main-area/Finance/Finance-Container";
+import { NotFoundContainer } from "./main-area/404-Page/404-Page-Container ";
 
 
 const Main = (props) => {
@@ -51,7 +52,7 @@ const Main = (props) => {
                         <Route path="*" element={<Navigate replace to={'notfound'} />} />
                         <Route path="/" index element={<Navigate replace to={'profile'} />} />
                         {/* <Route path="login" element={<LoginContainer  />} /> */}
-                        <Route path="notfound" element={<NotFound />} />
+                        <Route path="notfound" element={<NotFoundContainer />} />
                         <Route path="profile" element={<HomePageContainer />}>
                             <Route path=":userId" element={<HomePageContainer />} />
                         </Route>

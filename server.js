@@ -9,3 +9,6 @@ app.get('/*', (req, res) => {
     res.sendFile(path.join(__dirname, 'build', 'index.html'))
 });
 app.listen(PORT);
+
+//Change at packege.json
+//"start": "node server.js",

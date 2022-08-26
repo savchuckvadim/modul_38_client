@@ -4,7 +4,7 @@ import Filter from "../../../Elements/Filter/Filter";
 import FilterButtons from "../../../Elements/Filter/Filter-Buttons/Filter-Buttons";
 import { LightLoadingPageContainer } from "../../../Elements/Loading/Light-Loading-Page-Container";
 import Title from "../../../Elements/Title/Title";
-import Paginator from "../Users/Paginator/Paginator";
+import Paginator from '../../../Elements/Paginator/Paginator';
 import style from './Master.module.css'
 import OfferCard from "./Offer-Card/Offer-Card";
 
