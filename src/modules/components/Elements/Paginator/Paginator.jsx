@@ -14,6 +14,7 @@ const Paginator = (props) => {
     const [portionNumber, setPortionNumber] = useState(1);
     let leftPortionPageNumber = (portionNumber - 1) * props.portionSize + 1;
     let rightPortionPageNumber = portionNumber * props.pageSize;
+    
 
     return (
         <div className={style.paginator}>
@@ -26,7 +27,7 @@ const Paginator = (props) => {
                 props.currentPage === p ? spanClassName = style.selectPage : spanClassName = style.span
                 return <span
                     key={`user-page-${p}`}
-                    onClick={() => { props.onPageChanged(p) }}
+                    onClick={() => { props.onPageChanged(p, props.pageSize) }}
 
                     className={spanClassName}>
 

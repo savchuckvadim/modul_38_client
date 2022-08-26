@@ -6,21 +6,26 @@ import { LightLoadingPageContainer } from "../../../Elements/Loading/Light-Loadi
 import Title from "../../../Elements/Title/Title";
 import Paginator from '../../../Elements/Paginator/Paginator';
 import style from './Master.module.css'
-import OfferCard from "./Offer-Card/Offer-Card";
+
+import Offers from "./Offers/Offers";
 
 
 const Master = (props) => {
-    const offers = () => {
+    const getOffers = () => {
         props.getOffers(props.currentPage, props.pageSize)
     };
+    const onPageChanged = (pageNumber) => {
+        props.setCurrentPage(pageNumber);
+        props.getOffers(pageNumber, props.pageSize);
+    }
     const filterActions = ['my', 'not my', 'all'];
-    
+
     useEffect(() => {
         window.scrollTo(0, 0);
-        offers();
+        getOffers();
     }, []);
 
-  
+
 
     let loader = <LightLoadingPageContainer />
     let users =
@@ -30,34 +35,18 @@ const Master = (props) => {
                 <FilterButtons actions={filterActions} filter={props.filterOffers} />
             </Filter>
             <div className={style.container}>
-                {props.offers.length <= 0
-                    ? null
-                    : props.offers.map(offer =>
-                        !offer.advertiser
-                            ? null
-                            : <OfferCard
-                                key={`user-card-${offer.id}`}
-                                user={offer.advertiser}
-                                name={offer.advertiser.name}
-                                offer={offer}
-                                follow={props.follow}
-                                unfollow={props.unfollow}
-                                getLink={props.getLink}
-                                followingInProgress={props.followingInProgress}
-                                authUser={props.authUser}
-
-                            />)}
+                {<Offers {...props} />}
             </div>
 
             <div className={style.pages}>
 
-            <Paginator
-                    totalItemsCount={props.totalUsersCount}
+                <Paginator
+                    totalItemsCount={props.totalOffersCount}
                     pageSize={props.pageSize}
                     currentPage={props.currentPage}
-                    onPageChanged={props.onPageChanged}
+                    onPageChanged={onPageChanged}
                     portionSize={props.portionSize}
-                   
+
 
                 />
             </div>

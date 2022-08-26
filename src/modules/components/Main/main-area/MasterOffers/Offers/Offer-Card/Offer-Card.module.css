@@ -1,5 +1,5 @@
 .frame {
-    margin-top: 16px;
+    margin: 8px 2px 0 2px;;
    
     padding: 16px;
     background-color: rgb(255, 255, 255);
@@ -14,7 +14,7 @@
     min-height: 330px;
 }
 /* .frame:nth-child(3n+2) {
-    margin: 16px 16px 0 16px;
+    margin: 25px 25px 0 25px;
 } */
 @media screen and (max-width: 900px) {
     .frame {

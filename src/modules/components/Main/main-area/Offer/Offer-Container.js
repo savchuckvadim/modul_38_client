@@ -51,6 +51,7 @@ class OfferContainer extends React.Component {
     offerRequest = async () => {
         let offerId = await this.getOfferId();
         await this.props.getOffer(offerId)
+        
     }
 
     getOffer = () => {
@@ -82,6 +83,7 @@ class OfferContainer extends React.Component {
     }
 
     render() {
+        
         if (this.state.offer) {
             return (
                 <Offer offer={this.state.offer} {...this.props} />

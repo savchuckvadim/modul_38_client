@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import style from './Offer-Card.module.css';
-import OfferAvatar from '../../AdvertiserOffers/Offers-Area/Offers/Offer-Title/Offer-Avatar/Offer-Avatar';
-import FollowUnfollowButtons from '../../../../Elements/Button/Follow-Unfollow-Buttons/Follow-Unfollow-Buttons';
+import OfferAvatar from '../../../AdvertiserOffers/Offers-Area/Offers/Offer-Title/Offer-Avatar/Offer-Avatar';
+import FollowUnfollowButtons from '../../../../../Elements/Button/Follow-Unfollow-Buttons/Follow-Unfollow-Buttons';
 
 const OfferCard = (props) => {
     

@@ -3,6 +3,10 @@ import { followUnfollow } from "../../../utils/for-reducers/follow-unfollow";
 
 const ADD_OFFER = 'ADD_OFFER';
 const SET_OFFERS = 'SET_OFFERS';
+//TODO REFACTORING DOUBLES WITH USERS-REDUCER
+const SET_TOTAL_OFFERS_COUNT = 'SET_TOTAL_OFFERS_COUNT';
+const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
+
 const SET_CURRENT_OFFER = 'SET_CURRENT_OFFER';
 const FILTER_OFFERS = 'FILTER_OFFERS';
 const DELETE_OFFER = 'DELETE_OFFER';
@@ -19,11 +23,12 @@ let initialState = {
     followingInProgress: [],
     isFiltered: false,
     forFilter: [],
-    pageSize: 21,
-    totalUsersCount: 1,
-    currentPage: 2,
-    portionSize: 10,
     error: null,
+    //paginator
+    pageSize: 21,
+    totalOffersCount: 1,
+    currentPage: 1,
+    portionSize: 10,
 
 };
 
@@ -31,6 +36,8 @@ let initialState = {
 //ACTION CREATORS
 const addOffer = (offer) => ({ type: ADD_OFFER, offer });
 const setOffers = (offers) => ({ type: SET_OFFERS, offers });
+export const setTotalOffersCount = (count) => ({ type: SET_TOTAL_OFFERS_COUNT, count });
+export const setCurrentPage = (page) => ({ type: SET_CURRENT_PAGE, page });
 const setCurrentOffer = (offer) => ({ type: SET_CURRENT_OFFER, offer });
 export const filterOffers = (filter) => ({ type: FILTER_OFFERS, filter });
 const deleteOfferAC = (offerId) => ({ type: DELETE_OFFER, offerId });
@@ -48,8 +55,11 @@ export const sendOffer = (userId, name, description, url, price) => async (dispa
 };
 export const getOffers = (currentPage = 1, pageSize = 10) => async (dispatch) => {
     const res = await offerAPI.getOffers(currentPage, pageSize);
-    if (res.resultCode === 1) {
-        dispatch(setOffers(res.offers ));
+    debugger
+    if (res.data.resultCode === 1) {
+
+        dispatch(setTotalOffersCount(res.meta.total))
+        dispatch(setOffers(res.data.offers));
     } else {
         alert(res.message)
     }
@@ -57,7 +67,7 @@ export const getOffers = (currentPage = 1, pageSize = 10) => async (dispatch) =>
 };
 export const getOffer = (offerId) => async (dispatch) => {
     const res = await offerAPI.getOffer(offerId);
-    
+
     if (res.resultCode === 1) {
         dispatch(setCurrentOffer(res.offer));
     } else {
@@ -129,18 +139,27 @@ export const offerReducer = (state = initialState, action) => {
             return { ...state };
 
         case SET_OFFERS:
-            
-            // if (state.offers.length !== action.offers.length) {
-                state.offers = [...action.offers.reverse(offer => ({ ...offer }))];
-                return { ...state };
-            // }
-            // return state;
+            state.offers = [...action.offers.reverse(offer => ({ ...offer }))];
+                debugger
+            return { ...state };
+
+
+        //TODO REFACTORING DOUBLES WITH USERS-REDUCER
+        case SET_TOTAL_OFFERS_COUNT:
+            result = { ...state }
+            result.totalOffersCount = action.count
+            return result
+        case SET_CURRENT_PAGE:
+            result = { ...state }
+            result.currentPage = action.page
+            return result
+
 
         case SET_CURRENT_OFFER:
             const isOfferHas = state.offers.some(offer => offer.id === action.offer.id);
-            if (!isOfferHas ) {
+            if (!isOfferHas) {
                 state.offers.unshift(action.offer)
-                result  = { ...state };
+                result = { ...state };
                 result.offers = [...state.offers]
                 return result;
             }

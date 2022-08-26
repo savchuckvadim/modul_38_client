@@ -85,7 +85,7 @@ export const usersAPI = {
     async getUsers(currentPage = 1, pageSize = 10) {
         await instance.get("/sanctum/csrf-cookie");
         const res = await instance.get(`api/users?page=${currentPage}&count=${pageSize}`);
-        return res
+        return res.data
     },
 
     async deleteUser(userId) {
@@ -131,7 +131,7 @@ export const offerAPI = {
     async getOffers(currentPage = 1, pageSize = 10) {
         const res = await instance.get(`api/offers?page=${currentPage}&count=${pageSize}`);
         if(res.data){
-            return res.data.data
+            return res.data
         }
         return {'resultCode' : 0}
     },

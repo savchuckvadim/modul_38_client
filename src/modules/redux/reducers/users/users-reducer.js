@@ -11,14 +11,16 @@ const DELETING_USER = 'DELETING_USER';
 
 const initialState = {
     users: [],
+    isFetching: false,
+    followingInProgress: [],
+    creatingUser: false,
+    deletingUser: false,
+
+    //paginator
     pageSize: 21,
     totalUsersCount: 1,
     currentPage: 1,
     portionSize: 10,
-    isFetching: false,
-    followingInProgress: [],
-    creatingUser: false,
-    deletingUser: false
 
 
 
@@ -40,8 +42,9 @@ export const requestUsers = (currentPage, pageSize) => async (dispatch) => {
 
     dispatch(fetching(true))
     let res = await usersAPI.getUsers(currentPage, pageSize)
-    const users = res.data.data;
-    dispatch(setTotalUsersCount(res.data.meta.total))
+    const users = res.data;
+
+    dispatch(setTotalUsersCount(res.meta.total))
     dispatch(setUsers(users))
     dispatch(fetching(false))
 
