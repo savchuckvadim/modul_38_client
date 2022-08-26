@@ -50,6 +50,7 @@ const FollowUnfollowButtons = (props) => {
         </div>
         )
     } else {
+        onButtonClick = props.follow
         return (
             <div className={style.twoButtons}>
                 <Button

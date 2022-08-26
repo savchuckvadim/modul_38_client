@@ -13,24 +13,20 @@ const Master = (props) => {
     const offers = () => {
         props.getOffers(props.currentPage, props.pageSize)
     };
-    const filterActions = ['may', 'not my', 'all'];
+    const filterActions = ['my', 'not my', 'all'];
     
-    useEffect((props) => {
+    useEffect(() => {
         window.scrollTo(0, 0);
-        
         offers();
     }, []);
-
 
   
 
     let loader = <LightLoadingPageContainer />
     let users =
         <>
-
             <Title title={'Offers'} />
             <Filter>
-                
                 <FilterButtons actions={filterActions} filter={props.filterOffers} />
             </Filter>
             <div className={style.container}>

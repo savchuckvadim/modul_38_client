@@ -130,9 +130,16 @@ export const offerAPI = {
 
     async getOffers(currentPage = 1, pageSize = 10) {
         const res = await instance.get(`api/offers?page=${currentPage}&count=${pageSize}`);
-        
         if(res.data){
             return res.data.data
+        }
+        return {'resultCode' : 0}
+    },
+    async getOffer(offerId) {
+        const res = await instance.get(`api/offer/${offerId}`);
+        
+        if(res.data){
+            return res.data
         }
         return {'resultCode' : 0}
     },

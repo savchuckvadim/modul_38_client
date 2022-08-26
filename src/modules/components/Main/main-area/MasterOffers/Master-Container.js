@@ -1,7 +1,6 @@
-import React from "react";
+
 import { connect } from "react-redux"
-import { Navigate, useParams } from "react-router-dom";
-import { compose } from "redux";
+
 import Master from "./Master";
 import { filterOffers, follow, getLink, getOffers, unfollow } from "../../../../redux/reducers/offers/offer-reducer";
 import { laraGetAuth } from "../../../../redux/reducers/auth/auth-reducer";

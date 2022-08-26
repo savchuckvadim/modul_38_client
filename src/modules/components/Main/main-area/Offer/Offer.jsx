@@ -11,7 +11,6 @@ import FollowUnfollowButtons from '../../../Elements/Button/Follow-Unfollow-Butt
 const Offer = (props) => {
 
 
-
     if (props) {
         return (
             <div className={style.wrapper}>

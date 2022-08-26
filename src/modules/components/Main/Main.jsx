@@ -6,8 +6,6 @@ import AdvertiserContainer from "./main-area/AdvertiserOffers/Advertiser-Contain
 import {MasterContainer} from "./main-area/MasterOffers/Master-Container";
 import OfferContainer from "./main-area/Offer/Offer-Container";
 import { HomePageContainer } from "./main-area/Home-Page/Home-Page-Container";
-import Finance from "./main-area/Finance/Finance";
-import NotFound from "./main-area/404-Page/404-Page";
 import AddUserContainer from "./main-area/Users/Add-User/Add-User-Container";
 import { FinanceContainer } from "./main-area/Finance/Finance-Container";
 import { NotFoundContainer } from "./main-area/404-Page/404-Page-Container ";

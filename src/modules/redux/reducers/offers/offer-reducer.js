@@ -3,6 +3,7 @@ import { followUnfollow } from "../../../utils/for-reducers/follow-unfollow";
 
 const ADD_OFFER = 'ADD_OFFER';
 const SET_OFFERS = 'SET_OFFERS';
+const SET_CURRENT_OFFER = 'SET_CURRENT_OFFER';
 const FILTER_OFFERS = 'FILTER_OFFERS';
 const DELETE_OFFER = 'DELETE_OFFER';
 const FOLLOW = 'FOLLOW';
@@ -22,13 +23,15 @@ let initialState = {
     totalUsersCount: 1,
     currentPage: 1,
     portionSize: 10,
-    error: null
+    error: null,
+
 };
 
 
 //ACTION CREATORS
 const addOffer = (offer) => ({ type: ADD_OFFER, offer });
-const setOffers = (offers, filter) => ({ type: SET_OFFERS, offers });
+const setOffers = (offers) => ({ type: SET_OFFERS, offers });
+const setCurrentOffer = (offer) => ({ type: SET_CURRENT_OFFER, offer });
 export const filterOffers = (filter) => ({ type: FILTER_OFFERS, filter });
 const deleteOfferAC = (offerId) => ({ type: DELETE_OFFER, offerId });
 const followAC = (offerId) => ({ type: FOLLOW, offerId });
@@ -45,9 +48,18 @@ export const sendOffer = (userId, name, description, url, price) => async (dispa
 };
 export const getOffers = (currentPage = 1, pageSize = 10) => async (dispatch) => {
     const res = await offerAPI.getOffers(currentPage, pageSize);
-
     if (res.resultCode === 1) {
-        dispatch(setOffers(res.offers));
+        dispatch(setOffers(res.offers ));
+    } else {
+        alert(res.message)
+    }
+
+};
+export const getOffer = (offerId) => async (dispatch) => {
+    const res = await offerAPI.getOffer(offerId);
+    
+    if (res.resultCode === 1) {
+        dispatch(setCurrentOffer(res.offer));
     } else {
         alert(res.message)
     }
@@ -117,11 +129,22 @@ export const offerReducer = (state = initialState, action) => {
             return { ...state };
 
         case SET_OFFERS:
-            if (state.offers.length !== action.offers.length) {
+            
+            // if (state.offers.length !== action.offers.length) {
                 state.offers = [...action.offers.reverse(offer => ({ ...offer }))];
                 return { ...state };
+            // }
+            // return state;
+
+        case SET_CURRENT_OFFER:
+            const isOfferHas = state.offers.some(offer => offer.id === action.offer.id);
+            if (!isOfferHas ) {
+                state.offers.unshift(action.offer)
+                result  = { ...state };
+                result.offers = [...state.offers]
+                return result;
             }
-            return state
+            return state;
 
         case FILTER_OFFERS:
 
@@ -170,7 +193,7 @@ export const offerReducer = (state = initialState, action) => {
         case UNFOLLOW:
             result = { ...state }
             result.offers = followUnfollow(result.offers, action.offerId, 0)
-            return result
+            return result;
 
         case FOLLOWING_IN_PROGRESS:
             result = { ...state }
@@ -180,7 +203,7 @@ export const offerReducer = (state = initialState, action) => {
                 ? result.followingInProgress.push(action.offerId)
                 : result.followingInProgress = state.followingInProgress.filter(id => id !== action.offerId)
 
-            return result
+            return result;
 
         case SET_LINK:
             result = { ...state }
@@ -201,11 +224,11 @@ export const offerReducer = (state = initialState, action) => {
 
         case SET_ERRORS:
             if (action.error) {
-                
+
                 if (state.error !== action.error) {
                     result = { ...state };
                     result.error = action.error;
-                
+
                     return result;
                 }
             }
