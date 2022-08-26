@@ -37,24 +37,21 @@ class OfferContainer extends React.Component {
         this.state = { offer: null, isFetching: false };
 
     }
-    // offerId = null
-    // offer = null
+
 
     getOfferId = () => {
         let offerId = null
         if (this.props.params.offerId) {
-            // this.offerId = this.props.params.offerId;
+
             offerId = this.props.params.offerId;
         }
-
         return offerId;
-
     }
+
     offerRequest = async () => {
         let offerId = await this.getOfferId();
         await this.props.getOffer(offerId)
     }
-
 
     getOffer = () => {
         if (!this.state.offer) {
@@ -70,6 +67,7 @@ class OfferContainer extends React.Component {
         };
 
     }
+
     componentDidMount() {
         window.scrollTo(0, 0);
         this.offerRequest();
@@ -82,9 +80,8 @@ class OfferContainer extends React.Component {
         this.getOffer();
 
     }
+
     render() {
-
-
         if (this.state.offer) {
             return (
                 <Offer offer={this.state.offer} {...this.props} />
@@ -92,13 +89,10 @@ class OfferContainer extends React.Component {
         } else {
             return <NotFoundContainer />
         }
-
-
-
     }
 }
 
-// export default connect(mapStateToProps)(Offer)
+
 export default compose(
 
     connect(mapStateToProps, {
@@ -108,5 +102,5 @@ export default compose(
         getLink
     }),
     withRouter,
-    // withAuthRedirect
+   
 )(OfferContainer)

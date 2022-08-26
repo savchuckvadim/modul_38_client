@@ -29,15 +29,8 @@ class AdvertiserContainer extends React.Component {
         window.scrollTo(0, 0);
         this.getOffers()
     }
-    // componentDidUpdate() {
 
-    //     this.getUserId()
-    //     this.getProfileData()
-
-    // }
     render() {
-
-
         if (!this.props.authUser) return <LightLoadingPageContainer />
         return (
             <Advertiser {...this.props} />
