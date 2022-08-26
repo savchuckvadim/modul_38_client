@@ -17,8 +17,11 @@ In the project directory, you can run:
 ### `npm start`
 
 ATTENTION !
+
+NO http://localhost:3000/
+
 Runs the app in the development mode.\
-Open [http://http://127.0.0.1:3000/](http://http://127.0.0.1:3000/) to view it in your browser. ONLY
+Open [http://127.0.0.1:3000/](http://127.0.0.1:3000/) to view it in your browser. ONLY
 
 
 
