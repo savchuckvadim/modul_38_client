@@ -21,7 +21,7 @@ let initialState = {
     forFilter: [],
     pageSize: 21,
     totalUsersCount: 1,
-    currentPage: 1,
+    currentPage: 2,
     portionSize: 10,
     error: null,
 
