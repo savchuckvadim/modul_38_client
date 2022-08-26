@@ -20,6 +20,7 @@ let initialState = {
 
 };
 
+// ACTIONS CREATORS
 export const setAuthUserData = (authUser, id = null, login = null, email = null, isAuth = false) =>
 ({
     type: SET_USER_DATA,
@@ -27,32 +28,13 @@ export const setAuthUserData = (authUser, id = null, login = null, email = null,
     data: { id, login, email },
     isAuth
 });
+
 export const logining = (bool) => ({type: LOGINING, bool});
-// export const setAuthcurrentProfile = (userProfile, avatar) => ({ type: SET_AUTH_CURRENT_USER, userProfile, avatar })
-
-const authReducer = (state = initialState, action) => {
-    let result = state
-
-    switch (action.type) {
-        case SET_USER_DATA:
-            result = { ...state, }
-            result.auth = { ...action.data, isAuth: action.isAuth }
-            result.authUser = action.authUser //запоминаем аутентифицированного пользователя в state чтобы потом его вставлять в список подписчиков
-            return result;
-
-        case LOGINING:
-            result = { ...state, }
-            result.logining =action.bool 
-            return result;
-        default:
-            return result;
-    }
-
-};
 
 
 
 
+//THUNKS
 export const laraGetAuth = () => async (dispatch) => {
     await authAPI.initial();
     let response = await authAPI.getAuthUser();
@@ -70,8 +52,6 @@ export const laraGetAuth = () => async (dispatch) => {
 
 
 };
-
-
 
 export const login = (email, password, rememberMe) => async (dispatch) => {
    
@@ -109,4 +89,24 @@ export const logout = () => async (dispatch) => {
 
 };
 
+//REDUCER
+const authReducer = (state = initialState, action) => {
+    let result = state
+
+    switch (action.type) {
+        case SET_USER_DATA:
+            result = { ...state, }
+            result.auth = { ...action.data, isAuth: action.isAuth }
+            result.authUser = action.authUser //запоминаем аутентифицированного пользователя в state чтобы потом его вставлять в список подписчиков
+            return result;
+
+        case LOGINING:
+            result = { ...state, }
+            result.logining =action.bool 
+            return result;
+        default:
+            return result;
+    }
+
+};
 export default authReducer;

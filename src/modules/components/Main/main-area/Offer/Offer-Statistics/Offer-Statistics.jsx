@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import style from './Offer-Statistics.module.css'
 import StatisticsItem from './Item/Statistics-Item'
 

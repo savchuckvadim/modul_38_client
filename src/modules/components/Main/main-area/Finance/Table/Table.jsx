@@ -8,7 +8,6 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import style from './Table.module.css';
 import { useEffect } from 'react';
-
 import { LightLoadingPageContainer } from '../../../../Elements/Loading/Light-Loading-Page-Container';
 import Total from './Total/Total';
 
@@ -79,7 +78,7 @@ const BasicTable = (props) => {
 
       return <>
         <TableRow
-          key={`${obj[0]}-${index} `}
+          key={`${'main-row'}-${index} `}
           sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
         >
           {cells}
@@ -95,14 +94,14 @@ const BasicTable = (props) => {
   }
 
   return (
-    <TableContainer className={style.table} component={Paper}>
+    <TableContainer key={'table-container-1'} className={style.table} component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
-        <TableHead>
-          <TableRow>
+        <TableHead key={`tbl-hd `}>
+          <TableRow key={`tbl-row `}>
             {headers}
           </TableRow>
         </TableHead>
-        <TableBody>
+        <TableBody key={`tbl-bdy `}>
           {rows}
           {total}
         </TableBody>

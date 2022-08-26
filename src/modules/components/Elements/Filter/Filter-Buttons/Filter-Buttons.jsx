@@ -53,7 +53,7 @@ const FilterButtons = (props) => {
         <div className={style.wrapper}>
 
             {actions.map((action, index) => (
-                <div className={style.action}>
+                <div key={action.name} className={style.action}>
                     {<RedButton
                         name={action.name}
                         color={action.color}

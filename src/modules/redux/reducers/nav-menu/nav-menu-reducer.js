@@ -1,16 +1,7 @@
 
 
 let initialState = [
-    // {
-    //     name: 'Profile',
-    //     link: 'profile',
 
-    // },
-    // {
-    //     name: 'Messages',
-    //     link: 'messages',
-
-    // },
     {
         name: 'Home',
         link: 'profile',

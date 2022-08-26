@@ -6,9 +6,13 @@ let initialState = {
     
 };
 const SET_FINANCE = 'SET_FINANCE';
+
+// ACTIONS CREATORS
 const setFinance = (finance, role) => ({type: SET_FINANCE, finance, role})
 
 
+
+//THUNKS
 export const getFinance = (date = null) => async (dispatch)  => {
     let res = await  financeAPI.getFinance(date);
     
@@ -20,6 +24,8 @@ export const getFinance = (date = null) => async (dispatch)  => {
    
 }
 
+
+//REDUCER
 const financeReducer = (state = initialState, action) => {
     switch (action.type) {
         case SET_FINANCE:

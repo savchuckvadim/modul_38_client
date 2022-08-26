@@ -54,12 +54,13 @@ const initialState = {
     },
     error: ''
 }
-export const setError = (error) => {
-    return {
-        type: SET_ERROR,
-        error
-    }
-}
+
+// ACTIONS CREATORS
+export const setError = (error) => ({ type: SET_ERROR, error})
+
+
+
+//REDUCER
 const LoginRegistrationReducer = (state = initialState, action) => {
     
     switch (action.type) {

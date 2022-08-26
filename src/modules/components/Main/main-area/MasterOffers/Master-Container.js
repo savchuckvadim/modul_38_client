@@ -1,6 +1,5 @@
 
 import { connect } from "react-redux"
-
 import Master from "./Master";
 import { filterOffers, follow, getLink, getOffers, unfollow } from "../../../../redux/reducers/offers/offer-reducer";
 import { laraGetAuth } from "../../../../redux/reducers/auth/auth-reducer";
@@ -15,6 +14,7 @@ const mapStateToProps = (state) => {
         authUser:state.auth.authUser,
         followingInProgress: state.offers.followingInProgress,
         offers: state.offers.offers,
+        
         //paginator:
         pageSize:  state.offers.pageSize ,
         totalUsersCount: state.offers.totalUsersCount,
@@ -24,20 +24,6 @@ const mapStateToProps = (state) => {
     }
 }
 
-
-
-// const withRouter = WrappedComponent => props => {
-//     const params = useParams();
-//     // etc... other react-router-dom v6 hooks
-
-//     return (
-//         <WrappedComponent
-//             {...props}
-//             params={params}
-//         // etc...
-//         />
-//     );
-// };
 
 
 

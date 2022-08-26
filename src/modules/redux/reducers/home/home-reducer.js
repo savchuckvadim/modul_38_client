@@ -4,16 +4,20 @@ let initialState = {
     fish: ''
 };
 const SET_FISH = 'SET_FISH';
+
+// ACTIONS CREATORS
 const setFish = (fish) => ({ type: SET_FISH, fish })
 
 
+//THUNKS
 export const getFish = () => async (dispatch) => {
     const fish = await fishAPI.get();
     dispatch(setFish(fish))
 }
 
 
-export const homeReducer = (state = initialState, action) => {
+//REDUCER
+const homeReducer = (state = initialState, action) => {
     switch (action.type) {
         case SET_FISH:
 
@@ -24,3 +28,5 @@ export const homeReducer = (state = initialState, action) => {
     }
 
 };
+
+export default homeReducer

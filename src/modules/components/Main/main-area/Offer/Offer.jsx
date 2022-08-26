@@ -1,4 +1,3 @@
-
 import Description from './Description/Description';
 import style from './Offer.module.css'
 import hero from '../../../../../assets/imgs/Vector.png'

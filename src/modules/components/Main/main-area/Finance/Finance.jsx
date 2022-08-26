@@ -22,8 +22,8 @@ const filterActions = ['day', 'month', 'year'];
             <Filter>
                 <FilterButtons actions={filterActions} filter={props.getFinance} />
             </Filter>
-            <div className={style.table__wrapper}>
-                <BasicTable {...props} />
+            <div key={'finance'} className={style.table__wrapper}>
+                <BasicTable key={'finance-table'} {...props} />
             </div>
 
 
