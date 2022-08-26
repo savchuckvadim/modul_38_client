@@ -12,27 +12,7 @@ import { LightLoadingPageContainer } from '../../../../Elements/Loading/Light-Lo
 import Total from './Total/Total';
 
 
-/////////////TODO:
-//Advertiser:
-//Offers
-//Masters
-//Transitions
-//Expenses
-
-//Master
-//Offers (followed)
-//Transitions
-//Profit
-
-//Admin
-//Links
-//Transitions
-//Fail-Transitions
-//Profit
-
-
 const BasicTable = (props) => {
-
 
   useEffect(() => {
 

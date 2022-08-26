@@ -21,7 +21,7 @@ const Main = (props) => {
     } else if (props.authUser.role === 'Advertiser') {
         rolesRoutes = <>
             <Route path="advertiserOffers" element={<AdvertiserContainer />}>
-                <Route path=":userId" element={<AdvertiserContainer />} />
+                {/* <Route path=":userId" element={<Navigate replace to='../' />} /> */}
             </Route>
         </>
     } else if (props.authUser.role === 'Master') {
@@ -30,7 +30,6 @@ const Main = (props) => {
                 {/* <Route path=":userId" element={<NotFound />} />
             </Route> */}
             <Route path="offer" element={<OfferContainer />}>
-
                 <Route path=":offerId" element={<OfferContainer />} />
             </Route>
         </>
