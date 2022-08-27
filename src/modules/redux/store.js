@@ -1,6 +1,5 @@
 import { applyMiddleware, combineReducers, createStore } from "redux";
 import ThunkMiddleware from 'redux-thunk';
-
 import { themeReducer } from "./reducers/theme/style-reducer";
 import navMenuReducer from "./reducers/nav-menu/nav-menu-reducer";
 import usersReducer from "./reducers/users/users-reducer";
@@ -12,6 +11,7 @@ import registrationReducer from "./reducers/auth/registration-reducer";
 import { offerReducer } from "./reducers/offers/offer-reducer";
 import financeReducer from "./reducers/finance/finance-reducer";
 import homeReducer from "./reducers/home/home-reducer";
+import paginatorReducer from "./reducers/paginator/paginator-reducer";
 
 let reducers = combineReducers({
     app: appReducer,
@@ -24,6 +24,7 @@ let reducers = combineReducers({
     navMenu: navMenuReducer,
     finance: financeReducer,
     home: homeReducer,
+    paginator:paginatorReducer,
     form: formReducer
 
 
@@ -36,6 +37,7 @@ let reducers = combineReducers({
 
 //     applyMiddleware(ThunkMiddleware)
 //   ));
+
 
 let store = createStore(reducers, applyMiddleware(ThunkMiddleware));
 export default store;

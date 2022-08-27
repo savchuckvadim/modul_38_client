@@ -1,8 +1,9 @@
 import { connect } from "react-redux"
-import { deleteUser, fetching, requestUsers, setCurrentPage, setTotalUsersCount, setUsers } from "../../../../redux/reducers/users/users-reducer"
-import { getAuthUser, getCount, getIsFetching, getIsFollowing, getPage, getPageSize, getTotalUsersCount, getUsersSelector } from "../../../../redux/selectors/user-selectors"
+import { setCurrentPage, setTotalItemsCount } from "../../../../redux/reducers/paginator/paginator-reducer"
+import { deleteUser, fetching, requestUsers, setUsers } from "../../../../redux/reducers/users/users-reducer"
+import { getAuthUser, getIsFetching, getIsFollowing, getUsersSelector } from "../../../../redux/selectors/user-selectors"
+import Users from "./Users"
 
-import UsersContainer from "./Users-API-Container"
 
 
 
@@ -11,29 +12,28 @@ const mapStateToProps = (state) => {
     return {
         authUser: getAuthUser(state),
         users: getUsersSelector(state),
-        pageSize: getPageSize(state),
-        totalUsersCount: getTotalUsersCount(state),
-        currentPage: getPage(state),
-        count: getCount(state),
         isFetching: getIsFetching(state),
         followingInProgress: getIsFollowing(state),
         deletingUser: state.users.deletingUser,
-        portionSize: state.users.portionSize,
-     
+
+        // paginator:
+        pageSize: state.paginator.pageSize,
+        totalItemsCount: state.paginator.totalItemsCount,
+        currentPage: state.paginator.currentPage,
+        portionSize: state.paginator.portionSize,
+
 
 
     }
 }
 
 
-export default connect(mapStateToProps, {
+export const UsersContainer =  connect(mapStateToProps, {
     setCurrentPage,
     setUsers,
-    setTotalUsersCount,
+    setTotalItemsCount,
     fetching,
     requestUsers,
     deleteUser
 
-
-
-})(UsersContainer)
+})(Users)
