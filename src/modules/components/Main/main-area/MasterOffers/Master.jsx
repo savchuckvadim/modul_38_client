@@ -11,9 +11,11 @@ import Offers from "./Offers/Offers";
 
 
 const Master = (props) => {
+
     const getOffers = () => {
         props.getOffers(props.currentPage, props.pageSize)
     };
+
     const onPageChanged = (pageNumber) => {
         props.setCurrentPage(pageNumber);
         props.getOffers(pageNumber, props.pageSize);
@@ -41,13 +43,11 @@ const Master = (props) => {
             <div className={style.pages}>
 
                 <Paginator
-                    totalItemsCount={props.totalOffersCount}
+                    totalItemsCount={props.totalItemsCount}
                     pageSize={props.pageSize}
                     currentPage={props.currentPage}
                     onPageChanged={onPageChanged}
                     portionSize={props.portionSize}
-
-
                 />
             </div>
 

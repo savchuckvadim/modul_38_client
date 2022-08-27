@@ -1,8 +1,8 @@
-
 import { connect } from "react-redux"
 import Master from "./Master";
-import { filterOffers, follow, getLink, getOffers, setCurrentPage, unfollow } from "../../../../redux/reducers/offers/offer-reducer";
+import { filterOffers, follow, getLink, getOffers, unfollow } from "../../../../redux/reducers/offers/offer-reducer";
 import { laraGetAuth } from "../../../../redux/reducers/auth/auth-reducer";
+import { setCurrentPage } from "../../../../redux/reducers/paginator/paginator-reducer";
 
 
 
@@ -12,15 +12,15 @@ const mapStateToProps = (state) => {
     return {
         isAuth: state.auth.auth.isAuth,
         authUser: state.auth.authUser,
-        followingInProgress: state.offers.followingInProgress,
         offers: state.offers.offers,
+        followingInProgress: state.offers.followingInProgress,
+        
 
         //paginator:
-        pageSize: state.offers.pageSize,
-        totalOffersCount: state.offers.totalOffersCount,
-        currentPage: state.offers.currentPage,
-        portionSize: state.offers.portionSize,
-
+        pageSize: state.paginator.pageSize,
+        totalItemsCount: state.paginator.totalItemsCount,
+        currentPage: state.paginator.currentPage,
+        portionSize: state.paginator.portionSize,
     }
 }
 
@@ -29,7 +29,7 @@ const mapStateToProps = (state) => {
 
 
 export const MasterContainer = connect(mapStateToProps, {
-    setCurrentPage,
+    setCurrentPage,  //paginator
     laraGetAuth,
     getOffers,
     filterOffers,

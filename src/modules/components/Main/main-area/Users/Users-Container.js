@@ -13,7 +13,7 @@ const mapStateToProps = (state) => {
         authUser: getAuthUser(state),
         users: getUsersSelector(state),
         isFetching: getIsFetching(state),
-        followingInProgress: getIsFollowing(state),
+        // followingInProgress: getIsFollowing(state),
         deletingUser: state.users.deletingUser,
 
         // paginator:
@@ -21,9 +21,6 @@ const mapStateToProps = (state) => {
         totalItemsCount: state.paginator.totalItemsCount,
         currentPage: state.paginator.currentPage,
         portionSize: state.paginator.portionSize,
-
-
-
     }
 }
 
