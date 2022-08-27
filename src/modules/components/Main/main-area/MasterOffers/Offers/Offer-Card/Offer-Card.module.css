@@ -1,6 +1,6 @@
+
 .frame {
     margin: 8px 2px 0 2px;;
-   
     padding: 16px;
     background-color: rgb(255, 255, 255);
     min-height: 185px;
@@ -29,13 +29,6 @@
 
   }
 
-.icon__wrapper {
-    margin: 0;
-    padding: 0;
-width: 68px;
-height: 68px;
-
-}
 
 .link {
     color: rgb(0, 0, 0);

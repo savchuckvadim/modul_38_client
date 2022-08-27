@@ -1,5 +1,5 @@
 import OfferCard from "./Offer-Card/Offer-Card";
-
+import style from './Offers.module.css'
 const Offers = (props) => {
 
     let offersCards = [];
@@ -22,7 +22,11 @@ const Offers = (props) => {
             }
         })
     }
-    return  offersCards
+    return(
+        <div className={style.container}>
+            {offersCards}
+        </div>
+    )  
 };
 
 export default Offers

@@ -36,9 +36,9 @@ const Master = (props) => {
             <Filter>
                 <FilterButtons actions={filterActions} filter={props.filterOffers} />
             </Filter>
-            <div className={style.container}>
-                {<Offers {...props} />}
-            </div>
+
+            <Offers {...props} />
+
 
             <div className={style.pages}>
 
