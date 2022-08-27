@@ -55,7 +55,6 @@ export const getOffers = (currentPage = 1, pageSize = 10) => async (dispatch) =>
 };
 export const getOffer = (offerId) => async (dispatch) => {
     const res = await offerAPI.getOffer(offerId);
-
     if (res.resultCode === 1) {
         dispatch(setCurrentOffer(res.offer));
     } else {

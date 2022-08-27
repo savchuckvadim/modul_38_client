@@ -24,8 +24,8 @@ const mapStateToProps = (state) => {
         authUserId: state.auth.authUser.id,
         followingInProgress: state.offers.followingInProgress,
         offers: state.offers.offers,
-        currentPage: state.offers.currentPage,
-        portionSize: state.offers.portionSize
+        currentPage: state.paginator.currentPage,
+        portionSize: state.paginator.portionSize
 
     }
 }
@@ -34,7 +34,7 @@ class OfferContainer extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = { offer: null, isFetching: false };
+        this.state = { offer: null };
 
     }
 
@@ -43,42 +43,50 @@ class OfferContainer extends React.Component {
         let offerId = null
         if (this.props.params.offerId) {
 
-            offerId = this.props.params.offerId;
+            offerId = Number(this.props.params.offerId);
         }
         return offerId;
     }
 
     offerRequest = async () => {
-        let offerId = await this.getOfferId();
-        await this.props.getOffer(offerId)
-        
+
+        if (!this.state.offer) {
+            let offerId = this.getOfferId();
+            await this.props.getOffer(offerId)
+            this.getOfferFromStateOffers(offerId)
+
+        }
     }
 
-    getOffer = () => {
+    getOfferFromStateOffers = (offerId) => {
         if (!this.state.offer) {
-
+            let searchingOffer = null;
             this.props.offers.forEach(offer => {
-                let id = Number(this.offerId)
-                if (offer.id === id) {
-                    this.setState({
-                        offer: offer
-                    });
+
+                if (offer.id === offerId) {
+                    searchingOffer = offer
+
                 };
             });
+
+            this.setState({
+                offer: searchingOffer
+            });
+
+
         };
 
     }
 
     componentDidMount() {
+
         window.scrollTo(0, 0);
         this.offerRequest();
-        this.getOffer();
+
 
     }
     componentDidUpdate() {
-        
         this.offerRequest();
-        this.getOffer();
 
     }
 
@@ -104,5 +112,5 @@ export default compose(
         getLink
     }),
     withRouter,
-   
+
 )(OfferContainer)

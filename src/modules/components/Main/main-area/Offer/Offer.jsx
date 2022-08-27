@@ -5,11 +5,14 @@ import { LightLoadingPageContainer } from '../../../Elements/Loading/Light-Loadi
 import OfferAvatar from '../AdvertiserOffers/Offers-Area/Offers/Offer-Title/Offer-Avatar/Offer-Avatar';
 import OfferStatistics from './Offer-Statistics/Offer-Statistics';
 import FollowUnfollowButtons from '../../../Elements/Button/Follow-Unfollow-Buttons/Follow-Unfollow-Buttons';
+import { useEffect } from 'react';
 
 
 const Offer = (props) => {
 
+//TODO REFACTORING, PRELOADER
 
+    
     if (props) {
         return (
             <div className={style.wrapper}>
