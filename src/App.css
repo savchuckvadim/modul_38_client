@@ -68,7 +68,7 @@ p, textarea, li{
   
 } */
 
-.test-container{
+/* .test-container{
   margin: 0 auto;
   padding: 0;
   min-width: 100vh;
@@ -78,7 +78,7 @@ p, textarea, li{
   align-items: center;
   flex-direction: column;
   background-color: #F4F4F4;
-}
+} */
 
 
 [class*=_container]{
