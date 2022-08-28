@@ -1,7 +1,7 @@
 import style from './User-Card.module.css';
-import Avatar from '../../../Elements/Avatar/Avatar';
-import Delete from '../../../Elements/Button/Delete-Buttons/Delete-Buttons';
-import { LightLoadingMini } from '../../../Elements/Loading/Light-Loading-Mini-Container ';
+import Avatar from '../../../../Elements/Avatar/Avatar';
+import Delete from '../../../../Elements/Button/Delete-Buttons/Delete-Buttons';
+import { LightLoadingMini } from '../../../../Elements/Loading/Light-Loading-Mini-Container ';
 
 const UserCard = (props) => {
 

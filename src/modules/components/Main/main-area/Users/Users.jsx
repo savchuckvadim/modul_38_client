@@ -5,7 +5,7 @@ import FilterButtons from "../../../Elements/Filter/Filter-Buttons/Filter-Button
 import { LightLoadingPageContainer } from "../../../Elements/Loading/Light-Loading-Page-Container";
 import Title from "../../../Elements/Title/Title";
 import Paginator from "../../../Elements//Paginator/Paginator";
-import UserCard from "./User-Card";
+import UserCard from "./User-Card/User-Card";
 import style from './Users.module.css';
 import { NavLink } from "react-router-dom";
 
