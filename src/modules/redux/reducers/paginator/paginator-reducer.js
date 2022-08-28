@@ -2,12 +2,10 @@ const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
 const SET_TOTAL_ITEMS_COUNT = 'SET_TOTAL_ITEMS_COUNT';
 
 const initialState = {
-    
     pageSize: 21,
     totalItemsCount: 1,
     currentPage: 1,
     portionSize: 10,
-
 }
 
 
