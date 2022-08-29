@@ -12,3 +12,4 @@ app.listen(PORT);
 
 //Change at packege.json
 //"start": "node server.js",
+//"start": "react-scripts start",

@@ -4,8 +4,8 @@ import axios from "axios";
 
 const instance = axios.create({
     withCredentials: true,
-    baseURL: 'http://127.0.0.1:8000',
-    // baseURL: ' http://185.225.35.6/',
+    // baseURL: 'http://127.0.0.1:8000',
+    baseURL: ' http://185.225.35.6/',
 
     headers: {
         'content-type': 'application/json',
