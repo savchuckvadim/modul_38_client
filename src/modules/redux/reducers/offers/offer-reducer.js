@@ -1,6 +1,12 @@
-import { offerAPI } from "../../../services/api-laravel";
-import { followUnfollow } from "../../../utils/for-reducers/follow-unfollow";
-import { setTotalItemsCount } from "../paginator/paginator-reducer";
+import {
+    offerAPI
+} from "../../../services/api-laravel";
+import {
+    followUnfollow
+} from "../../../utils/for-reducers/follow-unfollow";
+import {
+    setTotalItemsCount
+} from "../paginator/paginator-reducer";
 
 const ADD_OFFER = 'ADD_OFFER';
 const SET_OFFERS = 'SET_OFFERS';
@@ -25,16 +31,48 @@ let initialState = {
 
 
 //ACTION CREATORS
-const addOffer = (offer) => ({ type: ADD_OFFER, offer });
-const setOffers = (offers) => ({ type: SET_OFFERS, offers });
-const setCurrentOffer = (offer) => ({ type: SET_CURRENT_OFFER, offer });
-export const filterOffers = (filter) => ({ type: FILTER_OFFERS, filter });
-const deleteOfferAC = (offerId) => ({ type: DELETE_OFFER, offerId });
-const followAC = (offerId) => ({ type: FOLLOW, offerId });
-const unfollowAC = (offerId) => ({ type: UNFOLLOW, offerId });
-const toggleFollowingInProgress = (offerId, isFetching) => ({ type: FOLLOWING_IN_PROGRESS, offerId, isFetching });
-const setLink = (offerId, link) => ({ type: SET_LINK, offerId, link });
-export const setErrors = (error) => ({ type: SET_ERRORS, error });
+const addOffer = (offer) => ({
+    type: ADD_OFFER,
+    offer
+});
+const setOffers = (offers) => ({
+    type: SET_OFFERS,
+    offers
+});
+const setCurrentOffer = (offer) => ({
+    type: SET_CURRENT_OFFER,
+    offer
+});
+export const filterOffers = (filter) => ({
+    type: FILTER_OFFERS,
+    filter
+});
+const deleteOfferAC = (offerId) => ({
+    type: DELETE_OFFER,
+    offerId
+});
+const followAC = (offerId) => ({
+    type: FOLLOW,
+    offerId
+});
+const unfollowAC = (offerId) => ({
+    type: UNFOLLOW,
+    offerId
+});
+const toggleFollowingInProgress = (offerId, isFetching) => ({
+    type: FOLLOWING_IN_PROGRESS,
+    offerId,
+    isFetching
+});
+const setLink = (offerId, link) => ({
+    type: SET_LINK,
+    offerId,
+    link
+});
+export const setErrors = (error) => ({
+    type: SET_ERRORS,
+    error
+});
 
 
 //THUNKS
@@ -44,9 +82,13 @@ export const sendOffer = (userId, name, description, url, price) => async (dispa
 };
 export const getOffers = (currentPage = 1, pageSize = 10) => async (dispatch) => {
     const res = await offerAPI.getOffers(currentPage, pageSize);
-    
+
     if (res.data.resultCode === 1) {
-        dispatch(setTotalItemsCount(res.meta.total)) //from paginator-reducer
+        
+        if (res.meta) {
+            dispatch(setTotalItemsCount(res.meta.total)) //from paginator-reducer
+
+        }
         dispatch(setOffers(res.data.offers));
     } else {
         alert(res.message)
@@ -123,17 +165,25 @@ export const offerReducer = (state = initialState, action) => {
             let offers = [...state.offers];
             offers.unshift(action.offer);
             state.offers = [...offers]
-            return { ...state };
+            return {
+                ...state
+            };
 
         case SET_OFFERS:
-            state.offers = [...action.offers.reverse(offer => ({ ...offer }))];
-            return { ...state };
+            state.offers = [...action.offers.reverse(offer => ({
+                ...offer
+            }))];
+            return {
+                ...state
+            };
 
         case SET_CURRENT_OFFER:
             const isOfferHas = state.offers.some(offer => offer.id === action.offer.id);
             if (!isOfferHas) {
                 state.offers.unshift(action.offer)
-                result = { ...state };
+                result = {
+                    ...state
+                };
                 result.offers = [...state.offers]
                 return result;
             }
@@ -141,7 +191,9 @@ export const offerReducer = (state = initialState, action) => {
 
         case FILTER_OFFERS:
 
-            result = { ...state }
+            result = {
+                ...state
+            }
             if (!result.isFiltered) { // если фильтер еще не применялся
                 result.forFilter = state.offers
                 result.isFiltered = true
@@ -168,69 +220,82 @@ export const offerReducer = (state = initialState, action) => {
                 return result
 
             }
-        case DELETE_OFFER:
-            result = { ...state }
-            result.offers = []
-            state.offers.forEach(o => {
-                if (o.id !== action.offerId) {
-                    result.offers.push(o);
+            case DELETE_OFFER:
+                result = {
+                    ...state
                 }
-            })
-            return result;
-
-        case FOLLOW:
-            result = { ...state }
-            result.offers = followUnfollow(result.offers, action.offerId, 1)
-            return result;
-
-        case UNFOLLOW:
-            result = { ...state }
-            result.offers = followUnfollow(result.offers, action.offerId, 0)
-            return result;
-
-        case FOLLOWING_IN_PROGRESS:
-            result = { ...state }
-            result.followingInProgress = [...state.followingInProgress]
-
-            action.isFetching
-                ? result.followingInProgress.push(action.offerId)
-                : result.followingInProgress = state.followingInProgress.filter(id => id !== action.offerId)
-
-            return result;
-
-        case SET_LINK:
-            result = { ...state }
-
-            if (result.offers.length > 0) {
-                result.offers = result.offers.map(offer => {
-                    if (offer.id === action.offerId) {
-                        offer.link = action.link
-
-                        return { ...offer }
-                    } else {
-                        return offer
+                result.offers = []
+                state.offers.forEach(o => {
+                    if (o.id !== action.offerId) {
+                        result.offers.push(o);
                     }
                 })
-            }
+                return result;
 
-            return result;
-
-        case SET_ERRORS:
-            if (action.error) {
-
-                if (state.error !== action.error) {
-                    result = { ...state };
-                    result.error = action.error;
-
-                    return result;
+            case FOLLOW:
+                result = {
+                    ...state
                 }
-            }
+                result.offers = followUnfollow(result.offers, action.offerId, 1)
+                return result;
 
-            return state;
+            case UNFOLLOW:
+                result = {
+                    ...state
+                }
+                result.offers = followUnfollow(result.offers, action.offerId, 0)
+                return result;
 
-        default: return state;
+            case FOLLOWING_IN_PROGRESS:
+                result = {
+                    ...state
+                }
+                result.followingInProgress = [...state.followingInProgress]
+
+                action.isFetching ?
+                    result.followingInProgress.push(action.offerId) :
+                    result.followingInProgress = state.followingInProgress.filter(id => id !== action.offerId)
+
+                return result;
+
+            case SET_LINK:
+                result = {
+                    ...state
+                }
+
+                if (result.offers.length > 0) {
+                    result.offers = result.offers.map(offer => {
+                        if (offer.id === action.offerId) {
+                            offer.link = action.link
+
+                            return {
+                                ...offer
+                            }
+                        } else {
+                            return offer
+                        }
+                    })
+                }
+
+                return result;
+
+            case SET_ERRORS:
+                if (action.error) {
+
+                    if (state.error !== action.error) {
+                        result = {
+                            ...state
+                        };
+                        result.error = action.error;
+
+                        return result;
+                    }
+                }
+
+                return state;
+
+            default:
+                return state;
 
     }
 };
-
-
