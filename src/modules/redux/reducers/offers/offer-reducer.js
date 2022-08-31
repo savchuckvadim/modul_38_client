@@ -1,12 +1,6 @@
-import {
-    offerAPI
-} from "../../../services/api-laravel";
-import {
-    followUnfollow
-} from "../../../utils/for-reducers/follow-unfollow";
-import {
-    setTotalItemsCount
-} from "../paginator/paginator-reducer";
+import {offerAPI} from "../../../services/api-laravel";
+import {followUnfollow} from "../../../utils/for-reducers/follow-unfollow";
+import {setTotalItemsCount} from "../paginator/paginator-reducer";
 
 const ADD_OFFER = 'ADD_OFFER';
 const SET_OFFERS = 'SET_OFFERS';
@@ -31,48 +25,16 @@ let initialState = {
 
 
 //ACTION CREATORS
-const addOffer = (offer) => ({
-    type: ADD_OFFER,
-    offer
-});
-const setOffers = (offers) => ({
-    type: SET_OFFERS,
-    offers
-});
-const setCurrentOffer = (offer) => ({
-    type: SET_CURRENT_OFFER,
-    offer
-});
-export const filterOffers = (filter) => ({
-    type: FILTER_OFFERS,
-    filter
-});
-const deleteOfferAC = (offerId) => ({
-    type: DELETE_OFFER,
-    offerId
-});
-const followAC = (offerId) => ({
-    type: FOLLOW,
-    offerId
-});
-const unfollowAC = (offerId) => ({
-    type: UNFOLLOW,
-    offerId
-});
-const toggleFollowingInProgress = (offerId, isFetching) => ({
-    type: FOLLOWING_IN_PROGRESS,
-    offerId,
-    isFetching
-});
-const setLink = (offerId, link) => ({
-    type: SET_LINK,
-    offerId,
-    link
-});
-export const setErrors = (error) => ({
-    type: SET_ERRORS,
-    error
-});
+const addOffer = (offer) => ({type: ADD_OFFER,offer});
+const setOffers = (offers) => ({type: SET_OFFERS,offers});
+const setCurrentOffer = (offer) => ({type: SET_CURRENT_OFFER,offer});
+export const filterOffers = (filter) => ({type: FILTER_OFFERS,filter});
+const deleteOfferAC = (offerId) => ({type: DELETE_OFFER,offerId});
+const followAC = (offerId) => ({type: FOLLOW,offerId});
+const unfollowAC = (offerId) => ({type: UNFOLLOW,offerId});
+const toggleFollowingInProgress = (offerId, isFetching) => ({type: FOLLOWING_IN_PROGRESS,offerId,isFetching});
+const setLink = (offerId, link) => ({ type: SET_LINK, offerId,link});
+export const setErrors = (error) => ({type: SET_ERRORS,error});
 
 
 //THUNKS

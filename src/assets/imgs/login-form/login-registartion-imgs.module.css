@@ -10,6 +10,7 @@
 
 .iconRed path {
     stroke: rgb(255, 0, 0);
+    opacity: 100%;
 
 }
 

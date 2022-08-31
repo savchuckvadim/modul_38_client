@@ -10,7 +10,8 @@ if(props.grey){
         <button
         style={{
             borderRadius: props.border,
-            backgroundColor:background
+            backgroundColor:background,
+            color:'black'
         }}
            type='submit'
             name={'whiteButton'}

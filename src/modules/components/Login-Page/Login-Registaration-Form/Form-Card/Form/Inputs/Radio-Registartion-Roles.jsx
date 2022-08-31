@@ -22,7 +22,7 @@ const InputRoles = (field) => {
     return (
         <>
             <div className={containerClass}>
-                {icon}
+                {/* {icon} */}
                 <input
                     {...field.input}
                     id='Admin'

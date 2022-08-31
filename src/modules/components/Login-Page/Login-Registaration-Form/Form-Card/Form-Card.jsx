@@ -79,7 +79,7 @@ const FormCard = (props) => {
                     <div className={style.description}>
                         {type === 'registration'
                             ? props.privacy
-                            : <NavLink className={style.link} to={`profile`} activeclassname='active'>{props.forgotLink}</NavLink>
+                            : <NavLink className={style.link} to={`../registration`} activeclassname='active'>{props.forgotLink}</NavLink>
                         }
                         {/* By pressing Sign Up, you agree to the Terms of Service and Privacy Policy. */}
                     </div>
@@ -89,7 +89,7 @@ const FormCard = (props) => {
                     <div className={style.link__container}>
                         <p className={style.footer__text}>
                             {props.footerInstruction}
-                            <NavLink className={style.link} to={`profile`} activeclassname='active'>
+                            <NavLink className={style.link} replace to={`../login`} activeclassname='active'>
                                 {props.footerLink}
                             </NavLink>
                         </p>

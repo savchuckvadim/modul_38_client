@@ -3,6 +3,7 @@ import style from './login-registartion-imgs.module.css'
 
 
 const getLoginRegistrationIcon = (placeholder, colorIndex) => {
+    
     const classes = [style.icon, style.iconRed]
     if (placeholder === 'E-mail') {
         return <svg className={classes[colorIndex]} width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
